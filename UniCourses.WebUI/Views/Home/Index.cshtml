@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Category>
+
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "HomePage";
 }
 
 <section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/big_image_2.jpg);">
@@ -21,12 +22,12 @@
                                         <option value="">Kurs Kategorisi</option>
                                         @foreach (var v in Model)
                                         {
-                                            <option value="">@v.CaregoryName</option>
+                                            <option value="/Home/Courses/@v.ParentID">@v.CategoryName</option>
 
                                         }
                                         @*<option value="">PHP</option>
-                                        <option value="">JavaScript</option>
-                                        <option value="">Python</option>*@
+                                            <option value="">JavaScript</option>
+                                            <option value="">Python</option>*@
                                     </select>
                                 </div>
                                 <div class="select-wrap one-third">
@@ -103,7 +104,7 @@
 
         </div>
     </div>
-   
+
 
 </section>
 <!-- END section -->
@@ -187,7 +188,7 @@
                         <img src="images/img_1.jpg" alt="Image" class="img-fluid">
                     </figure>
                     <div class="text">
-                        
+
                         <h2 class="heading">@Html.ActionLink("Advanced JavaScript Learning", "CourseSinglePage")</h2>
                         <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
                         <div class="meta d-flex align-items-center">

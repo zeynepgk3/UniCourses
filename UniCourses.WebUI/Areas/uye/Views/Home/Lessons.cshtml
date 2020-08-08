@@ -1,0 +1,303 @@
+﻿@model UniCourses.WebUI.ViewModels.LessonCoursesVM
+@using UniCourses.Dal.Entities
+@{
+    ViewData["Title"] = "Lessons";
+    Layout = "~/Views/Shared/_LessonLayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+
+    });
+</script>
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    @*<nav id="sidebar" class=" col-md-3 p-5">
+            <div class="sidebar-header">
+                <h4>Advanced Javascript Course</h4>
+            </div>
+
+           <ul class="list-unstyled components">
+
+                <li class="active">
+                    <a href="#bolum1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle border-bottom"><b>Bölüm #1 | Hoş Geldiniz</b></a>
+                    <ul class="collapse list-unstyled" id="bolum1">
+                        <li>
+                            <a href="#">Home 1</a> |
+                            <small>Süre 3 dakika</small>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="active">
+                    <a href="#bolum2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle border-bottom"><b>Bölüm #2 | Genel Bilgiler</b></a>
+                    <ul class="collapse list-unstyled" id="bolum2">
+                        <li>
+                            <a href="#">Home 4</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 5</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 6</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="active">
+                    <a href="#bolum3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle border-bottom"><b>Bölüm #3 | İlk Proje</b></a>
+                    <ul class="collapse list-unstyled" id="bolum3">
+                        <li>
+                            <a href="#">Home 7</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 8</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 9</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="#bolum4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle border-bottom"><b>Bölüm #4 | Fonksiyonlar</b></a>
+                    <ul class="collapse list-unstyled" id="bolum4">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>*@
+
+    <!-- Page Content -->
+    <div id="content">
+
+
+        <div class="container-fluid block-11">
+            <div class="row">
+
+                <div class="col-md-10 bg-light">
+
+                    <video id="myplayer"
+                           style="width: 100% !important;height:auto;"
+                           class="video-js vjs-big-play-centered"
+                           controls
+                           preload="auto"
+                           data-setup='{}'>
+                        <source src="/videos/video.mp4#t=2" type="video/mp4" />
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank">
+                                supports HTML5 video
+                            </a>
+                        </p>
+                    </video>
+
+                </div>
+
+                <!--Sidebar starts-->
+                <div class="col-md-2" style="background-color:#1b1b1b;">
+                    <div style="color: white; font-size: 25px; font-weight: 500; line-height: 65px; text-align:center; letter-spacing: 1px;">@Model.Courses.Name</div>
+
+                    <div class="accordion block-8" id="accordion">
+                        <div class="accordion-item">
+                        @foreach(Lesson lesson in Model.Lessons)
+                        { 
+                            <h3 class="mb-0 heading">
+                                <a style="color:white;" class="btn-block" data-toggle="collapse" href="#@lesson.Id" role="button" aria-expanded="true" aria-controls="collapseOne">@lesson.LessonNo | @lesson.LessonName<span class="icon"></span></a>
+                            </h3>
+                            <div id="@lesson.Id" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+
+                                <ul style="list-style-type:none;">
+                                    <li>
+                                        <a href="~/videos/video.mp4">Video-1</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/videos/MY_VIDEO.mp4">Video-2</a>
+                                    </li>
+                                        @*
+                                    <a href="#"><video controls="controls">
+                                                    <source src="~/videos/video.mp4" type="video/mp4" />
+                                                    <source src="~/videos/video.webm" type="video/webm" />
+                                                    <source src="~/videos/video.ogv" type="video/ogg" />
+                                                </video> 1</a>
+                                </li>
+                                <li>
+                                    <a href="#"><video controls="controls">
+                                                <source src="~/videos/video.mp4" type="video/mp4" />
+                                                <source src="~/videos/video.webm" type="video/webm" />
+                                                <source src="~/videos/video.ogv" type="video/ogg" />
+                                            </video> 2</a>
+                                </li>
+                                <li>
+                                    <a href="#"><video controls="controls">
+                                                <source src="~/videos/video.mp4" type="video/mp4" />
+                                                <source src="~/videos/video.mp4.webm" type="video/webm" />
+                                                <source src="~/videos/video.mp4.ogv" type="video/ogg" />
+                                            </video> 3</a> 
+                                </li>*@
+                            </ul>
+                        </div>
+                     }
+                    </div> <!-- .accordion-item -->
+
+                </div>
+            </div>
+            <!--Sidebar ends-->
+
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div id="Page1">
+                    <div class="card p-2 m-5">
+                        <div>
+                            <div style="float:left; padding:5px;">
+                                <h3>Yorumlar</h3>
+                            </div>
+                            <div style="float:right; margin:5px;">
+                                <a href="#" class="btn btn-primary" onclick="return show('Page2','Page1');">Transkripti Göster</a>
+                            </div>
+
+
+                        </div>
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-md-10">
+
+                                    <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Mehmet Göreli</strong></a>
+
+
+                                    @* kaç like geldiğine göre değişecek yıldız sayısı
+                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>*@
+
+
+                                                                        <div class="clearfix"></div>
+                                                                        <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                                                        <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-primary ml-2"><i class="fa fa-reply"></i> Yanıtla</a>
+                                                                        <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-danger ml-2"> <i class="fa fa-heart-o"></i></a>
+
+</div>
+                                </div>
+                                <div class="card card-inner" style=" border: 0;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-1">
+                                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                            </div>
+                                            
+                                                @await Component.InvokeAsync("KursYorumlari", Model.Courses.Id)
+
+                                                <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-primary ml-2"><i class="fa fa-reply"></i> Yanıtla</a>
+                                                <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-danger ml-2"> <i class="fa fa-heart-o"></i></a>
+
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Yorum Yap-->
+                                <div class="row align-items-center">
+                                    <div class="col-md-12 pr-md-5">
+                                        <form action="#" method="post">
+
+                                            <div class="row">
+                                                <div class="col-md-12 form-group">
+                                                    <label for="message">Yorum Yap</label>
+                                                    <textarea name="message" id="message" class="form-control py-2" cols="30" rows="8"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 form-group" style="float:right;">
+                                                    <input type="submit" value="Gönder" class="btn btn-primary">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                                <!--Yorum Yap Sonu-->
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div id="Page2" style="display:none">
+                        <div class="card p-2 m-5">
+                            <div>
+                                <div style="float:left; margin:5px;">
+                                    <h4>Transkript</h4>
+                                </div>
+                                <div style="float:right;margin:5px;">
+                                    <a href="#" class="btn btn-primary" onclick="return show('Page1','Page2');">Yorumları Göster</a>
+                                </div>
+
+                            </div>
+                            <div>
+                                <p>Eğitmen: @Model.Educator.NameSurname</p>
+                            </div>
+                            <div>
+                                <p>Eğitmen: @Model.Educator.Mail</p>
+                            </div>
+                            <div>
+                                <p>Kurs Detayı:</p>
+                                <p>@Model.Courses.Description</p>
+                            </div>
+                            <div>
+                                <p>Transkript</p>
+                            </div>
+                            <div>
+                                <p>burada hocanın eklediği tüm yazılar olacak</p>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                  
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+</div>
+<script>
+    function show(shown, hidden) {
+        document.getElementById(shown).style.display = 'block';
+        document.getElementById(hidden).style.display = 'none';
+        return false;
+    }
+
+</script>

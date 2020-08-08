@@ -31,15 +31,5 @@ C:\Users\YASIN\Desktop\UniCourses - Zeynep\uniCourses.com\UniCourses.Dal\bin\Deb
 C:\Users\YASIN\Desktop\UniCourses - Zeynep\uniCourses.com\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.csprojAssemblyReference.cache
 C:\Users\YASIN\Desktop\UniCourses - Zeynep\uniCourses.com\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.AssemblyInfoInputs.cache
 C:\Users\YASIN\Desktop\UniCourses - Zeynep\uniCourses.com\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.AssemblyInfo.cs
-C:\Users\YASIN\Desktop\UniCourses - Zeynep\uniCourses.com\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.csproj.CoreCompileInputs.cache
 C:\Users\YASIN\Desktop\UniCourses - Zeynep\uniCourses.com\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.dll
 C:\Users\YASIN\Desktop\UniCourses - Zeynep\uniCourses.com\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.pdb
-D:\Github\UniCourses\UniCourses.Dal\bin\Debug\netstandard2.0\UniCourses.Dal.deps.json
-D:\Github\UniCourses\UniCourses.Dal\bin\Debug\netstandard2.0\UniCourses.Dal.dll
-D:\Github\UniCourses\UniCourses.Dal\bin\Debug\netstandard2.0\UniCourses.Dal.pdb
-D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.csprojAssemblyReference.cache
-D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.AssemblyInfoInputs.cache
-D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.AssemblyInfo.cs
-D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.csproj.CoreCompileInputs.cache
-D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.dll
-D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.0\UniCourses.Dal.pdb

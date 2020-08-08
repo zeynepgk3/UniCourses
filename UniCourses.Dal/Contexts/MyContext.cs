@@ -1,23 +1,29 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using UniCourses.Dal.Entities;
+//using static System.Collections.Immutable.ImmutableArray<T>;
 
 namespace UniCourses.Dal.Contexts
 {
-    public class MyContext : DbContext
+    public class MyContext : IdentityDbContext<AppUser>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-0DCUDOG; database=UniCourses.com; integrated security=true;");
+            optionsBuilder.UseSqlServer("server=LAPTOP-M6D6S6HL; database=DBUniCourses; integrated security=true;");
+            base.OnConfiguring(optionsBuilder);
         }
         public MyContext(DbContextOptions<MyContext> options) : base(options) { }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Member - Educator(1-1)
+            modelBuilder.Entity<Member>().HasOne(a => a.Educator).WithOne(b => b.Member)
+                .HasForeignKey<Educator>(b =>b.MemberID);
+
             //  Course - WishList ( N:N )
             modelBuilder.Entity<CourseWishList>()
             .HasKey(cw => new { cw.CourseId, cw.WishListId });
@@ -34,11 +40,19 @@ namespace UniCourses.Dal.Contexts
             modelBuilder.Entity<CourseCollection>()
             .HasKey(cc => new { cc.CourseId, cc.CollectionId });
 
+            ////  Category - Category ( 1:N )
+            modelBuilder.Entity<Category>()
+            .HasOne(one => one.ParentCategory)
+            .WithMany(many => many.SubCategories).HasForeignKey(fk => fk.ParentID).OnDelete(DeleteBehavior.NoAction);
 
             //  Course - Lesson ( 1:N )
             modelBuilder.Entity<Course>()
             .HasMany(L => L.Lessons)
             .WithOne(c => c.Course).OnDelete(DeleteBehavior.SetNull);
+            //  Course - Category ( 1:N )
+            modelBuilder.Entity<Category>()
+            .HasMany(L => L.Courses)
+            .WithOne(c => c.Category).OnDelete(DeleteBehavior.SetNull);
 
             // Lesson - Exam ( 1:N )
             modelBuilder.Entity<Lesson>()
@@ -60,8 +74,11 @@ namespace UniCourses.Dal.Contexts
             .HasMany(c => c.Comments)
             .WithOne(m => m.Member); // --> Member silinmesin diye ekleme yap !!!!
 
+            base.OnModelCreating(modelBuilder);
         }
 
+        public DbSet<Educator> Educator { get; set; }
+        public DbSet<Admin> Admin { get; set; }
         public DbSet<Cart> Cart { get; set; }
         // public DbSet<CartMember> CartMember { get; set; }
         public DbSet<Category> Category { get; set; }
