@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Category>
+﻿@model List<Category>
 <header role="banner">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,12 +20,58 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Courses" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-list-ul" aria-hidden="true"></i>  Kategoriler</a>
                         <!--Bu kısım yana açılır şekilde ve alt kategorilerin de alt kategorileri olacak şekilde düzenlenecek-->
+                        @*<style type="text/css">
+            .menu {
+                list-style-type: none;
+            }
+
+                .menu > li {
+                    float: left;
+                    position: relative;
+                    margin-right: 15px;
+                }
+
+                .menu ul {
+                    display: none;
+                    position: absolute;
+                    transition: 300ms;
+                    list-style-type: none;
+                    left: -40px;
+                }
+
+                .menu > li a {
+                    display: block;
+                    background-color: #00ffff;
+                    color: #093734;
+                    font-size: 20px;
+                    padding: 10px;
+                }
+
+                .menu > li:hover ul {
+                    display: block;
+                }
+        </style>*@
                         <div class="dropdown-menu" aria-labelledby="dropdown05">
                             @*<a class="dropdown-item" asp-controller="Home" asp-action="Courses" asp-route-id="@v.CourseId">@v.CaregoryName</a>*@
-                            @foreach (var v in Model)
-                            {
-                                <a class="dropdown-item" asp-area="uye" asp-controller="Home" asp-action="Courses" asp-route-id="@v.Id">@v.CategoryName</a>
-                            }
+                            <ul class="menu">
+                                @foreach (Category c in Model.Where(w => w.ParentID == null))
+                                {
+                                    <li>
+                                        <a class="dropdown-item" href="#">@c.CategoryName</a>
+                                        @if (c.SubCategories.Any())
+                                        {
+                                            <ul>
+                                                @foreach (Category sc in c.SubCategories)
+                                                {
+                                                    <li><a class="dropdown-item" asp-action="Courses" asp-route-id="@sc.Id">@sc.CategoryName</a></li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+
+                                }
+                            </ul>
+
                         </div>
                     </li>
                     <li class="nav-item">
