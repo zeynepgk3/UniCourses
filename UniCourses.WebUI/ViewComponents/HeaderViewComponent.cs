@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using UniCourses.WebUI.ViewModels;
+using UniCourses.Dal.Contexts;
+using System.Data.Entity;
 
 namespace UniCourses.WebUI.ViewComponents
 {
@@ -18,12 +20,13 @@ namespace UniCourses.WebUI.ViewComponents
     {
         Repository<Category> rCategory;
         Repository<Member> rMember;
-        
-        public HeaderViewComponent(Repository<Member> _rMember, Repository<Category> _rcategory)
+        MyContext myContext;
+        public HeaderViewComponent(MyContext _myContext, Repository<Member> _rMember, Repository<Category> _rcategory)
         {
             
             rCategory = _rcategory;
             rMember = _rMember;
+            myContext = _myContext;
         }
         public IViewComponentResult Invoke()
         {
@@ -33,7 +36,7 @@ namespace UniCourses.WebUI.ViewComponents
             //Member member = rMember.GetBy(x => x.Mail == User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Email).Value);
             //string a = ClaimTypes.Sid;
             //rMember.GetBy(r => r.ID.ToString() == a);
-            return View(rCategory.GetAll());
+            return View(myContext.Category.Include(x => x.SubCategories).ToList());
         }
     }
 }

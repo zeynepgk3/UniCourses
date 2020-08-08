@@ -52,16 +52,19 @@
         <ul class="menu">
             @foreach (Category c in Model.Categories.Where(w => w.ParentID == null))
             {
-    <li>
-        <a href="#">@c.CategoryName</a>
-        @if (c.SubCategories.Any())
-        {
-    <ul>
-        @foreach (Category sc in c.SubCategories)
-        {
-    <li><a asp-action="Courses" asp-route-id="@sc.Id">@sc.CategoryName</a></li>                    }
-    </ul>}
-    </li>}
+            <li>
+                <a href="#">@c.CategoryName</a>
+                @if (c.SubCategories.Any())
+                {
+            <ul>
+                @foreach (Category sc in c.SubCategories)
+                {
+                <li><a asp-action="Courses" asp-route-id="@sc.Id">@sc.CategoryName</a></li>                    
+                }
+            </ul>
+                }
+                </li>
+            }
         </ul>
 </div>
 
