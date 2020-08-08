@@ -1,11 +1,12 @@
-﻿<header role="banner">
+﻿@model IEnumerable<Category>
+<header role="banner">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
 
 
             <a class="navbar-brand absolute" asp-controller="Home" asp-action="Index"><img style="width:200px;height:auto;" src="/images/uc_logo_uzun.png" /></a>
-            
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -13,39 +14,47 @@
             <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                        <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="fa fa-home" aria-hidden="true"></i>  Anasayfa</a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategoriler</a>
+                        <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Courses" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-list-ul" aria-hidden="true"></i>  Kategoriler</a>
                         <!--Bu kısım yana açılır şekilde ve alt kategorilerin de alt kategorileri olacak şekilde düzenlenecek-->
                         <div class="dropdown-menu" aria-labelledby="dropdown05">
-                            <a class="dropdown-item" href="#">HTML</a>
-                            <a class="dropdown-item" href="#">WordPress</a>
-                            <a class="dropdown-item" href="#">Laravel</a>
-                            <a class="dropdown-item" href="#">JavaScript</a>
-                            <a class="dropdown-item" href="#">Python</a>
+                            @*<a class="dropdown-item" asp-controller="Home" asp-action="Courses" asp-route-id="@v.CourseId">@v.CaregoryName</a>*@
+                            @foreach (var v in Model)
+                            {
+                                <a class="dropdown-item" asp-area="uye" asp-controller="Home" asp-action="Courses" asp-route-id="@v.Id">@v.CategoryName</a>
+                            }
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>  Forum</a>
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Forum</a>
+                        <a class="nav-link" asp-area="default" asp-controller="Home" asp-action="AboutUs">Hakkımızda</a>
+                    </li>
 
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="AboutUs">Hakkımızda</a>
-                    </li>
-      
                 </ul>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <ul class="navbar-nav absolute-right">
-                    <li>
-                        <a asp-controller="Home" asp-action="Login">Giriş Yap</a> /
-                        <a asp-controller="Home" asp-action="Register">Kayıt Ol</a>
-                       
 
-                    </li>
+                    @{if (User.Identity.IsAuthenticated)
+                        {
+                            @await Component.InvokeAsync("UserOption", User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value)
+                        }
+                        else
+                        {
+                            <li>
+                                <input type="hidden" value="uye" name="ReturnUrl" />
+                                <a asp-controller="Home" asp-action="Uye">Giriş Yap</a>
+                                <a asp-controller="Home" asp-action="Register">Kayıt Ol</a>
+                                <a asp-controller="Home" asp-action="Register">Eğitimci ol</a>
+                            </li>
+                        }
+                    }
                 </ul>
-
             </div>
         </div>
     </nav>

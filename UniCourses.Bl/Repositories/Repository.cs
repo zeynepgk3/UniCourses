@@ -47,5 +47,19 @@ namespace UniCourses.Bl.Repositories
             context.Update(entity);
             context.SaveChanges();
         }
+        public void Save()
+        {
+            context.SaveChanges();
+        }
+        public T Bul(int id)
+        {
+            return entities.Find(id);
+        }
+        
+        public IEnumerable<T> ListTo()
+        {
+            return entities.ToList();
+        }
+
     }
 }

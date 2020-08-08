@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>View</h1>
+
+<span>Hoş Geldiniz <span style="color:blue">@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</span></span>
+<br />
+<span>Üye ID <span style="color:blue">@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value</span></span>
+<br />
+<span>Üye Mail <span style="color:blue">@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Email).Value</span></span>
+
+<h1>BURASI ÜYE ANA SAYFASI</h1>
+<a asp-controller="Home" asp-action="Cikis" asp-route-id="@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value">Çıkış</a>
+<a asp-area="uye" asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value"> gidiş</a>
+
+
+

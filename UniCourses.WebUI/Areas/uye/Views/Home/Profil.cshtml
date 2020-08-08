@@ -1,0 +1,246 @@
+﻿@model UniCourses.Dal.Entities.Member
+@{
+    ViewData["Title"] = "Profil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--
+    row
+        col 3   profil fotoğrafı
+        col 9   profili editle
+                kullanıcı adı
+                okul, sınıf bilgisi
+                (opsiyonel) teknik becerileri
+        col 12  aldığım kurslar, verdiğim kurslar
+-->
+<div class="container">
+    <div class="row">
+        <div style="text-align:right; margin-top:20px;" class=" col-md-5">
+            <div>
+                <img style="width:100%; height: auto;max-width:256px;" src="/images/noface.png" />
+                <!-- badge -->
+
+            </div>
+        </div>
+
+        <div class="col-md-7 p-5 text-center">
+            <div class="icon-row">
+                <span style="font-size:1.3em; color:#1b1b1b;">
+                    <i class="fa fa-user m-2" aria-hidden="true" style="color:#cc2444;"></i><b>@Model.NameSurName</b>
+                </span><br />
+                <span style="font-size:1.2em;">
+                    <i class="fa fa-graduation-cap m-2" aria-hidden="true" style="color:#cc2444;"></i>**Okulu Eklenecek**
+                </span><br />
+                <span style="font-size:1.2em;">
+                    <i class="fa fa-pencil m-2" aria-hidden="true" style="color:#cc2444;"></i>**Bölüm ve Sınıf eklenecek**
+                </span><br />
+                <p class="text-center">
+                    <a asp-controller="Home" asp-action="Register" class="btn btn-outline-danger m-4 p-2">Profili Güncelle</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--Tanıtım ends-->
+    <!--Kurslar starts-->
+    <div class="row bg-light">
+        <div class="col-md-12 block-25">
+            <div id="Page1">
+
+                <div class="row justify-content-between m-3 p-2">
+                    <div style="float:left; margin:5px;">
+                        <h4>Takip Ettiğim Kurslar</h4>
+                    </div>
+                    <div style="float:right;margin:5px;">
+                        <a href="#" class="btn btn-primary" onclick="return show('Page2','Page1');">Sunduğum Kursları Göster</a>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Courses ENDS-->
+
+
+            </div>
+
+            <div id="Page2" style="display:none">
+
+                <div class="row justify-content-between m-3 p-2">
+                    <div style="float:left; margin:5px;">
+                        <h4>Sunduğum Kurslar</h4>
+                    </div>
+                    <div style="float:right;margin:5px;">
+                        <a href="#" class="btn btn-primary" onclick="return show('Page1','Page2');">Takip Edilen Kursları Göster</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                    <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                    <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                    <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                    <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                    <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--kurslar sonu-->
+    <!--faaliyetler başı-->
+    <div class="row bg-light">
+        <div class="col-md-12 block-25 mt-4">
+            <div class="row justify-content-between m-3 p-2">
+                <div style="float:left; margin:5px;">
+                    <h4>Faaliyetler</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function show(shown, hidden) {
+        document.getElementById(shown).style.display = 'block';
+        document.getElementById(hidden).style.display = 'none';
+        return false;
+    }
+
+</script>

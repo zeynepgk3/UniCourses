@@ -18,16 +18,113 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="Areas\Educators\Data\" />
+    <Folder Include="Areas\Educators\Models\" />
+    <Folder Include="Areas\panel\Data\" />
+    <Folder Include="Areas\panel\Models\" />
+    <Folder Include="Areas\uye\Data\" />
+    <Folder Include="Areas\uye\Models\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\js\unicourse.min.js" />
+    <None Include="wwwroot\scss\.DS_Store" />
+    <None Include="wwwroot\scss\bootstrap-grid.scss" />
+    <None Include="wwwroot\scss\bootstrap-reboot.scss" />
+    <None Include="wwwroot\scss\bootstrap.scss" />
+    <None Include="wwwroot\scss\mixins\_alert.scss" />
+    <None Include="wwwroot\scss\mixins\_background-variant.scss" />
+    <None Include="wwwroot\scss\mixins\_badge.scss" />
+    <None Include="wwwroot\scss\mixins\_border-radius.scss" />
+    <None Include="wwwroot\scss\mixins\_box-shadow.scss" />
+    <None Include="wwwroot\scss\mixins\_breakpoints.scss" />
+    <None Include="wwwroot\scss\mixins\_buttons.scss" />
+    <None Include="wwwroot\scss\mixins\_caret.scss" />
+    <None Include="wwwroot\scss\mixins\_clearfix.scss" />
+    <None Include="wwwroot\scss\mixins\_float.scss" />
+    <None Include="wwwroot\scss\mixins\_forms.scss" />
+    <None Include="wwwroot\scss\mixins\_gradients.scss" />
+    <None Include="wwwroot\scss\mixins\_grid-framework.scss" />
+    <None Include="wwwroot\scss\mixins\_grid.scss" />
+    <None Include="wwwroot\scss\mixins\_hover.scss" />
+    <None Include="wwwroot\scss\mixins\_image.scss" />
+    <None Include="wwwroot\scss\mixins\_list-group.scss" />
+    <None Include="wwwroot\scss\mixins\_lists.scss" />
+    <None Include="wwwroot\scss\mixins\_nav-divider.scss" />
+    <None Include="wwwroot\scss\mixins\_navbar-align.scss" />
+    <None Include="wwwroot\scss\mixins\_pagination.scss" />
+    <None Include="wwwroot\scss\mixins\_reset-text.scss" />
+    <None Include="wwwroot\scss\mixins\_resize.scss" />
+    <None Include="wwwroot\scss\mixins\_screen-reader.scss" />
+    <None Include="wwwroot\scss\mixins\_size.scss" />
+    <None Include="wwwroot\scss\mixins\_table-row.scss" />
+    <None Include="wwwroot\scss\mixins\_text-emphasis.scss" />
+    <None Include="wwwroot\scss\mixins\_text-hide.scss" />
+    <None Include="wwwroot\scss\mixins\_text-truncate.scss" />
+    <None Include="wwwroot\scss\mixins\_transition.scss" />
+    <None Include="wwwroot\scss\mixins\_visibility.scss" />
+    <None Include="wwwroot\scss\style.scss" />
+    <None Include="wwwroot\scss\utilities\_align.scss" />
+    <None Include="wwwroot\scss\utilities\_background.scss" />
+    <None Include="wwwroot\scss\utilities\_borders.scss" />
+    <None Include="wwwroot\scss\utilities\_clearfix.scss" />
+    <None Include="wwwroot\scss\utilities\_display.scss" />
+    <None Include="wwwroot\scss\utilities\_embed.scss" />
+    <None Include="wwwroot\scss\utilities\_flex.scss" />
+    <None Include="wwwroot\scss\utilities\_float.scss" />
+    <None Include="wwwroot\scss\utilities\_position.scss" />
+    <None Include="wwwroot\scss\utilities\_screenreaders.scss" />
+    <None Include="wwwroot\scss\utilities\_sizing.scss" />
+    <None Include="wwwroot\scss\utilities\_spacing.scss" />
+    <None Include="wwwroot\scss\utilities\_text.scss" />
+    <None Include="wwwroot\scss\utilities\_visibility.scss" />
+    <None Include="wwwroot\scss\_alert.scss" />
+    <None Include="wwwroot\scss\_badge.scss" />
+    <None Include="wwwroot\scss\_breadcrumb.scss" />
+    <None Include="wwwroot\scss\_button-group.scss" />
+    <None Include="wwwroot\scss\_buttons.scss" />
+    <None Include="wwwroot\scss\_card.scss" />
+    <None Include="wwwroot\scss\_carousel.scss" />
+    <None Include="wwwroot\scss\_close.scss" />
+    <None Include="wwwroot\scss\_code.scss" />
+    <None Include="wwwroot\scss\_custom-forms.scss" />
+    <None Include="wwwroot\scss\_custom.scss" />
+    <None Include="wwwroot\scss\_dropdown.scss" />
+    <None Include="wwwroot\scss\_forms.scss" />
+    <None Include="wwwroot\scss\_functions.scss" />
+    <None Include="wwwroot\scss\_grid.scss" />
+    <None Include="wwwroot\scss\_images.scss" />
+    <None Include="wwwroot\scss\_input-group.scss" />
+    <None Include="wwwroot\scss\_jumbotron.scss" />
+    <None Include="wwwroot\scss\_list-group.scss" />
+    <None Include="wwwroot\scss\_media.scss" />
+    <None Include="wwwroot\scss\_mixins.scss" />
+    <None Include="wwwroot\scss\_modal.scss" />
+    <None Include="wwwroot\scss\_nav.scss" />
+    <None Include="wwwroot\scss\_navbar.scss" />
+    <None Include="wwwroot\scss\_pagination.scss" />
+    <None Include="wwwroot\scss\_popover.scss" />
+    <None Include="wwwroot\scss\_print.scss" />
+    <None Include="wwwroot\scss\_progress.scss" />
+    <None Include="wwwroot\scss\_reboot.scss" />
+    <None Include="wwwroot\scss\_root.scss" />
+    <None Include="wwwroot\scss\_tables.scss" />
+    <None Include="wwwroot\scss\_tooltip.scss" />
+    <None Include="wwwroot\scss\_transitions.scss" />
+    <None Include="wwwroot\scss\_type.scss" />
+    <None Include="wwwroot\scss\_utilities.scss" />
+    <None Include="wwwroot\scss\_variables.scss" />
   </ItemGroup>
 
 </Project>

@@ -14,5 +14,6 @@ namespace UniCourses.WebUI.ViewComponents
             Info info = new Info { Name = "http://www.abc.com", Filter = "site" };
             return View(info);
         }
+        
     }
 }

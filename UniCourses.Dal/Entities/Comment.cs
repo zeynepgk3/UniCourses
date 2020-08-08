@@ -18,5 +18,9 @@ namespace UniCourses.Dal.Entities
         public Member Member { get; set; }
         public int? LessonID { get; set; }
         public Lesson Lesson { get; set; }
+        public int Rate { get; set; }
+        public int? CourseID { get; set; }
+        public Course Course { get; set; }
     }
 }
+
