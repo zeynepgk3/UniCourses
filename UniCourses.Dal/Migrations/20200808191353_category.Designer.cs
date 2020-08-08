@@ -10,8 +10,8 @@ using UniCourses.Dal.Contexts;
 namespace UniCourses.Dal.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20200806203924_yeni")]
-    partial class yeni
+    [Migration("20200808191353_category")]
+    partial class category
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -323,6 +323,9 @@ namespace UniCourses.Dal.Migrations
                         .HasColumnType("Varchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int?>("DisplayIndex")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ParentID")
                         .HasColumnType("int");
 
@@ -467,7 +470,8 @@ namespace UniCourses.Dal.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Duzey")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("Varchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<int?>("EducatorID")
                         .HasColumnType("int");
@@ -479,10 +483,12 @@ namespace UniCourses.Dal.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Language")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("Varchar(15)")
+                        .HasMaxLength(15);
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("Varchar(30)")
+                        .HasMaxLength(30);
 
                     b.Property<int>("NumberOfStudent")
                         .HasColumnType("int");
@@ -497,7 +503,8 @@ namespace UniCourses.Dal.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("Varchar(40)")
+                        .HasMaxLength(40);
 
                     b.HasKey("Id");
 

@@ -56,6 +56,11 @@ namespace UniCourses.Bl.Repositories
             return entities.Find(id);
         }
         
+        public IQueryable<T> GetInclude(Expression<Func<T, bool>> expression)
+        {
+            return entities.Include(expression);
+        }
+        
         public IEnumerable<T> ListTo()
         {
             return entities.ToList();
