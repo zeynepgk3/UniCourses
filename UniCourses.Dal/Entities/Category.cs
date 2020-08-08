@@ -12,7 +12,6 @@ namespace UniCourses.Dal.Entities
     public class Category
     {
         public int Id { get; set; }
-     
         [StringLength(50), Column(TypeName = "Varchar(50)"), Display(Name = "Kategori Adı")]
         public string CategoryName { get; set; }
         public int? ParentID { get; set; }
@@ -21,5 +20,7 @@ namespace UniCourses.Dal.Entities
         [Display(Name = "Alt Kategoriler")]
         public ICollection<Category> SubCategories { get; set; }
         public ICollection<Course> Courses { get; set; }
+        [Display(Name = "Görüntülenme Sırası")]
+        public int? DisplayIndex { get; set; }
     }
 }

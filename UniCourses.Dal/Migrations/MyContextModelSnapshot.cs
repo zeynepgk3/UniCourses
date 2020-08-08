@@ -321,6 +321,9 @@ namespace UniCourses.Dal.Migrations
                         .HasColumnType("Varchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int?>("DisplayIndex")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ParentID")
                         .HasColumnType("int");
 

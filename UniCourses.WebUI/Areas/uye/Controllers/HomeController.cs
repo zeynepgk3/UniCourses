@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         Repository<Exam> rExam;
         Repository<CourseCategoryVM> rCourCat;
         MyContext myContext;
-        public HomeController(Repository<Cart> _rCart, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
+        public HomeController(MyContext _myContext, Repository<Cart> _rCart, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
         {
             rCategory = _rCategory;
             rAdmin = _rAdmin;
@@ -40,6 +41,7 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             rExam = _rExam;
             rCart = _rCart;
             rEducator = _rEducator;
+            myContext = _myContext;
         }
         public IActionResult Index()
         {
@@ -54,17 +56,16 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         public IActionResult Courses(int id)
         {
             List<Course> courses = rCourse.GetAll(x => x.Categoryi == id).ToList();
-            Category category = rCategory.GetBy(x => x.Id == id);
+           // List<Category> categories = rCategory.GetInclude(x => x.SubCategories).ToList();
+            List<Category> categories = myContext.Category.Include(x => x.SubCategories).ToList();
+            //Category category = rCategory.GetBy(x => x.Id == id);
 
-            List<Category> allcategories = rCategory.GetAll().ToList();
-            List<Category> scategories = rCategory.GetAll(x => x.ParentID == id).ToList();
+            //List<Category> allcategories = rCategory.GetAll().ToList();
+            //List<Category> scategories = rCategory.GetAll(x => x.ParentID == id).ToList();
             CourseCategoryVM courcatVM = new CourseCategoryVM
             {
                 Courses = courses,
-                Categories = allcategories,
-                Category
-                = category,
-                Scategories = scategories
+                Categories = categories
             };
             //return View(rCourse.GetAll(x=>x.CategoryID == id).ToList(), rCategory.GetAll().ToList());
             return View(courcatVM);
