@@ -52,7 +52,7 @@ namespace UniCourses.Dal.Contexts
             //  Course - Category ( 1:N )
             modelBuilder.Entity<Category>()
             .HasMany(L => L.Courses)
-            .WithOne(c => c.Category).OnDelete(DeleteBehavior.SetNull);
+            .WithOne(c => c.Category).HasForeignKey(f => f.Categoryi).OnDelete(DeleteBehavior.SetNull);
 
             // Lesson - Exam ( 1:N )
             modelBuilder.Entity<Lesson>()

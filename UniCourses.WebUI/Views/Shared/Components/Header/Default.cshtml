@@ -53,7 +53,7 @@
         </style>*@
                         <div class="dropdown-menu" aria-labelledby="dropdown05">
                             @*<a class="dropdown-item" asp-controller="Home" asp-action="Courses" asp-route-id="@v.CourseId">@v.CaregoryName</a>*@
-                            <ul class="menu">
+                            <ul class="mainmenu">
                                 @foreach (Category c in Model.Where(w => w.ParentID == null))
                                 {
                                     <li>
@@ -63,7 +63,7 @@
                                             <ul>
                                                 @foreach (Category sc in c.SubCategories)
                                                 {
-                                                    <li><a class="dropdown-item" asp-action="Courses" asp-route-id="@sc.Id">@sc.CategoryName</a></li>
+                                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Courses" asp-route-id="@sc.Id">@sc.CategoryName</a></li>
                                                 }
                                             </ul>
                                         }
