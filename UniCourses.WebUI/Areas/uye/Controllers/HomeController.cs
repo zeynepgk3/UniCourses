@@ -141,7 +141,7 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
                 cartObj.MemberId = Convert.ToInt32(uyeid);
                 //insert
                 rCart.Update(cartObj);
-                return RedirectToAction(nameof(Sepet));
+                return RedirectToAction("Index", "Cart");
             }
             else
             {

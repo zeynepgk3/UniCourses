@@ -63,7 +63,7 @@
                                             <ul>
                                                 @foreach (Category sc in c.SubCategories)
                                                 {
-                                                    <li><a class="dropdown-item" asp-action="Courses" asp-route-id="@sc.Id">@sc.CategoryName</a></li>
+                                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Courses" asp-route-id="@sc.Id">@sc.CategoryName</a></li>
                                                 }
                                             </ul>
                                         }

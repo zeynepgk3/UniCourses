@@ -22,6 +22,34 @@ namespace UniCourses.Bl.Repositories
         {
             return entities.FirstOrDefault(expression);
         }
+        public T GetFirstOrDefault(Expression<Func<T, bool>> expression, string includeProperties = null)
+        {
+            IQueryable<T> query = entities;
+            if (includeProperties != null)
+            {
+                foreach (var item in includeProperties.Split(new char[]
+                         { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(item);
+                }
+            }
+            return query.FirstOrDefault();
+        }
+        public IEnumerable<T> GetAllLazy(Expression<Func<T, bool>> expression,
+            string includeProperties = null)
+
+        {
+            IQueryable<T> query = entities.Where(expression);
+            if (includeProperties != null)
+            {
+                foreach (var item in includeProperties.Split(new char[]
+                         { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(item);
+                }
+            }
+            return query.ToList();
+        }
         public IQueryable<T> GetAll()
         {
             return entities;

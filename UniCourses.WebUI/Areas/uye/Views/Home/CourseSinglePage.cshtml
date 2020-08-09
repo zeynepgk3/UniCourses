@@ -21,17 +21,28 @@
 @if (User.Identity.IsAuthenticated)
 {
     @if (Model.Cart == null)
-    {<form method="post" class="@Model.Cart">
+    {
+        <div class="container backgroundWhite">
+            <div class="card">
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-12 col-md-6 pb-1"><h3> @Model.Courses.Price &#x20BA; </h3></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <form method="post" class="@Model.Cart">
             <input type="hidden" asp-for="@Model.Cart.CourseId" value="@Model.Courses.Id" />
             <div class="container backgroundWhite">
                 <div class="card">
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-12 col-md-6 pb-1">
-                                <a lass="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-action="Index">Back to List</a>
+                                <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-controller="Home" asp-action="Courses" asp-route-id="@Model.Courses.Categoryi">Kurslara Dön</a>
                             </div>
                             <div class="col-12 col-md-6 pb-1">
-                                <button type="submit" asp-area="uye" asp-controller="Home" asp-action="AddToCart" asp-route-id="@Model.Courses.Id" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">Add to Cart</button>
+                                <button type="submit" asp-area="uye" asp-controller="Home" asp-action="AddToCart" asp-route-id="@Model.Courses.Id" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">Sepete Ekle</button>
                             </div>
                         </div>
                     </div>
@@ -42,7 +53,7 @@
     else
     {
         <div class="col-12 col-md-6 pb-1">
-            <a asp-area="uye" asp-controller="Home" asp-action="Sepet" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">Sepete Git</a>
+            <a asp-area="uye" asp-controller="Cart" asp-action="Index" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">Sepete Git</a>
         </div>
     }
 }
@@ -119,7 +130,7 @@ else
                         <li><span class="text-1">Ders Sayısı</span> <span class="text-2">11</span></li>
                         <li><span class="text-1">Toplam Süre</span> <span class="text-2">@Model.Courses.Duration Saat</span></li>
                         <li><span class="text-1">Language</span> <span class="text-2">Türkçe</span></li>
-                        <li><span class="text-1">Ücret</span> <span class="text-2">@Model.Courses.Price TL</span></li>
+                        <li><span class="text-1">Ücret</span> <span class="text-2">@Model.Courses.Price &#x20BA;</span></li>
                     </ul>
                 </div>
 

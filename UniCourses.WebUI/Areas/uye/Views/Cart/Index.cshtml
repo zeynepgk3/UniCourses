@@ -1,0 +1,84 @@
+﻿@model UniCourses.WebUI.ViewModels.CartVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <br />
+    @if (Model.ListCart.Count() > 0)
+    {
+        <div class="backgroundWhiteBorder">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header bg-dark text-light ml-0 row container">
+                        <div class="col-6">
+                            <i class="fa fa-shopping-cart"></i> &nbsp;
+                            Alışveriş Sepeti
+                        </div>
+                        <div class="col-6 text-right">
+                            <a class="btn btn-outline-info btn-sm" asp-controller="Home" asp-action="Index">Alışverişe Devam Et</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @foreach (var item in Model.ListCart)
+                        {
+                            if (item.MemberId.ToString() == User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value)
+                            {
+                                <div class="row">
+                                    <div class="d-none d-lg-block col-lg-1 text-center py-2">
+                                        <img src="https://via.placeholder.com/150" class="rounded" width="100%" />
+                                    </div>
+                                    <div class="col-12 text-sm-center col-lg-6 text-lg-left">
+                                        <h5><strong><a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@item.Course.Id">@item.Course.Name</a></strong></h5>
+                                        <p><small>@item.Course.Description</small></p>
+                                    </div>
+                                    <div class="col-12 text-sm-center col-lg-5 text-lg-right row">
+                                        <div class="col-4 text-md-right" style="padding-top:5px;">
+                                            <h6><strong>@item.Course.Price<span class="text-muted"> &#x20BA;</span></strong></h6>
+                                        </div>
+
+                                        @*<form  asp-controller="Cart" asp-action="RemoveFromCart" asp-route-courseId="@item.CourseId"
+                                            method="post">*@
+                                    <button  aria-hidden="true" asp-controller="Cart" asp-action="RemoveFromCart" asp-route-courseId="@item.CourseId">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+                                        @*</form>*@
+                                    </div>
+                                </div>
+
+
+                                <hr />
+                            }
+                        }
+                        <div class="row">
+                            <div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 pr-4">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between bg-light">
+                                        <span class="text-info"> Toplam</span>
+
+                                        <strong class="text-info">&#x20BA;<span id="txtOrderTotal">@Model.Order.OrderTotal</span></strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="card-footer row">
+
+                            <div class="col-sm-12 col-lg-4 col-md-6 offset-lg-8 offset-md-6 ">
+
+                                <a class="btn btn-success form-control">Summary</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div> Sepete Hiç Ürün Eklenmemiş</div>
+    }
+</form>
