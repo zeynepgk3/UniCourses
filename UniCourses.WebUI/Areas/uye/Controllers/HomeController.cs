@@ -55,19 +55,21 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         }
         public IActionResult Courses(int id)
         {
+            Category category = rCategory.GetBy(x => x.Id == id);
+            List<Category> Subcategories = null;
+            if (category.ParentID == null) {
+            Subcategories = myContext.Category.Include(x =>x.SubCategories).Include(x=>x.Courses).ToList();
+            }
             List<Course> courses = rCourse.GetAll(x => x.Categoryi == id).ToList();
-           // List<Category> categories = rCategory.GetInclude(x => x.SubCategories).ToList();
             List<Category> categories = myContext.Category.Include(x => x.SubCategories).ToList();
-            //Category category = rCategory.GetBy(x => x.Id == id);
-
-            //List<Category> allcategories = rCategory.GetAll().ToList();
-            //List<Category> scategories = rCategory.GetAll(x => x.ParentID == id).ToList();
+            
             CourseCategoryVM courcatVM = new CourseCategoryVM
             {
                 Courses = courses,
-                Categories = categories
+                Categories = categories,
+                Scategories = Subcategories
+
             };
-            //return View(rCourse.GetAll(x=>x.CategoryID == id).ToList(), rCategory.GetAll().ToList());
             return View(courcatVM);
         }
         public IActionResult Lessons(int id)

@@ -53,7 +53,7 @@
             @foreach (Category c in Model.Categories.Where(w => w.ParentID == null))
             {
             <li>
-                <a href="#">@c.CategoryName</a>
+                <a asp-action="Courses" asp-route-id="@c.Id" >@c.CategoryName</a>
                 @if (c.SubCategories.Any())
                 {
             <ul>
@@ -74,31 +74,47 @@
         <div class="row">
             <div class="col-md-6 col-lg-8 order-md-2">
                 <div class="row">
-                    @foreach (Course course in Model.Courses)
-                     {
+                    @if (Model.Scategories != null)
+                    {
+                        @foreach (Category coursecat in Model.Scategories)
+                        {
+                            @foreach (Course cours in coursecat.Courses)
+                            {
+                                <br />
+                                <a asp-area="uye" asp-controller="Home" asp-action="Sepet" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">@cours.Name</a>
+                                <br />
+                            }
 
-                     <div class="col-md-12 col-lg-6 mb-5">
-                        <div class="block-19">
-                            <br />
-                            <figure>
-                                <a asp-controller="Home" asp-action="CourseSinglePage" asp-area="uye" asp-route-id="@course.Id"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                            </figure>
-                            <div class="text">
-                                <h2 class="heading"><a asp-area="uye" asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Id"> @course.Name</a></h2>
-                                <p class="mb-4"></p>
-                                <div class="meta d-flex align-items-center">
-                                    <div class="number">
-                                        <span>@course.Score /5,0</span>
+                        }
+                    }
+                    else
+                    {
+                        @foreach (Course course in Model.Courses)
+                        {
+
+                            <div class="col-md-12 col-lg-6 mb-5">
+                                <div class="block-19">
+                                    <br />
+                                    <figure>
+                                        <a asp-controller="Home" asp-action="CourseSinglePage" asp-area="uye" asp-route-id="@course.Id"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                                    </figure>
+                                    <div class="text">
+                                        <h2 class="heading"><a asp-area="uye" asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Id"> @course.Name</a></h2>
+                                        <p class="mb-4"></p>
+                                        <div class="meta d-flex align-items-center">
+                                            <div class="number">
+                                                <span>@course.Score /5,0</span>
+                                            </div>
+                                            <div class="number">
+                                                <span>@course.NumberOfStudent Öğrenen</span>
+                                            </div>
+                                            <div class="price text-right"><del class="mr-3">@course.Price</del><span>Free</span></div>
+                                        </div>
                                     </div>
-                                    <div class="number">
-                                        <span>@course.NumberOfStudent Öğrenen</span>
-                                    </div>
-                                    <div class="price text-right"><del class="mr-3">@course.Price</del><span>Free</span></div>
                                 </div>
-                            </div>
-                        </div>
-                     </div>
-                     }
+                            </div>}
+                    }
+
                     <div class="row mb-5">
                         <div class="col-md-12 text-center">
                             <div class="block-27">
