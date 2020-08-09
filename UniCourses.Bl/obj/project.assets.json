@@ -2298,6 +2298,7 @@
       "path": "netstandard.library/2.0.3",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/netstandard2.0/NETStandard.Library.targets",
@@ -2479,6 +2480,7 @@
       "path": "runtime.native.system.data.sqlclient.sni/4.4.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
@@ -6252,19 +6254,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kullanıcı\\.nuget\\packages\\": {}
+    "C:\\Users\\omerf\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\UniCourses\\UniCourses.Bl\\UniCourses.Bl.csproj",
+      "projectUniqueName": "C:\\Users\\omerf\\source\\repos\\KayaTS\\UniCourses\\UniCourses.Bl\\UniCourses.Bl.csproj",
       "projectName": "UniCourses.Bl",
-      "projectPath": "D:\\Github\\UniCourses\\UniCourses.Bl\\UniCourses.Bl.csproj",
-      "packagesPath": "C:\\Users\\Kullanıcı\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\UniCourses\\UniCourses.Bl\\obj\\",
+      "projectPath": "C:\\Users\\omerf\\source\\repos\\KayaTS\\UniCourses\\UniCourses.Bl\\UniCourses.Bl.csproj",
+      "packagesPath": "C:\\Users\\omerf\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\omerf\\source\\repos\\KayaTS\\UniCourses\\UniCourses.Bl\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Kullanıcı\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\omerf\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6277,8 +6279,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\Github\\UniCourses\\UniCourses.Dal\\UniCourses.Dal.csproj": {
-              "projectPath": "D:\\Github\\UniCourses\\UniCourses.Dal\\UniCourses.Dal.csproj"
+            "C:\\Users\\omerf\\source\\repos\\KayaTS\\UniCourses\\UniCourses.Dal\\UniCourses.Dal.csproj": {
+              "projectPath": "C:\\Users\\omerf\\source\\repos\\KayaTS\\UniCourses\\UniCourses.Dal\\UniCourses.Dal.csproj"
             }
           }
         }
@@ -6313,7 +6315,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

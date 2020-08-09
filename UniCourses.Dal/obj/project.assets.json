@@ -6236,19 +6236,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kullanıcı\\.nuget\\packages\\": {}
+    "C:\\Users\\omerf\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Github\\UniCourses\\UniCourses.Dal\\UniCourses.Dal.csproj",
+      "projectUniqueName": "C:\\Users\\omerf\\source\\repos\\KayaTS\\UniCourses\\UniCourses.Dal\\UniCourses.Dal.csproj",
       "projectName": "UniCourses.Dal",
-      "projectPath": "D:\\Github\\UniCourses\\UniCourses.Dal\\UniCourses.Dal.csproj",
-      "packagesPath": "C:\\Users\\Kullanıcı\\.nuget\\packages\\",
-      "outputPath": "D:\\Github\\UniCourses\\UniCourses.Dal\\obj\\",
+      "projectPath": "C:\\Users\\omerf\\source\\repos\\KayaTS\\UniCourses\\UniCourses.Dal\\UniCourses.Dal.csproj",
+      "packagesPath": "C:\\Users\\omerf\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\omerf\\source\\repos\\KayaTS\\UniCourses\\UniCourses.Dal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Kullanıcı\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\omerf\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6303,7 +6303,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
