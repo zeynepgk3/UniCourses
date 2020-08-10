@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -31,8 +34,10 @@ namespace UniCourses.WebUI.Controllers
         Repository<Cart> rCart;
         Repository<CourseCategoryVM> rCourCat;
         Repository<Lesson> rLesson;
+        Repository<Videos> rVideos;
+        IWebHostEnvironment _environment;
         MyContext myContext;
-        public HomeController(Repository<Admin> _rAdmin, MyContext _myContext, Repository<Lesson> _rLesson, Repository<Cart> _rCart, Repository<Educator> _rEducator, Repository<Category> _rcategory, Repository<Course> _rcourse, Repository<CourseCategoryVM> _rcourcat, Repository<Member> _rmember)
+        public HomeController(Repository<Videos> _rVideos, IWebHostEnvironment environment, Repository<Admin> _rAdmin, MyContext _myContext, Repository<Lesson> _rLesson, Repository<Cart> _rCart, Repository<Educator> _rEducator, Repository<Category> _rcategory, Repository<Course> _rcourse, Repository<CourseCategoryVM> _rcourcat, Repository<Member> _rmember)
         {
             rAdmin = _rAdmin;
             rCategory = _rcategory;
@@ -43,6 +48,10 @@ namespace UniCourses.WebUI.Controllers
             rCart = _rCart;
             rLesson = _rLesson;
             myContext = _myContext;
+            _environment = environment;
+            rVideos = _rVideos;
+
+
         }
        
         public IActionResult Index()
@@ -206,7 +215,7 @@ namespace UniCourses.WebUI.Controllers
             {
                 Subcategories = myContext.Category.Include(x => x.SubCategories).Include(x => x.Courses).ToList();
             }
-            List<Course> courses = rCourse.GetAll(x => x.Categoryi == id).ToList();
+            List<Course> courses = rCourse.GetAll(x => x.CategoryID == id).ToList();
             List<Category> categories = myContext.Category.Include(x => x.SubCategories).ToList();
 
             CourseCategoryVM courcatVM = new CourseCategoryVM
@@ -230,12 +239,13 @@ namespace UniCourses.WebUI.Controllers
                     && x.CourseId == id);
             }
             Course courses = rCourse.GetBy(x => x.Id == id);
-            int educatid = courses.Educatori;
+            int educatid = courses.EducatorID;
             Educator educators = rEducator.GetBy(x => x.ID == educatid);
             List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
             LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart };
             return View(lessonCourses);
         }
+
     }
 
 }

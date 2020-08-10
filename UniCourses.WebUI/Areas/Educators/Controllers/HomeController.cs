@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using UniCourses.Bl.Repositories;
+using UniCourses.Dal.Contexts;
 using UniCourses.Dal.Entities;
 using UniCourses.WebUI.ViewModels;
 
@@ -24,7 +29,10 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         Repository<Lesson> rLesson;
         Repository<Exam> rExam;
         Repository<CourseCategoryVM> rCourCat;
-        public HomeController(Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
+        Repository<Videos> rVideos;
+        IWebHostEnvironment _environment;
+        MyContext myContext;
+        public HomeController(Repository<Videos> _rVideos, IWebHostEnvironment environment, MyContext _myContext, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
         {
             rCategory = _rCategory;
             rAdmin = _rAdmin;
@@ -34,6 +42,9 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             rLesson = _rLesson;
             rExam = _rExam;
             rEducator = _rEducator;
+            _environment = environment;
+            rVideos = _rVideos;
+            myContext = _myContext;
         }
         public IActionResult Index()
         {
@@ -64,20 +75,16 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             rMember.Save();
             return RedirectToAction("Register",new { id });
         }
-        public IActionResult Egitmen(int id)
-        {
-           
-            return View();
-        }
         [HttpGet]
         public IActionResult CreateCourse()
         {
-            //List<SelectListItem> degerler = (from x in rCategory.ListTo()
-            //                                 select new SelectListItem
-            //                                 {
-            //                                     Text = x.CategoryName,
-            //                                     Value = x.Id.ToString()
-            //                                 }).ToList();
+            /*List<SelectListItem> degerler = (from x in rCategory.ListTo()
+                                             select new SelectListItem
+                                             {
+                                                 Text = x.CategoryName,
+                                                 Value = x.Id.ToString()
+                                             }).ToList();
+            */
             ViewBag.dgr = rCategory.GetAll(x => x.ParentID != null).Select(s=> new SelectListItem {Text=s.CategoryName, Value= s.Id.ToString()});
            
             return View();
@@ -86,27 +93,110 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         public IActionResult CreateCourse(Course course)
         {
             string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
-            Educator educator= rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
-            course.Educatori = educator.ID;
+            Educator educator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
+            course.EducatorID = educator.ID;
             rCourse.Add(course);
             return RedirectToAction("CreateLesson");
         }
+
         [HttpGet]
         public IActionResult CreateLesson()
         {
+            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+            Educator educator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
+            ViewBag.dgr = rCourse.GetAll(x => x.EducatorID == educator.ID).Select(s => new SelectListItem { Text = s.Name, Value = s.Id.ToString() });
             return View();
         }
         [HttpPost]
-        public IActionResult CreateLesson(Course course)
+        public async Task<IActionResult> CreateLesson(Lesson lesson, Videos video, IFormFile file)
+        {
+            rLesson.Add(lesson);
+            if (file.Length > 0)
+            {
+                try
+                {
+                    int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid)?.Value);
+                    string userName = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value);
+                    string folder = Path.Combine(_environment.WebRootPath, "video");
+                    string url = @"\video\" + userName + @"\" + file.FileName;
+                    string pathString = Path.Combine(folder, userName);
+                    if (!Directory.Exists(pathString))
+                    {
+                        Directory.CreateDirectory(pathString);
+                    }
+                    var filePath = Path.Combine(pathString, file.FileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                        // rVideos.Add(new Videos(video.Name, DateTime.Now, url, video.LessonID));
+                        video.Name = userName;
+                        video.LessonID = lesson.Id;
+                        video.UploadDate = DateTime.Now;
+                        video.VideoPath = url;
+                        rVideos.Add(video);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "ERROR: " + ex.Message.ToString();
+                }
+            }
+            else
+            {
+                ViewBag.Message = "You have not specified a file.";
+            }
+            return RedirectToAction("Index");
+        }
+        public IActionResult UploadVideo()
         {
             string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
-            Educator educator = rEducator.GetBy(x => x.ID == Convert.ToInt32(uyeid));
-            var cour = rCategory.GetAll(x => x.Id == course.Categoryi).FirstOrDefault();
-            var coured = rEducator.GetAll(x => x.ID == course.Educatori).FirstOrDefault();
-            course.Category = cour;
-            course.Educator = coured;
-            rCourse.Add(course);
-            return RedirectToAction("Index");
+            Educator educ = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
+            List<Educator> educator = myContext.Educator.Include(x => x.Courses).ToList();
+            
+            List<Course> courses = myContext.Course.Where(x=>x.EducatorID == educ.ID).Include(x => x.Lessons).ToList();
+            //ViewBag.dgr = rLesson.GetAll(x => x. == dersin.).Select(s => new SelectListItem { Text = s.Name, Value = s.Id.ToString() });
+            return View(courses);
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> UploadVideo(Videos video, IFormFile file)
+        {
+            if (file.Length > 0)
+            {
+                try
+                {
+                    int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid)?.Value);
+                    string userName = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value);
+                    string folder = Path.Combine(_environment.WebRootPath, "video");
+                    string url = @"\video\" + userName + @"\" + file.FileName;
+                    string pathString = Path.Combine(folder, userName);
+                    if (!Directory.Exists(pathString))
+                    {
+                        Directory.CreateDirectory(pathString);
+                    }
+                    var filePath = Path.Combine(pathString, file.FileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                        // rVideos.Add(new Videos(video.Name, DateTime.Now, url, video.LessonID));
+                        video.Name = userName;
+                        video.UploadDate = DateTime.Now;
+                        video.VideoPath = url;
+                        rVideos.Add(video);
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "ERROR: " + ex.Message.ToString();
+                }
+            }
+            else
+            {
+                ViewBag.Message = "You have not specified a file.";
+            }
+            return RedirectToAction("UploadVideo");
         }
 
     }

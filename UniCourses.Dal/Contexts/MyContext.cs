@@ -52,7 +52,7 @@ namespace UniCourses.Dal.Contexts
             //  Course - Category ( 1:N )
             modelBuilder.Entity<Category>()
             .HasMany(L => L.Courses)
-            .WithOne(c => c.Category).HasForeignKey(f => f.Categoryi).OnDelete(DeleteBehavior.SetNull);
+            .WithOne(c => c.Category).HasForeignKey(f => f.CategoryID).OnDelete(DeleteBehavior.SetNull);
 
             // Lesson - Exam ( 1:N )
             modelBuilder.Entity<Lesson>()
@@ -96,6 +96,7 @@ namespace UniCourses.Dal.Contexts
         public DbSet<Question> Question { get; set; }
         public DbSet<Tag> Tag { get; set; }
         public DbSet<WishList> WishList { get; set; }
+        public DbSet<Videos> Videos { get; set; }
 
     }
 

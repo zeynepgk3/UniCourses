@@ -10,6 +10,15 @@
 <span>Hoş Geldiniz <span style="color:blue">@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</span></span>
 
 <h1>BURASI EDUCATOR ANA SAYFASI</h1>
+<br />
+<div>
+    <a asp-action="CreateCourse"> Kurs Oluştur </a>
+</div>
+<br />
+<div>
+    <a asp-action="CreateLesson"> Bölüm Ekle </a>
+</div>
+<br />
 <a asp-controller="Home" asp-action="Cikis">Çıkış</a>
 
 

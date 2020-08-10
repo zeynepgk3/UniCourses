@@ -11,8 +11,8 @@ namespace UniCourses.Dal.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int Categoryi { get; set; }
-        public int Educatori { get; set; }
+        public int CategoryID { get; set; }
+        public int EducatorID { get; set; }
 
         [StringLength(30), Column(TypeName = "Varchar(30)"), Display(Name = "İsim")]
         public string Name { get; set; }

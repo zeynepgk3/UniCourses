@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="Categoryi">Kategori sec:</label>
-                            <select asp-for="@Model.Categoryi" asp-items="@ViewBag.dgr">
+                            <select asp-for="@Model.CategoryID" asp-items="@ViewBag.dgr">
                                 <option value=""> Lütfen Seçiniz</option>
                             </select>
 
@@ -102,9 +102,6 @@
 
                         <div class="col-md-6 form-group" style="float:left;">
                             <input type="submit" value="Kursu Oluştur" class="btn btn-primary">
-                        </div>
-                        <div class="col-md-6 form-group" style="float:right;">
-                            <a class="btn btn-primary" asp-controller="Home" asp-action="AddVideo">İlk Dersini Ekle</a>
                         </div>
                     </div>
                 </form>

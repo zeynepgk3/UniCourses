@@ -9,7 +9,7 @@
             }
         else if(Model.RoleNumber == 2)
         {
-            <a asp-area="educators" asp-controller="Home" asp-action="Egitmen" asp-route-id="@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value">Eğitmen Sayfası </a>
+            <a asp-area="educators" asp-controller="Home" asp-action="Index" asp-route-id="@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value">Eğitmen Sayfası </a>
         }
 
         @* asp-route-id="@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value" *@

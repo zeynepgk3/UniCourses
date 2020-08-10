@@ -1535,3 +1535,5 @@ C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.WebUI\obj\Debug\netcoreapp3.1\UniCourses.WebUI.genruntimeconfig.cache
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\uye\Views\Cart\Index.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Video\Index.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\UploadVideo.cshtml.g.cs
