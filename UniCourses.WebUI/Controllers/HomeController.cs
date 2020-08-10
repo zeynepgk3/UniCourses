@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
@@ -27,9 +28,11 @@ namespace UniCourses.WebUI.Controllers
         Repository<Admin> rAdmin;
         Repository<Educator> rEducator;
         Repository<Course> rCourse;
+        Repository<Cart> rCart;
         Repository<CourseCategoryVM> rCourCat;
+        Repository<Lesson> rLesson;
         MyContext myContext;
-        public HomeController(Repository<Admin> _rAdmin, Repository<Educator> _rEducator, Repository<Category> _rcategory, Repository<Course> _rcourse, Repository<CourseCategoryVM> _rcourcat, Repository<Member> _rmember)
+        public HomeController(Repository<Admin> _rAdmin, MyContext _myContext, Repository<Lesson> _rLesson, Repository<Cart> _rCart, Repository<Educator> _rEducator, Repository<Category> _rcategory, Repository<Course> _rcourse, Repository<CourseCategoryVM> _rcourcat, Repository<Member> _rmember)
         {
             rAdmin = _rAdmin;
             rCategory = _rcategory;
@@ -37,6 +40,9 @@ namespace UniCourses.WebUI.Controllers
             rCourse = _rcourse;
             rCourCat = _rcourcat;
             rEducator = _rEducator;
+            rCart = _rCart;
+            rLesson = _rLesson;
+            myContext = _myContext;
         }
        
         public IActionResult Index()
@@ -191,26 +197,45 @@ namespace UniCourses.WebUI.Controllers
             
             return View();
         }
-        public IActionResult CourseSinglePage()
-        {
-
-            //List<Member> members = rMember.GetAll(x => x.Mail == email).ToList();
-            
-            //List<Member> members = rMember.GetAll(x => x.Mail == User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Email).Value).ToList();
-            return View(girisyapan);
-        }
         
         public IActionResult Courses(int id)
         {
+            Category category = rCategory.GetBy(x => x.Id == id);
+            List<Category> Subcategories = null;
+            if (category.ParentID == null)
+            {
+                Subcategories = myContext.Category.Include(x => x.SubCategories).Include(x => x.Courses).ToList();
+            }
             List<Course> courses = rCourse.GetAll(x => x.Categoryi == id).ToList();
-            List<Category> categories = rCategory.GetAll().ToList();
-            CourseCategoryVM courcatVM = new CourseCategoryVM { Courses = courses, Categories = categories };
-            //return View(rCourse.GetAll(x=>x.CategoryID == id).ToList(), rCategory.GetAll().ToList());
+            List<Category> categories = myContext.Category.Include(x => x.SubCategories).ToList();
+
+            CourseCategoryVM courcatVM = new CourseCategoryVM
+            {
+                Courses = courses,
+                Categories = categories,
+                Scategories = Subcategories
+
+            };
             return View(courcatVM);
         }
-        
-
-
+        public IActionResult CourseSinglePage(int id)
+        {
+            var course = rCourse.GetBy(c => c.Id == id);
+            Cart cart = null;
+            if (User.Identity.IsAuthenticated)
+            {
+                int uyeid = Convert.ToInt32(User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value);
+                cart = rCart.GetBy(
+                    x => x.MemberId == uyeid
+                    && x.CourseId == id);
+            }
+            Course courses = rCourse.GetBy(x => x.Id == id);
+            int educatid = courses.Educatori;
+            Educator educators = rEducator.GetBy(x => x.ID == educatid);
+            List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
+            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart };
+            return View(lessonCourses);
+        }
     }
 
 }

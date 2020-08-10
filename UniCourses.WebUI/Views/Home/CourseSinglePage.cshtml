@@ -1,168 +1,121 @@
-﻿
+﻿@model UniCourses.WebUI.ViewModels.LessonCoursesVM
+@using UniCourses.Dal.Entities
 @{
     ViewData["Title"] = "CourseSinglePage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    @model UniCourses.Dal.Entities.Member
-    @using UniCourses.Dal.Entities
-
-    <div> @Model.NameSurName </div>
-    <br />
-    <div>@Model.Mail</div>
-    <br />
-    <div>@Model.RegisteryDate</div>
-    <br />
-
-
 <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/big_image_2.jpg);">
     <div class="container">
         <div class="row align-items-center justify-content-center site-hero-sm-inner">
             <div class="col-md-7 text-center">
-
                 <div class="mb-5 element-animate">
-                    <h1 class="mb-2"> Advanced Java Script </h1>
-                    <p class="bcrumb"><a href="index.html">Anasayfa</a> <span class="sep ion-android-arrow-dropright px-2"></span> <a href="courses.html">Kurs</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Advanced JavaScript Learning</span></p>
+                    <h1 class="mb-2">@Model.Courses.Name </h1>
+                    <p class="bcrumb"><a href="index.html">Anasayfa</a> <span class="sep ion-android-arrow-dropright px-2"></span> <a href="courses.html">Kurs</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">@Model.Courses.Name</span></p>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
 <!-- END section -->
+@if (User.Identity.IsAuthenticated)
+{
+    @if (Model.Cart == null)
+    {
+        <div class="container backgroundWhite">
+            <div class="card">
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-12 col-md-6 pb-1"><h3> @Model.Courses.Price &#x20BA; </h3></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <form method="post" class="@Model.Cart">
+            <input type="hidden" asp-for="@Model.Cart.CourseId" value="@Model.Courses.Id" />
+            <div class="container backgroundWhite">
+                <div class="card">
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-12 col-md-6 pb-1">
+                                <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-controller="Home" asp-action="Courses" asp-route-id="@Model.Courses.Categoryi">Kurslara Dön</a>
+                            </div>
+                            <div class="col-12 col-md-6 pb-1">
+                                <button type="submit" asp-area="uye" asp-controller="Home" asp-action="AddToCart" asp-route-id="@Model.Courses.Id" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">Sepete Ekle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="col-12 col-md-6 pb-1">
+            <a asp-area="uye" asp-controller="Cart" asp-action="Index" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">Sepete Git</a>
+        </div>
+    }
+}
+else
+{
+    <div class="col-12 col-md-6 pb-1">
+        <a asp-controller="Home" asp-action="Register" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">
+            <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+            Kursu İzlemek İçin Üye Ol
+        </a>
+    </div>
 
+}
 <div class="site-section bg-light element-animate">
     <div class="container">
-
         <div class="row">
-
             <div class="col-md-6 col-lg-8 order-md-2 mb-5">
-
-
                 <section class="episodes">
-
-
                     <div class="container">
                         <div class="row mb-5">
                             <div class="col-md-12 pt2">
                                 <h2>Kurs Hakkında</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis laborum repellat quisquam, illo soluta, deleniti, nesciunt illum eveniet tempore sed necessitatibus eligendi rerum. Cum maxime, aliquam incidunt voluptatem enim eum.</p>
-                                <p>Harum rerum totam eum facere sint, molestiae porro illum recusandae dolorum cumque ut illo cum quisquam esse consequatur commodi fugit culpa explicabo vero vel quos. Minus sed quod est, similique!</p>
-                                <p>Qui id ad ipsum quis molestiae, velit, aut. Suscipit ex sunt incidunt cupiditate ad quisquam excepturi provident voluptate nemo earum, vel est facilis commodi ullam natus quis praesentium cum asperiores.</p>
-                                <p>A, esse itaque quam alias quibusdam iusto, ab, pariatur, placeat delectus voluptatem numquam enim! Voluptate itaque consectetur aliquid amet consequuntur tenetur rerum qui error sint nesciunt. Vel omnis ipsam laboriosam!</p>
+                                <p>@Model.Courses.Description </p>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
                     <!--Akordeon başı-->
+
                     <div class="site-section element-animate">
                         <div class="container">
-
                             <div class="col-md-12 mb-2"> <h2>Dersler</h2></div>
+                            @foreach (Lesson lesson in Model.Lessons)
+                            {<div class="row">
+                                    <div class="col-md-12">
+                                        <div class="accordion block-8" id="accordion">
+                                            <div class="accordion-item">
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="accordion block-8" id="accordion">
-                                        <div class="accordion-item">
-                                            <h3 class="mb-0 heading">
-                                                <a class="btn-block" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">Önizle | Bölüm #1 | Hoş Geldiniz<span class="icon"></span></a>
-                                            </h3>
-                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                                <div class="card-body">
-                                                    <div class="row align-items-center p-4 episode">
-                                                        <div class="col-md-10">
-                                                            <p class="meta">1.Video <a href="#">Video Süresi 2:53</a></p>
-                                                            <h2><a href="#">Some Title Here For The Video</a></h2>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, fugit!</p>
-                                                        </div>
-                                                        <div class="col-md-2 text-center">
-                                                            <a href="#" class="play"><span class="ion-ios-play"></span></a>
+                                                <h3 class="mb-0 heading">
+                                                    <a class="btn-block" data-toggle="collapse" href="#@lesson.Id" role="button" aria-expanded="true" aria-controls="collapseOne">@lesson.LessonName <span class="icon"></span></a>
+                                                </h3>
+                                                <div id="@lesson.Id" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <div class="row align-items-center p-4 episode">
+                                                            <div class="col-md-10">
+                                                                <p class="meta"><a asp-area="uye" asp-controller="Home" asp-action="Lessons" asp-route-id="@lesson.CourseID">1.Video Süresi : @lesson.Duration</a></p>
+                                                                <h2><a href="#">Some Title Here For The Video</a></h2>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, fugit!</p>
+                                                            </div>
+                                                            <div class="col-md-2 text-center">
+                                                                <a href="#" class="play"><span class="ion-ios-play"></span></a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-body">
-                                                    <div class="row align-items-center p-4 episode">
-                                                        <div class="col-md-10">
-                                                            <p class="meta">1.Video <a href="#">Video Süresi 2:53</a></p>
-                                                            <h2><a href="#">Some Title Here For The Video</a></h2>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, fugit!</p>
-                                                        </div>
-                                                        <div class="col-md-2 text-center">
-                                                            <a href="#" class="play"><span class="ion-ios-play"></span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="row align-items-center p-4 episode">
-                                                        <div class="col-md-10">
-                                                            <p class="meta">1.Video <a href="#">Video Süresi 2:53</a></p>
-                                                            <h2><a href="#">Some Title Here For The Video</a></h2>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, fugit!</p>
-                                                        </div>
-                                                        <div class="col-md-2 text-center">
-                                                            <a href="#" class="play"><span class="ion-ios-play"></span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> <!-- .accordion-item -->
-
-                                        <div class="accordion-item">
-                                            <h3 class="mb-0 heading">
-                                                <a class="btn-block" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">Bölüm #2 | Javascript'e Giriş<span class="icon"></span></a>
-                                            </h3>
-                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                                <div class="body-text">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- .accordion-item -->
-
-                                        <div class="accordion-item">
-                                            <h3 class="mb-0 heading">
-                                                <a class="btn-block" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">Do I need to register?  <span class="icon"></span></a>
-                                            </h3>
-                                            <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                                <div class="body-text">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- .accordion-item -->
-
-                                        <div class="accordion-item">
-                                            <h3 class="mb-0 heading">
-                                                <a class="btn-block" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">Who should I contact in case of support.<span class="icon"></span></a>
-                                            </h3>
-                                            <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                                                <div class="body-text">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad laborum expedita. Nostrum iure atque enim quisquam minima distinctio omnis, consequatur aliquam suscipit, quidem, esse aspernatur! Libero, excepturi animi repellendus porro impedit nihil in doloremque a quaerat enim voluptatum, perspiciatis, quas dignissimos maxime ut cum reiciendis eius dolorum voluptatem aliquam!</p>
-                                                </div>
-                                            </div>
-                                        </div> <!-- .accordion-item -->
-
+                                            </div> <!-- .accordion-item -->
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         </div>
                     </div>
                     <!--akordeon sonu-->
-
-
-
-
-
-
-
-
-
-
 
                 </section>
             </div>
@@ -171,13 +124,13 @@
 
                 <div class="block-29 mb-5">
                     <ul>
-                        <li><span class="text-1">Öğrenci Sayısı</span> <span class="text-2">1024</span></li>
-                        <li><span class="text-1">Puan</span> <span class="text-2">4.3/5</span></li>
+                        <li><span class="text-1">Öğrenci Sayısı</span> <span class="text-2">@Model.Courses.NumberOfStudent</span></li>
+                        <li><span class="text-1">Puan</span> <span class="text-2">@Model.Courses.Score/5</span></li>
                         <li><span class="text-1">Sınavlar</span> <span class="text-2">8</span></li>
                         <li><span class="text-1">Ders Sayısı</span> <span class="text-2">11</span></li>
-                        <li><span class="text-1">Toplam Süre</span> <span class="text-2">6 Saat</span></li>
-                        <li><span class="text-1">Language</span> <span class="text-2">English</span></li>
-                        <li><span class="text-1">Price</span> <span class="text-2">$102.00</span></li>
+                        <li><span class="text-1">Toplam Süre</span> <span class="text-2">@Model.Courses.Duration Saat</span></li>
+                        <li><span class="text-1">Language</span> <span class="text-2">Türkçe</span></li>
+                        <li><span class="text-1">Ücret</span> <span class="text-2">@Model.Courses.Price &#x20BA;</span></li>
                     </ul>
                 </div>
 
@@ -185,39 +138,38 @@
                     <figure>
                         <img src="images/person_3.jpg" alt="" class="img-fluid">
                     </figure>
-                    <h2 class="heading">Mark Stewart</h2>
-                    <h3 class="subheading">JavaScript Ustası</h3>
+                    <h2 class="heading"><a asp-controller="Home" asp-action="EgitmenP" asp-route-id="@Model.Educator.ID">@Model.Educator.NameSurname</a></h2>
+                    <h3 class="subheading">@Model.Educator.Mail</h3>
                     <p>
                         <a href="#" class="fa fa-twitter p-2"></a>
                         <a href="#" class="fa fa-facebook p-2"></a>
                         <a href="#" class="fa fa-linkedin p-2"></a>
                     </p>
-                    <p>Ben Mark. Tanıştığıma memnun oldum!!</p>
+                    <p>Ben @Model.Educator.NameSurname. Tanıştığıma memnun oldum!!</p>
+                    <p>Elektronik Mühendisiyim</p>
 
                 </div>
-
-
-
                 <div class="block-24 mb-5">
                     <h3 class="heading">Öğrenci Yorumları</h3>
-                    <ul>
+                    @await Component.InvokeAsync("KursYorumlari", Model.Courses.Id)
+                    @* <ul>
 
-                        <div class="row m-3">
-                            <i>"Okul sınavımdan AA aldım, bu kurs sayesinde!"</i>
-                            <div style="width:100%;"><p style="text-align:right;">-kullanıcı</p></div>
-                        </div>
+                            <div class="row m-3">
+                                <i>"Okul sınavımdan AA aldım, bu kurs sayesinde!"</i>
+                                <div style="width:100%;"><p style="text-align:right;">-kullanıcı</p></div>
+                            </div>
 
-                        <div class="row m-3">
-                            <i>"Okul sınavımdan AA aldım, bu kurs sayesinde!"</i>
-                            <div style="width:100%;"><p style="text-align:right;">-kullanıcı</p></div>
-                        </div>
+                            <div class="row m-3">
+                                <i>"Okul sınavımdan AA aldım, bu kurs sayesinde!"</i>
+                                <div style="width:100%;"><p style="text-align:right;">-kullanıcı</p></div>
+                            </div>
 
-                        <div class="row m-3">
-                            <i>"Okul sınavımdan AA aldım, bu kurs sayesinde!"</i>
-                            <div style="width:100%;"><p style="text-align:right;">-kullanıcı</p></div>
-                        </div>
+                            <div class="row m-3">
+                                <i>"Okul sınavımdan AA aldım, bu kurs sayesinde!"</i>
+                                <div style="width:100%;"><p style="text-align:right;">-kullanıcı</p></div>
+                            </div>
 
-                    </ul>
+                        </ul>*@
                 </div>
 
                 <div class="block-26 mb-5">
@@ -230,11 +182,6 @@
                         <li><a href="#">codehack</a></li>
                     </ul>
                 </div>
-
-
-
-
-
             </div>
             <!-- END Sidebar -->
         </div>
