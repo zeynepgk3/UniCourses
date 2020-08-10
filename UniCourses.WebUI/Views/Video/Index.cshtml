@@ -1,0 +1,38 @@
+﻿<body>
+    <form id="form1" runat="server">
+        <div class="container py-3">
+            <h2 class="text-center text-uppercase">How to upload video in database and play using asp.net</h2>
+            <div class="row">
+                <div class="form-group">
+                    <label>Choose Video:</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <asp:FileUpload ID="FileUpload1" CssClass="custom-file-input" runat="server" />
+                            <label class="custom-file-label"></label>
+                        </div>
+                        <div class="input-group-append">
+                            <asp:Button ID="btnUpload" CssClass="btn btn-outline-secondary" runat="server" Text="Upload" OnClick="btnUpload_Click" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <asp:Label ID="lblMessage" runat="server"></asp:Label>
+            <asp:GridView ID="GridView1" ShowHeaderWhenEmpty="true" HeaderStyle-CssClass="bg-primary text-white" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered">
+                <EmptyDataTemplate>
+                    <div class="text-center">No Data Found <strong>Upload New Video</strong></div>
+                </EmptyDataTemplate>
+                <Columns>
+                    <asp:BoundField HeaderText="ID" DataField="ID" />
+                    <asp:BoundField HeaderText="Name" DataField="Name" />
+                    <asp:TemplateField HeaderText="Videos">
+                        <ItemTemplate>
+                            <video width="130" height="130" controls>
+                                <source src='<%#Eval("Video_Path")%>' type="video/mp4">
+                            </video>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
+    </form>
+</body> 
