@@ -3,6 +3,111 @@
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+            .register-photo {
+  background: #f1f7fc;
+  padding: 80px 0;
+}
+
+.register-photo .image-holder {
+  display: table-cell;
+  width: auto;
+  background: url(/images/graduating.png);
+  background-size: cover;
+}
+
+.register-photo .form-container {
+  display: table;
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+.register-photo form {
+  display: table-cell;
+  width: 400px;
+  background-color: #ffffff;
+  padding: 40px 60px;
+  color: #505e6c;
+}
+
+media (max-width:991px) {
+  .register-photo form {
+    padding: 40px;
+  }
+}
+
+.register-photo form h2 {
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.register-photo form .form-control {
+  background: #f7f9fc;
+  border: none;
+  border-bottom: 1px solid #dfe7f1;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none;
+  color: inherit;
+  text-indent: 6px;
+  height: 40px;
+}
+
+.register-photo form .form-check {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.register-photo form .btn-primary {
+  background: #f4476b;
+  border: none;
+  border-radius: 4px;
+  padding: 11px;
+  box-shadow: none;
+  margin-top: 35px;
+  text-shadow: none;
+  outline: none !important;
+}
+
+.register-photo form .btn-primary:hover, .register-photo form .btn-primary:active {
+  background: #eb3b60;
+}
+
+.register-photo form .btn-primary:active {
+  transform: translateY(1px);
+}
+
+.register-photo form .already {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #6f7a85;
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
 
 <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/big_image_2.jpg);">
     <div class="container">
@@ -18,7 +123,43 @@
         </div>
     </div>
 </section>
+
 <!-- END section -->
+<body>
+    <div class="register-photo" >
+        <div class="form-container">
+            <div class="image-holder"></div>
+            <form method="post">
+                <h2 class="text-center"><strong>Yeni</strong>Hesap Oluştur.</h2>
+                <div class="form-group"><input class="form-control" type="email" name="Mail" placeholder="Email" required></div>
+                <div class="form-group"><input class="form-control" type="password" name="Password" placeholder="Şifre" required></div>
+                <div class="form-group"><input class="form-control" type="text" name="NameSurName" placeholder="İsim Soyisim" required></div>
+                <div class="form-group">
+                    <div class="col-md-12 form-group">
+                        <input type="hidden" id="RegisteryDate" name="RegisteryDate" value=@DateTime.Now class="form-control py-2">
+                        <input type="hidden" id="BirthDate" name="BirthDate" value=@DateTime.Now class="form-control py-2">
+                        <input type="hidden" id="Gender" name="Gender" value="Diğer" class="form-control py-2">
+                        <input type="hidden" id="Phone" name="Phone" value="1234567890" class="form-control py-2">
+                        <input type="hidden" id="RoleNumber" name="RoleNumber" value="1" class="form-control py-2">
+                        <input type="hidden" id="LogDate" name="LogDate" value=@DateTime.Now class="form-control py-2">
+                    </div>
+                    <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" required>Koşul ve Şartları Kabul Ediyorum.</label></div>
+                </div>
+                <div class="form-group"><input type="submit" class="btn btn-primary px-5 py-2" value="Kayıt Ol"></div><a class="already" asp-action="Uye">Zaten Hesabın Var Mı? Buradan Giriş Yap.</a>
+            </form>
+        </div>
+    </div>
+    <script src="/js/jquery.min.js"></script >
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 <section class="site-section">
     <div class="container">
@@ -40,67 +181,67 @@
                                     <input type="text" name="NameSurName" class="form-control py-2">
                                 </div>
                             </div>
-                            
-                            @*
-                                <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <label for="BirthDate">Doğum Tarihi</label>
-                                        <input type="date" name="BirthDate" class="form-control py-2">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <label for="Gender">Cinsiyet</label><br />
-                                        <input type="radio" id="Gender1" name="Gender" value="Erkek">
-                                        <label for="Gender1">Erkek</label><br />
-                                        <input type="radio" id="Gender2" name="Gender" value="Kadın">
-                                        <label for="Gender2">Kadın</label><br />
-                                        <input type="radio" id="Gender3" name="Gender" value="Diğer">
-                                        <label for="Gender3">Belirtmek İstemiyorum</label><br />
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <label for="Phone">Telefon Numarası</label>
-                                        <input type="tel" id="Phone" name="Phone" placeholder="___ ___ __ __">
-                                    </div>
+                            @*
+                                            <div class="row">
+                                                <div class="col-md-12 form-group">
+                                                    <label for="BirthDate">Doğum Tarihi</label>
+                                                    <input type="date" name="BirthDate" class="form-control py-2">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 form-group">
+                                                    <label for="Gender">Cinsiyet</label><br />
+                                                    <input type="radio" id="Gender1" name="Gender" value="Erkek">
+                                                    <label for="Gender1">Erkek</label><br />
+                                                    <input type="radio" id="Gender2" name="Gender" value="Kadın">
+                                                    <label for="Gender2">Kadın</label><br />
+                                                    <input type="radio" id="Gender3" name="Gender" value="Diğer">
+                                                    <label for="Gender3">Belirtmek İstemiyorum</label><br />
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12 form-group">
+                                                    <label for="Phone">Telefon Numarası</label>
+                                                    <input type="tel" id="Phone" name="Phone" placeholder="___ ___ __ __">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 form-group">
+                                                    <input type="hidden" id="RoleNumber" value="0" name="RoleNumber" />
+                                                    @*<select name="RoleNumber">
+                                    <option value="1">Üye</option>
+                                    <option value="0">Eğitmen</option>
+                                </select> </div>*@
+
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <label for="Password">Parola</label>
+                                    <input type="password" name="Password" class="form-control py-2 ">
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <input type="hidden" id="RoleNumber" value="0" name="RoleNumber" />
-                                        @*<select name="RoleNumber">
-                        <option value="1">Üye</option>
-                        <option value="0">Eğitmen</option>
-                    </select> </div>*@
-                        
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <label for="Password">Parola</label>
-                                <input type="password" name="Password" class="form-control py-2 ">
                             </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <input type="hidden" id="RegisteryDate" name="RegisteryDate" value=@DateTime.Now class="form-control py-2">
+                                    <input type="hidden" id="BirthDate" name="BirthDate" value=@DateTime.Now class="form-control py-2">
+                                    <input type="hidden" id="Gender" name="Gender" value="Diğer" class="form-control py-2">
+                                    <input type="hidden" id="Phone" name="Phone" value="1234567890" class="form-control py-2">
+                                    <input type="hidden" id="RoleNumber" name="RoleNumber" value="1" class="form-control py-2">
+                                    <input type="hidden" id="LogDate" name="LogDate" value=@DateTime.Now class="form-control py-2">
+                                </div>
+                            </div>
+
                         </div>
                         <div class="row">
-                            <div class="col-md-12 form-group">
-                                <input type="hidden" id="RegisteryDate" name="RegisteryDate" value=@DateTime.Now class="form-control py-2">
-                                <input type="hidden" id="BirthDate" name="BirthDate" value=@DateTime.Now class="form-control py-2">
-                                <input type="hidden" id="Gender" name="Gender" value="Diğer" class="form-control py-2">
-                                <input type="hidden" id="Phone" name="Phone" value="1234567890" class="form-control py-2">
-                                <input type="hidden" id="RoleNumber" name="RoleNumber" value="1" class="form-control py-2">
-                                <input type="hidden" id="LogDate" name="LogDate" value=@DateTime.Now class="form-control py-2">
+                            <div class="col-md-6 form-group">
+                                <input type="submit" value="Kaydol" class="btn btn-primary px-5 py-2">
                             </div>
                         </div>
-                        
+                    </form>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <input type="submit" value="Kaydol" class="btn btn-primary px-5 py-2">
-                    </div>
-                </div>
-                </form>
             </div>
         </div>
-    </div>
     </div>
 </section>
 @*

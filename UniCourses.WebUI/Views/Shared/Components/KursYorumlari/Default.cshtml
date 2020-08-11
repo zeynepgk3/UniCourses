@@ -1,5 +1,4 @@
-﻿@using UniCourses.WebUI.ViewComponents
-@model IEnumerable<UniCourses.Dal.Entities.Comment>
+﻿@model IEnumerable<UniCourses.Dal.Entities.Comment>
 </UniCourses.WebUI.ViewComponents.KursYorumlari>
 
 
@@ -11,7 +10,7 @@
                     <div class="col-md-10">
                         <strong class="text-info">-@comment.MemberID</strong> <span class="text-muted">@comment.CommentDate.ToShortDateString() Tarihinde Yorumladı</span>
                     </div>
-                    <i>"@comment.UserComment!"</i>
+                    <i>"@comment.UserComment"</i>
                     <div style="width:100%;"><p style="text-align:right;"></p></div>
                 </div>
             </ul>

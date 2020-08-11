@@ -23,7 +23,7 @@ using UniCourses.WebUI.ViewModels;
 
 namespace UniCourses.WebUI.Controllers
 {
-
+    
     public class HomeController : Controller
     {
         Repository<Category> rCategory;
@@ -37,6 +37,7 @@ namespace UniCourses.WebUI.Controllers
         Repository<Videos> rVideos;
         IWebHostEnvironment _environment;
         MyContext myContext;
+
         public HomeController(Repository<Videos> _rVideos, IWebHostEnvironment environment, Repository<Admin> _rAdmin, MyContext _myContext, Repository<Lesson> _rLesson, Repository<Cart> _rCart, Repository<Educator> _rEducator, Repository<Category> _rcategory, Repository<Course> _rcourse, Repository<CourseCategoryVM> _rcourcat, Repository<Member> _rmember)
         {
             rAdmin = _rAdmin;
@@ -53,7 +54,6 @@ namespace UniCourses.WebUI.Controllers
 
 
         }
-       
         public IActionResult Index()
         {
             var user = User;
@@ -70,12 +70,12 @@ namespace UniCourses.WebUI.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        [HttpGet]
+        [HttpGet, Route("/UyeKayit")]
         public IActionResult Register()
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost, Route("/UyeKayit")]
         public async Task<IActionResult> RegisterAsync(Member m)
         {
             rMember.Add(m);
@@ -206,7 +206,8 @@ namespace UniCourses.WebUI.Controllers
             
             return View();
         }
-        
+
+        [Route("/Kurslar")]
         public IActionResult Courses(int id)
         {
             Category category = rCategory.GetBy(x => x.Id == id);
@@ -227,7 +228,7 @@ namespace UniCourses.WebUI.Controllers
             };
             return View(courcatVM);
         }
-        public IActionResult CourseSinglePage(int id)
+        public IActionResult CourseSinglePage(int id, string sayfaadi)
         {
             var course = rCourse.GetBy(c => c.Id == id);
             Cart cart = null;
@@ -243,6 +244,7 @@ namespace UniCourses.WebUI.Controllers
             Educator educators = rEducator.GetBy(x => x.ID == educatid);
             List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
             LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart };
+            sayfaadi = courses.Name;
             return View(lessonCourses);
         }
 

@@ -26,11 +26,12 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         Repository<Educator> rEducator;
         Repository<Course> rCourse;
         Repository<Cart> rCart;
+        Repository<Comment> rComment;
         Repository<Lesson> rLesson;
         Repository<Exam> rExam;
         Repository<CourseCategoryVM> rCourCat;
         MyContext myContext;
-        public HomeController(MyContext _myContext, Repository<Cart> _rCart, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
+        public HomeController(Repository<Comment> _rComment, MyContext _myContext, Repository<Cart> _rCart, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
         {
             rCategory = _rCategory;
             rAdmin = _rAdmin;
@@ -41,11 +42,12 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             rExam = _rExam;
             rCart = _rCart;
             rEducator = _rEducator;
+            rComment = _rComment;
             myContext = _myContext;
         }
         public IActionResult Index()
         {
-           
+
             return View();
         }
         public async Task<IActionResult> Cikis()
@@ -58,11 +60,11 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             Category category = rCategory.GetBy(x => x.Id == id);
             List<Category> Subcategories = null;
             if (category.ParentID == null) {
-            Subcategories = myContext.Category.Include(x =>x.SubCategories).Include(x=>x.Courses).ToList();
+                Subcategories = myContext.Category.Include(x => x.SubCategories).Include(x => x.Courses).ToList();
             }
             List<Course> courses = rCourse.GetAll(x => x.CategoryID == id).ToList();
             List<Category> categories = myContext.Category.Include(x => x.SubCategories).ToList();
-            
+
             CourseCategoryVM courcatVM = new CourseCategoryVM
             {
                 Courses = courses,
@@ -72,16 +74,27 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             };
             return View(courcatVM);
         }
-        public IActionResult Lessons(int id)
+        public IActionResult Lessons()
         {
+            int id = 1;
             //Courses.Where(x=>x.KategoriId == kategoriId).OrderByDescending(x => x.Id).Take(adet).ToList
             Course courses = rCourse.GetBy(x => x.Id == id);
             int educatid = courses.EducatorID;
-            List<Lesson> lesson = rLesson.GetAll(x=>x.CourseID == id).ToList();
+            List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
             Educator educators = rEducator.GetBy(x => x.ID == educatid);
             LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators };
             //return View(rCourse.GetAll(x=>x.CategoryID == id).ToList(), rCategory.GetAll().ToList());
             return View(lessonCourses);
+        }
+        [HttpPost]
+        public IActionResult Lessons(Comment comment)
+        {
+            comment.MemberID = Convert.ToInt32(User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value);
+            comment.Member = rMember.GetBy(x => x.ID == comment.MemberID);
+            comment.CommentDate = DateTime.Now;
+            comment.CommentState = 0;
+            rComment.Add(comment);
+            return RedirectToAction("Lessons");
         }
         /* public IActionResult Exams(int id)
         {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UniCourses.Bl.Repositories;
+using UniCourses.Dal.Contexts;
 using UniCourses.Dal.Entities;
 
 namespace UniCourses.WebUI.ViewComponents
@@ -12,14 +13,16 @@ namespace UniCourses.WebUI.ViewComponents
     {
         Repository<Comment> rComment;
         Repository<Member> rMember;
-        public KursYorumlari(Repository<Member> _rMember, Repository<Comment> _rComment)
+        MyContext myContext;
+        public KursYorumlari(Repository<Member> _rMember, MyContext _myContext, Repository<Comment> _rComment)
         {
             rComment = _rComment;
-            rMember = _rMember;  
+            rMember = _rMember;
+           myContext = _myContext;
         }
         public IViewComponentResult Invoke(int id)
         {
-            List<Comment> commentlist = rComment.GetAll(x =>x.LessonID == id).ToList();
+            List<Comment> commentlist = rComment.GetAll(x =>x.CourseID == id).ToList();
             //List<int> memberid =  //.GetAll(x=>x.MemberID);
             //List<Member> membername = rMember.GetAll(x => x.ID =  );
 
