@@ -223,11 +223,11 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12 pr-md-5">
                                         <form action="#" method="post">
-
                                             <div class="row">
                                                 <div class="col-md-12 form-group">
                                                     <label for="message">Yorum Yap</label>
-                                                    <textarea name="message" id="message" class="form-control py-2" cols="30" rows="8"></textarea>
+                                                    <textarea asp-for="Comment.UserComment" id="message" class="form-control py-2" cols="30" rows="8"></textarea>
+                                                    <input type="hidden" asp-for="Comment.CourseID" value="@Model.Courses.Id" />
                                                 </div>
                                             </div>
                                             <div class="row">

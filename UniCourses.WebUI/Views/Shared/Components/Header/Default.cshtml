@@ -92,15 +92,22 @@
                         }
                         else
                         {
+                        
+                    <ul>
+
+
+                        <li>
+                            <a asp-controller="Home" asp-action="Uye" class="btn btn-light">Giriş Yap</a>
+                            <a asp-controller="Home" asp-action="Register" class="btn btn-danger">Kayıt Ol</a>
+                        </li>
+                    </ul>
                             <li>
-                                <input type="hidden" value="uye" name="ReturnUrl" />
-                                <a asp-controller="Home" asp-action="Uye">Giriş Yap</a>
-                                <a asp-controller="Home" asp-action="Register">Kayıt Ol</a>
-                                <a asp-controller="Home" asp-action="Register">Eğitimci ol</a>
+                                <a class="btn btn-light action-button" asp-controller="Home" asp-action="Register">Eğitimci ol</a>
                             </li>
-                        }
-                    }
-                </ul>
+                            }
+                            }
+                        
+                        </ul>
             </div>
         </div>
     </nav>

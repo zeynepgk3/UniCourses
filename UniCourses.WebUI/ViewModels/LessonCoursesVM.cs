@@ -12,8 +12,9 @@ namespace UniCourses.WebUI.ViewModels
         public List<Lesson> Lessons { get; set; }
         public Lesson Lesson { get; set; }
         public Cart Cart { get; set; }
-        
+        public Comment Comment { get; set; }
         public Course Courses { get; set; }
+        public Member Member { get; set; }
         public List<Category> Categories { get; set; }
         public Educator Educator { get; set; }
     }

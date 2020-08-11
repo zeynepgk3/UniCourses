@@ -55,7 +55,7 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             await HttpContext.SignOutAsync();
             return Redirect("/");
         }
-        [HttpGet]
+        [HttpGet, Route("/EgitmenKayit")]
         public IActionResult Register(int id)
         {
             Member member = rMember.GetBy(x => x.ID == id);

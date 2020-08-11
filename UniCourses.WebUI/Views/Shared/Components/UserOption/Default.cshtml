@@ -4,7 +4,7 @@
         //if (Enum.IsDefined(Model.Member.Role, 1))
         if (Model.RoleNumber == 1)
         {
-            <a  asp-area="educators" asp-controller="Home" asp-action="Rolata" asp-route-id="@Model.ID"> Eğitimci ol </a>
+            <a class="btn btn-light action-button" asp-area="educators" asp-controller="Home" asp-action="Rolata" asp-route-id="@Model.ID"> Eğitimci ol </a>
             <input type="hidden" id="rnumber" value="2">
             }
         else if(Model.RoleNumber == 2)
