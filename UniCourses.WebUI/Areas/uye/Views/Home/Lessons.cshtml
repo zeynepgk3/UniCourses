@@ -91,13 +91,9 @@
 
     <!-- Page Content -->
     <div id="content">
-
-
         <div class="container-fluid block-11">
             <div class="row">
-
                 <div class="col-md-10 bg-light">
-
                     <video id="myplayer"
                            style="width: 100% !important;height:auto;"
                            class="video-js vjs-big-play-centered"
@@ -130,12 +126,17 @@
                             <div id="@lesson.Id" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
 
                                 <ul style="list-style-type:none;">
-                                    <li>
-                                        <a href="~/videos/video.mp4">Video-1</a>
-                                    </li>
-                                    <li>
-                                        <a href="~/videos/MY_VIDEO.mp4">Video-2</a>
-                                    </li>
+                                    @foreach (Videos videos in Model.Videos)
+                                    {
+                                        if (videos.LessonID == lesson.Id)
+                                        {
+                                        <li>
+                                            <a href="~@videos.VideoPath">@videos.Name</a>
+                                        </li>
+                                        }
+                                    
+	                                }
+                                    
                                         @*
                                     <a href="#"><video controls="controls">
                                                     <source src="~/videos/video.mp4" type="video/mp4" />

@@ -54,7 +54,7 @@
         {
             <li>
                 <a asp-action="Courses" asp-route-id="@c.Id">@c.CategoryName</a>
-                @if (c.SubCategories.Any())
+                @if (c.SubCategories != null)
                 {
                     <ul>
                         @foreach (Category sc in c.SubCategories)
@@ -97,7 +97,7 @@
                                 <div class="block-19">
                                     <br />
                                     <figure>
-                                        <a asp-controller="Home" asp-action="CourseSinglePage"  asp-route-id="@course.Id"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                                        <a asp-controller="Home" asp-action="CourseSinglePage"  asp-route-id="@course.Id"><img src="~/img/@course.ImageURL" alt="Image" class="img-fluid"></a>
                                     </figure>
                                     <div class="text">
                                         <h2 class="heading"><a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Id"> @course.Name</a></h2>

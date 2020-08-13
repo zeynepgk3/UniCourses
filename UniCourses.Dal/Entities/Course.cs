@@ -40,6 +40,9 @@ namespace UniCourses.Dal.Entities
         //  ( 1: N ) --> İlişkisi
         public Category Category { get; set; }
         public Educator Educator { get; set; }
+        public int ImageID { get; set; }
+        public string ImageURL { get; set; }
+        public Image Image { get; set; }
 
         public ICollection<Lesson> Lessons { get; set; }
     }

@@ -22,7 +22,15 @@ namespace UniCourses.Dal.Contexts
         {
             // Member - Educator(1-1)
             modelBuilder.Entity<Member>().HasOne(a => a.Educator).WithOne(b => b.Member)
-                .HasForeignKey<Educator>(b =>b.MemberID);
+                .HasForeignKey<Educator>(b => b.MemberID);
+
+            // Member - Picture(1-1)
+            modelBuilder.Entity<Member>().HasOne(a => a.Picture).WithOne(b => b.Member)
+                .HasForeignKey<Picture>(b =>b.MemberID);
+
+            // Course - Image(1-1)
+            modelBuilder.Entity<Course>().HasOne(a => a.Image).WithOne(b => b.Course)
+                .HasForeignKey<Image>(b =>b.CourseID);
 
             //  Course - WishList ( N:N )
             modelBuilder.Entity<CourseWishList>()
@@ -31,6 +39,10 @@ namespace UniCourses.Dal.Contexts
             //  Course - Category ( N:N )
             modelBuilder.Entity<CourseCategory>()
         .HasKey(cc => new { cc.CourseId, cc.CategoryId });
+
+            //  Course - Member ( N:N )
+            modelBuilder.Entity<CourseMember>()
+        .HasKey(cc => new { cc.CourseId, cc.MemberId });
 
             //  Category - Tag ( N:N )
             modelBuilder.Entity<CategoryTag>()
@@ -87,6 +99,7 @@ namespace UniCourses.Dal.Contexts
         public DbSet<Comment> Comment { get; set; }
         public DbSet<Course> Course { get; set; }
         public DbSet<CourseCategory> CourseCategory { get; set; }
+        public DbSet<CourseMember> CourseMember { get; set; }
         public DbSet<CourseCollection> CourseCollection { get; set; }
         public DbSet<CourseWishList> CourseWishList { get; set; }
         public DbSet<Exam> Exam { get; set; }
@@ -97,6 +110,8 @@ namespace UniCourses.Dal.Contexts
         public DbSet<Tag> Tag { get; set; }
         public DbSet<WishList> WishList { get; set; }
         public DbSet<Videos> Videos { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Picture> Picture { get; set; }
 
     }
 

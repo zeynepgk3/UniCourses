@@ -19,6 +19,9 @@ namespace UniCourses.Dal.Entities
         [DataType("varchar(30)")]
         public string LessonName { get; set; }
 
+        [DataType("varchar(100)")]
+        public string LessonDescription { get; set; }
+
         //...
 
         public int Duration { get; set; }

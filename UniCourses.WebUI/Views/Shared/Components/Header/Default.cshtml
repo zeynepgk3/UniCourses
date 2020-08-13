@@ -58,7 +58,7 @@
                                 {
                                     <li>
                                         <a class="dropdown-item" href="#">@c.CategoryName</a>
-                                        @if (c.SubCategories.Any())
+                                        @if (c.SubCategories != null)
                                         {
                                             <ul>
                                                 @foreach (Category sc in c.SubCategories)

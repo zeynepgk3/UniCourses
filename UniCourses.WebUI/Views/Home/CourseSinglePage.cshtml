@@ -4,8 +4,7 @@
     ViewData["Title"] = "CourseSinglePage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/big_image_2.jpg);">
+<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="        background-image: url(/img/@Model.Courses.ImageURL">
     <div class="container">
         <div class="row align-items-center justify-content-center site-hero-sm-inner">
             <div class="col-md-7 text-center">
@@ -17,10 +16,23 @@
         </div>
     </div>
 </section>
+
+<section>
+    <div class="container">
+        <img src="@ViewBag.ImageDataUrl" />
+    </div>
+</section>
+
 <!-- END section -->
 @if (User.Identity.IsAuthenticated)
 {
-    @if (Model.Cart == null)
+    if (Model.courseMember != null)
+    {
+        <div class="col-12 col-md-6 pb-1">
+            <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-area="uye" asp-controller="Home" asp-action="Lessons" asp-route-id="@Model.Courses.Id">Kursa Devam Et</a>
+        </div>
+    }
+    else if (Model.Cart == null)
     {
         <div class="container backgroundWhite">
             <div class="card">

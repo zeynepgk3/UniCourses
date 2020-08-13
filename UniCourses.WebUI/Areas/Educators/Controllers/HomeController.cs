@@ -31,8 +31,9 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         Repository<CourseCategoryVM> rCourCat;
         Repository<Videos> rVideos;
         IWebHostEnvironment _environment;
+        Repository<Image> rImage;
         MyContext myContext;
-        public HomeController(Repository<Videos> _rVideos, IWebHostEnvironment environment, MyContext _myContext, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
+        public HomeController(Repository<Videos> _rVideos, Repository<Image> _rImage, IWebHostEnvironment environment, MyContext _myContext, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
         {
             rCategory = _rCategory;
             rAdmin = _rAdmin;
@@ -45,6 +46,7 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             _environment = environment;
             rVideos = _rVideos;
             myContext = _myContext;
+            rImage = _rImage;
         }
         public IActionResult Index()
         {
@@ -55,7 +57,7 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             await HttpContext.SignOutAsync();
             return Redirect("/");
         }
-        [HttpGet, Route("/EgitmenKayit")]
+        [HttpGet]
         public IActionResult Register(int id)
         {
             Member member = rMember.GetBy(x => x.ID == id);
@@ -86,16 +88,31 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
                                              }).ToList();
             */
             ViewBag.dgr = rCategory.GetAll(x => x.ParentID != null).Select(s=> new SelectListItem {Text=s.CategoryName, Value= s.Id.ToString()});
-           
             return View();
         }
         [HttpPost]
         public IActionResult CreateCourse(Course course)
         {
+            Image img = new Image();
+            foreach (var file in Request.Form.Files)
+            {
+                img.ImageTitle = file.FileName;
+                var yeniresimad = Guid.NewGuid() + img.ImageTitle.Replace(" ", "_");
+                var yuklenecekyer = Path.Combine(Directory.GetCurrentDirectory(),
+                            "wwwroot/img/" + yeniresimad);
+                var stream = new FileStream(yuklenecekyer, FileMode.Create);
+                file.CopyTo(stream);
+                img.ImageData = yeniresimad;
+            }
             string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
             Educator educator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
             course.EducatorID = educator.ID;
+            course.ImageURL = img.ImageData;
             rCourse.Add(course);
+            img.CourseID = course.Id;
+            rImage.Add(img);
+            course.ImageID = img.Id;
+            rCourse.Update(course);
             return RedirectToAction("CreateLesson");
         }
 
@@ -131,6 +148,7 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
                         // rVideos.Add(new Videos(video.Name, DateTime.Now, url, video.LessonID));
                         video.Name = userName;
                         video.LessonID = lesson.Id;
+                        video.CourseID = lesson.CourseID;
                         video.UploadDate = DateTime.Now;
                         video.VideoPath = url;
                         rVideos.Add(video);

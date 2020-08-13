@@ -11,6 +11,10 @@ namespace UniCourses.Dal.Entities
     [Table("Category")]
     public class Category
     {
+        public Category()
+        {
+            Count = 0;
+        }
         public int Id { get; set; }
         [StringLength(50), Column(TypeName = "Varchar(50)"), Display(Name = "Kategori Adı")]
         public string CategoryName { get; set; }
@@ -22,5 +26,6 @@ namespace UniCourses.Dal.Entities
         public ICollection<Course> Courses { get; set; }
         [Display(Name = "Görüntülenme Sırası")]
         public int? DisplayIndex { get; set; }
+        public int Count { get; set; }
     }
 }

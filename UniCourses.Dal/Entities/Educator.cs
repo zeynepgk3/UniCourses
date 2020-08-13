@@ -13,7 +13,7 @@ namespace UniCourses.Dal.Entities
         [StringLength(30), Column(TypeName = "Varchar(30)"), Display(Name = "Adı Soyadı")]
         public string NameSurname { get; set; }
 
-        [StringLength(20), Column(TypeName = "Varchar(20)"), Display(Name = "Mail Adresi")]
+        [StringLength(50), Column(TypeName = "Varchar(50)"), Display(Name = "Mail Adresi")]
         public string Mail { get; set; }
 
         [StringLength(32), Column(TypeName = "Varchar(32)"), Display(Name = "Şifre"), DataType(DataType.Password)]

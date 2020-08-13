@@ -69,7 +69,10 @@ namespace UniCourses.Bl.Repositories
             context.Remove(entity);
             context.SaveChanges();
         }
-
+        public void RemoveRange(IEnumerable<T> entity)
+        {
+            context.RemoveRange(entity);
+        }
         public void Update(T entity)
         {
             context.Update(entity);

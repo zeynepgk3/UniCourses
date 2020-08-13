@@ -11,6 +11,7 @@ namespace UniCourses.Dal.Entities
     {
         [Key]
         public int ID { get; set; }
+        public string MemberName { get; set; }
         public string UserComment { get; set; }
         public DateTime CommentDate { get; set; }
         public int CommentState { get; set; } //Admin tarafından onaylanma durumu
