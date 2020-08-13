@@ -10,9 +10,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Stripe;
 using UniCourses.Bl.Repositories;
 using UniCourses.Dal.Contexts;
 using UniCourses.Dal.Entities;
+using UniCourses.WebUI.Utility;
 
 namespace UniCourses.WebUI
 {
@@ -39,13 +41,14 @@ namespace UniCourses.WebUI
                 options.LoginPath = "/giris";
                 options.LogoutPath = "/cikis";
             });
-           /* services.AddAuthentication().AddGoogle(options =>
-            {
-                options.ClientId = "253390453584-cplglhlk3dj8qtgpj7nqfkc2221l79o9.apps.googleusercontent.com";
-                options.ClientSecret = "wki8VHwwR5ttIEM01N17yt-1";
-            });
-            services.AddIdentity<IdentityUser, IdentityRole>()
-        .AddEntityFrameworkStores<MyContext>();*/
+            services.Configure<StripeSettings>(configuration.GetSection("Stripe"));
+            /* services.AddAuthentication().AddGoogle(options =>
+             {
+                 options.ClientId = "253390453584-cplglhlk3dj8qtgpj7nqfkc2221l79o9.apps.googleusercontent.com";
+                 options.ClientSecret = "wki8VHwwR5ttIEM01N17yt-1";
+             });
+             services.AddIdentity<IdentityUser, IdentityRole>()
+         .AddEntityFrameworkStores<MyContext>();*/
         } 
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -59,8 +62,9 @@ namespace UniCourses.WebUI
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            StripeConfiguration.ApiKey = configuration.GetSection("Stripe")["SecretKey"];
             app.UseEndpoints(ep => {
-                ep.MapControllerRoute(name: "areas", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                                ep.MapControllerRoute(name: "areas", pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                 ep.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }

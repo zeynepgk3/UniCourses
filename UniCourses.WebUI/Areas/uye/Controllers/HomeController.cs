@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -30,13 +31,17 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         Repository<Lesson> rLesson;
         Repository<Exam> rExam;
         Repository<CourseCategoryVM> rCourCat;
+        Repository<Videos> rVideos;
+        Repository<Image> rImage;
+        Repository<CourseMember> rCourseMember;
         MyContext myContext;
-        public HomeController(Repository<Comment> _rComment, MyContext _myContext, Repository<Cart> _rCart, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
+        public HomeController(Repository<Videos> _rVideos, Repository<CourseMember> _rCourseMember, Repository<Image> _rImage, Repository<Comment> _rComment, MyContext _myContext, Repository<Cart> _rCart, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
         {
             rCategory = _rCategory;
             rAdmin = _rAdmin;
             rMember = _rMember;
             rCourse = _rCourse;
+            rCourseMember = _rCourseMember;
             rCourCat = _rCourCat;
             rLesson = _rLesson;
             rExam = _rExam;
@@ -44,6 +49,9 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             rEducator = _rEducator;
             rComment = _rComment;
             myContext = _myContext;
+            rVideos = _rVideos;
+            rImage = _rImage;
+
         }
         public IActionResult Index()
         {
@@ -74,15 +82,16 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             };
             return View(courcatVM);
         }
-        public IActionResult Lessons()
+        public IActionResult Lessons(int id)
         {
-            int id = 1;
+
             //Courses.Where(x=>x.KategoriId == kategoriId).OrderByDescending(x => x.Id).Take(adet).ToList
             Course courses = rCourse.GetBy(x => x.Id == id);
             int educatid = courses.EducatorID;
             List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
-            Educator educators = rEducator.GetBy(x => x.ID == educatid);
-            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators };
+            Educator educator = rEducator.GetBy(x => x.ID == educatid);
+            List<Videos> videos = rVideos.GetAll(x => x.CourseID == id).ToList();
+            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educator, Videos = videos };
             //return View(rCourse.GetAll(x=>x.CategoryID == id).ToList(), rCategory.GetAll().ToList());
             return View(lessonCourses);
         }
@@ -126,7 +135,7 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             int educatid = courses.EducatorID;
             Educator educators = rEducator.GetBy(x => x.ID == educatid);
             List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
-            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators , Cart =cart };
+            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart };
             return View(lessonCourses);
         }
         [ValidateAntiForgeryToken]
@@ -147,7 +156,7 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
                 ///
                 claimsIdentity.AddClaim(new Claim(ClaimTypes.Sid, "id")); //Enum.GetName(typeof(ERole), ERole.uye))
                 claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(ERole), ERole.uye))); //Enum.GetName(typeof(ERole), ERole.uye))
-                                                                                                                 //claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,"admin"));
+                                                                                                             //claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,"admin"));
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal();
                 claimsPrincipal.AddIdentity(claimsIdentity);
                 string uyeid = User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value;
@@ -170,13 +179,42 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         {
             return View();
         }
-        public IActionResult Ayarlar()
+        
+        [HttpPost]
+        public IActionResult UploadImage()
         {
-            return View();
+            foreach (var file in Request.Form.Files)
+            {
+                Image img = new Image();
+                img.ImageTitle = file.FileName;
+                var yeniresimad = Guid.NewGuid() + img.ImageTitle;
+                var yuklenecekyer = Path.Combine(Directory.GetCurrentDirectory(),
+                            "wwwroot/img/" + yeniresimad);
+                var stream = new FileStream(yuklenecekyer, FileMode.Create);
+                file.CopyTo(stream);
+                img.ImageData = yeniresimad;
+                img.CourseID = 1;
+                rImage.Add(img);
+            }
+            ViewBag.Message = "Image(s) stored in database!";
+            return View("Index");
+        }
+        public IActionResult Ayarlar()
+        {/*
+        Image img = myContext.Images.FirstOrDefault(i => i.CourseID==2);
+        string imageBase64Data = Convert.ToBase64String(img.ImageData);
+        string imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+        ViewBag.ImageTitle = img.ImageTitle;
+        ViewBag.ImageDataUrl = imageDataURL;*/
+        return View();
         }
         public IActionResult Kurslarim()
         {
-            return View();
+            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+            IEnumerable<CourseMember> courseMembers = rCourseMember.GetAllLazy(x => x.MemberId == Convert.ToInt32(uyeid), includeProperties: "Course");
+
+
+            return View(courseMembers);
         }
     }
 }

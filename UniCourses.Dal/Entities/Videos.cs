@@ -27,6 +27,7 @@ namespace UniCourses.Dal.Entities
         [Key]
         public int Id { get; set; }
         public int LessonID { get; set; }
+        public int? CourseID { get; set; }
         [StringLength(30), Column(TypeName = "Varchar(30)"), Display(Name = "İsim")]
         public string Name { get; set; }
         [Column(TypeName = "datetime"), Display(Name = "Kayıt Tarihi")]

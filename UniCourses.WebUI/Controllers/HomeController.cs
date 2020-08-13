@@ -23,7 +23,7 @@ using UniCourses.WebUI.ViewModels;
 
 namespace UniCourses.WebUI.Controllers
 {
-    
+
     public class HomeController : Controller
     {
         Repository<Category> rCategory;
@@ -35,10 +35,11 @@ namespace UniCourses.WebUI.Controllers
         Repository<CourseCategoryVM> rCourCat;
         Repository<Lesson> rLesson;
         Repository<Videos> rVideos;
+        Repository<CourseMember> rCourseMember;
         IWebHostEnvironment _environment;
         MyContext myContext;
 
-        public HomeController(Repository<Videos> _rVideos, IWebHostEnvironment environment, Repository<Admin> _rAdmin, MyContext _myContext, Repository<Lesson> _rLesson, Repository<Cart> _rCart, Repository<Educator> _rEducator, Repository<Category> _rcategory, Repository<Course> _rcourse, Repository<CourseCategoryVM> _rcourcat, Repository<Member> _rmember)
+        public HomeController(Repository<Videos> _rVideos, Repository<CourseMember> _rCourseMember, IWebHostEnvironment environment, Repository<Admin> _rAdmin, MyContext _myContext, Repository<Lesson> _rLesson, Repository<Cart> _rCart, Repository<Educator> _rEducator, Repository<Category> _rcategory, Repository<Course> _rcourse, Repository<CourseCategoryVM> _rcourcat, Repository<Member> _rmember)
         {
             rAdmin = _rAdmin;
             rCategory = _rcategory;
@@ -50,6 +51,7 @@ namespace UniCourses.WebUI.Controllers
             rLesson = _rLesson;
             myContext = _myContext;
             _environment = environment;
+            rCourseMember = _rCourseMember;
             rVideos = _rVideos;
 
 
@@ -70,31 +72,31 @@ namespace UniCourses.WebUI.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        [HttpGet, Route("/UyeKayit")]
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
-        [HttpPost, Route("/UyeKayit")]
+        [HttpPost]
         public async Task<IActionResult> RegisterAsync(Member m)
         {
             rMember.Add(m);
 
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity("UniCourses");
-                claimsIdentity.AddClaim(new Claim(ClaimTypes.Sid, m.ID.ToString()));
-                claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, m.NameSurName));
-                claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, m.Mail));
-                Member girenuye = rMember.GetBy(f => f.ID == m.ID);
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity("UniCourses");
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.Sid, m.ID.ToString()));
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, m.NameSurName));
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, m.Mail));
+            Member girenuye = rMember.GetBy(f => f.ID == m.ID);
 
-                claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "uye")); //Enum.GetName(typeof(ERole), ERole.uye))
-                claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(ERole), ERole.egitmen))); //Enum.GetName(typeof(ERole), ERole.uye))
-                                                                                                                 //claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,"admin"));
-                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal();
-                claimsPrincipal.AddIdentity(claimsIdentity);
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsPrincipal), new AuthenticationProperties() { IsPersistent = true });
-                return RedirectToAction("Index", "Home", new { area = "uye" });
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "uye")); //Enum.GetName(typeof(ERole), ERole.uye))
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(ERole), ERole.egitmen))); //Enum.GetName(typeof(ERole), ERole.uye))
+                                                                                                             //claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,"admin"));
+            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal();
+            claimsPrincipal.AddIdentity(claimsIdentity);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsPrincipal), new AuthenticationProperties() { IsPersistent = true });
+            return RedirectToAction("Index", "Home", new { area = "uye" });
         }
-        
+
         [Route("/giris")]
         public IActionResult Uye(string ReturnUrl)
         {
@@ -103,10 +105,10 @@ namespace UniCourses.WebUI.Controllers
             return View();
         }
 
-      //static string uyemail;
+        //static string uyemail;
         static Member girisyapan;
-       //public Member uye;
-       [HttpPost, Route("/giris")]
+        //public Member uye;
+        [HttpPost, Route("/giris")]
         public async Task<IActionResult> Uye(Member member, string ReturnUrl)
         {
             if (!string.IsNullOrEmpty(ReturnUrl) && ReturnUrl.Contains("panel"))
@@ -131,33 +133,33 @@ namespace UniCourses.WebUI.Controllers
 
             }
             //if (!string.IsNullOrEmpty(ReturnUrl) && ReturnUrl.Contains("uye"))
-            
-                Member uye = rMember.GetBy(f => f.Mail == member.Mail && f.Password == member.Password) ?? null;
-                if (uye != null)
-                {
-                    ClaimsIdentity claimsIdentity = new ClaimsIdentity("UniCourses");
-                    claimsIdentity.AddClaim(new Claim(ClaimTypes.Sid, uye.ID.ToString()));
-                    claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, uye.NameSurName));
-                    claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, uye.Mail));
-                    Member girenuye = rMember.GetBy(f => f.ID == uye.ID);
-                    //uyemail = member.Mail;
-                    girisyapan = rMember.GetBy(x => x.Mail == member.Mail);   
-                        
-                    claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "uye")); //Enum.GetName(typeof(ERole), ERole.uye))
-                    claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(ERole), ERole.egitmen))); //Enum.GetName(typeof(ERole), ERole.uye))
-                                                                                //claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,"admin"));
-                    ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal();
-                    claimsPrincipal.AddIdentity(claimsIdentity);
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsPrincipal), new AuthenticationProperties() { IsPersistent = true });
-                    return RedirectToAction("Index", "Home", new { area = "uye" });
-                }
-                else
-                {
-                    ViewBag.Hata = "Kullanıcı adı veya Şifre Hatalı";
-                    return View();
-                }
 
-            
+            Member uye = rMember.GetBy(f => f.Mail == member.Mail && f.Password == member.Password) ?? null;
+            if (uye != null)
+            {
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity("UniCourses");
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Sid, uye.ID.ToString()));
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, uye.NameSurName));
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, uye.Mail));
+                Member girenuye = rMember.GetBy(f => f.ID == uye.ID);
+                //uyemail = member.Mail;
+                girisyapan = rMember.GetBy(x => x.Mail == member.Mail);
+
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "uye")); //Enum.GetName(typeof(ERole), ERole.uye))
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(ERole), ERole.egitmen))); //Enum.GetName(typeof(ERole), ERole.uye))
+                                                                                                                 //claimsIdentity.AddClaim(new Claim(ClaimTypes.Role,"admin"));
+                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal();
+                claimsPrincipal.AddIdentity(claimsIdentity);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsPrincipal), new AuthenticationProperties() { IsPersistent = true });
+                return RedirectToAction("Index", "Home", new { area = "uye" });
+            }
+            else
+            {
+                ViewBag.Hata = "Kullanıcı adı veya Şifre Hatalı";
+                return View();
+            }
+
+
             /*if (!string.IsNullOrEmpty(ReturnUrl) && ReturnUrl.Contains("educator"))
             {
                 Educator educator = rEducator.GetBy(e => e.Mail == member.Mail && e.Password == member.Password) ?? null;
@@ -181,7 +183,7 @@ namespace UniCourses.WebUI.Controllers
             ViewBag.Hata = "Kullanıcı adı veya Şifre Hatalı";
             return View();
         }
-         
+
         [Route("/cikis")]
         public IActionResult Logout()
         {
@@ -193,31 +195,63 @@ namespace UniCourses.WebUI.Controllers
             if (HttpContext.User.Identity.IsAuthenticated) await HttpContext.SignOutAsync();
             return Redirect("/giris");
         }
-       /* public IActionResult GoogleLogin(string ReturnUrl)
-        {
-            string RedirectUrl = Url.Action("ExternalResponse", "Home", new { ReturnUrl = ReturnUrl });
-            var properties = _signInManager.ConfigureExternalAuthenticationProperties("Google", "/");
+        /* public IActionResult GoogleLogin(string ReturnUrl)
+         {
+             string RedirectUrl = Url.Action("ExternalResponse", "Home", new { ReturnUrl = ReturnUrl });
+             var properties = _signInManager.ConfigureExternalAuthenticationProperties("Google", "/");
 
-            return new ChallengeResult("Google", properties);
-        }*/
+             return new ChallengeResult("Google", properties);
+         }*/
 
         public IActionResult AboutUs()
         {
-            
+
             return View();
         }
-
         [Route("/Kurslar")]
         public IActionResult Courses(int id)
         {
+            //List<Course> lastCourse = new List<Course>();
+            List<Course> courses = new List<Course>();
+            List<Category> categories = myContext.Category.Include(x => x.SubCategories).ToList();
+            if (User.Identity.IsAuthenticated) {
+                string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+                List<CourseMember> courseMembers = rCourseMember.GetAll(x => x.MemberId == Convert.ToInt32(uyeid)).ToList();
+                List<int> courseInt = new List<int>();
+
+                foreach (Course item in rCourse.GetAll(x => x.CategoryID == id).ToList())
+                {
+                    courseInt.Add(item.Id);
+                }
+
+                List<int> courseMemberInt = new List<int>();
+                foreach (CourseMember item in courseMembers)
+                {
+                    courseMemberInt.Add((int)item.CourseId);
+                }
+                IEnumerable<int> fark = new List<int>();
+                fark = courseInt.Except(courseMemberInt);
+                
+
+                foreach (var item in fark)
+                {
+                    courses.Add(rCourse.GetBy(x => x.Id == item));
+                }
+            }
+            else
+            {
+                courses = rCourse.GetAll(x => x.CategoryID == id).ToList();
+            }
+            
+           
             Category category = rCategory.GetBy(x => x.Id == id);
             List<Category> Subcategories = null;
             if (category.ParentID == null)
             {
                 Subcategories = myContext.Category.Include(x => x.SubCategories).Include(x => x.Courses).ToList();
             }
-            List<Course> courses = rCourse.GetAll(x => x.CategoryID == id).ToList();
-            List<Category> categories = myContext.Category.Include(x => x.SubCategories).ToList();
+            
+            
 
             CourseCategoryVM courcatVM = new CourseCategoryVM
             {
@@ -228,14 +262,19 @@ namespace UniCourses.WebUI.Controllers
             };
             return View(courcatVM);
         }
-        public IActionResult CourseSinglePage(int id, string sayfaadi)
+        public IActionResult CourseSinglePage(int id)
         {
             var course = rCourse.GetBy(c => c.Id == id);
             Cart cart = null;
-            if (User.Identity.IsAuthenticated)
+            CourseMember courseMember = new CourseMember();
+            if (User.Identity.IsAuthenticated) // Sepete ekle
             {
                 int uyeid = Convert.ToInt32(User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value);
                 cart = rCart.GetBy(
+                    x => x.MemberId == uyeid
+                    && x.CourseId == id);
+
+                courseMember = rCourseMember.GetBy(
                     x => x.MemberId == uyeid
                     && x.CourseId == id);
             }
@@ -243,8 +282,9 @@ namespace UniCourses.WebUI.Controllers
             int educatid = courses.EducatorID;
             Educator educators = rEducator.GetBy(x => x.ID == educatid);
             List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
-            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart };
-            sayfaadi = courses.Name;
+            //Image getir
+            Image img = myContext.Images.FirstOrDefault(i => i.CourseID == courses.Id);
+            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart, courseMember = courseMember };
             return View(lessonCourses);
         }
 

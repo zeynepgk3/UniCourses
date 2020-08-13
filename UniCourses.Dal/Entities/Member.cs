@@ -46,11 +46,15 @@ namespace UniCourses.Dal.Entities
             public int RoleNumber { get; set; }
             public ERole Role { get; set; }
             public Educator Educator { get; set; }
-            /*
-             */
+            public Picture Picture { get; set; }
+            public int PictureID { get; set; }
+            public string PictureURL { get; set; }
+        /*
+         */
             public virtual ICollection<Address> Addresses { get; set; }
             public virtual ICollection<Collection> Collections { get; set; }
             public virtual ICollection<Comment> Comments { get; set; }
+            public virtual ICollection<Course> Courses { get; set; }
 
 
         }

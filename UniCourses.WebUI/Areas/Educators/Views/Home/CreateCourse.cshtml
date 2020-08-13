@@ -25,7 +25,7 @@
         </div>
         <div class="row align-items-center">
             <div class="col-md-12 pr-md-5">
-                <form action="#" method="post">
+                <form action="#" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-4 form-group">
                             <label for="Name">Kurs Adı</label>
@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="courseimg">Kurs Görseli Yükle</label>
-                            <input type="file" id="courseimg" class="form-control-file">
+                            <input type="file" name="file" multiple="multiple"  id="courseimg" class="form-control-file">
                         </div>
                     </div>
 

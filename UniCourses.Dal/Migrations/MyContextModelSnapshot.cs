@@ -321,6 +321,9 @@ namespace UniCourses.Dal.Migrations
                         .HasColumnType("Varchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
                     b.Property<int?>("DisplayIndex")
                         .HasColumnType("int");
 
@@ -415,6 +418,9 @@ namespace UniCourses.Dal.Migrations
                     b.Property<int?>("MemberID")
                         .HasColumnType("int");
 
+                    b.Property<string>("MemberName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Rate")
                         .HasColumnType("int");
 
@@ -471,12 +477,21 @@ namespace UniCourses.Dal.Migrations
                     b.Property<int>("EducatorID")
                         .HasColumnType("int");
 
+                    b.Property<int>("ImageID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDone")
                         .HasColumnType("bit");
 
                     b.Property<string>("Language")
                         .HasColumnType("Varchar(15)")
                         .HasMaxLength(15);
+
+                    b.Property<int?>("MemberID")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("Varchar(30)")
@@ -503,6 +518,8 @@ namespace UniCourses.Dal.Migrations
                     b.HasIndex("CategoryID");
 
                     b.HasIndex("EducatorID");
+
+                    b.HasIndex("MemberID");
 
                     b.ToTable("Course");
                 });
@@ -535,6 +552,24 @@ namespace UniCourses.Dal.Migrations
                     b.HasIndex("CollectionId");
 
                     b.ToTable("CourseCollection");
+                });
+
+            modelBuilder.Entity("UniCourses.Dal.Entities.CourseMember", b =>
+                {
+                    b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MemberId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsDone")
+                        .HasColumnType("int");
+
+                    b.HasKey("CourseId", "MemberId");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("CourseMember");
                 });
 
             modelBuilder.Entity("UniCourses.Dal.Entities.CourseWishList", b =>
@@ -580,8 +615,8 @@ namespace UniCourses.Dal.Migrations
                         .HasMaxLength(20);
 
                     b.Property<string>("Mail")
-                        .HasColumnType("Varchar(20)")
-                        .HasMaxLength(20);
+                        .HasColumnType("Varchar(50)")
+                        .HasMaxLength(50);
 
                     b.Property<int>("MemberID")
                         .HasColumnType("int");
@@ -650,6 +685,30 @@ namespace UniCourses.Dal.Migrations
                     b.ToTable("Exam");
                 });
 
+            modelBuilder.Entity("UniCourses.Dal.Entities.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CourseID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseID")
+                        .IsUnique();
+
+                    b.ToTable("Image");
+                });
+
             modelBuilder.Entity("UniCourses.Dal.Entities.Lesson", b =>
                 {
                     b.Property<int>("Id")
@@ -668,6 +727,9 @@ namespace UniCourses.Dal.Migrations
 
                     b.Property<int>("LastPoint")
                         .HasColumnType("int");
+
+                    b.Property<string>("LessonDescription")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LessonName")
                         .HasColumnType("nvarchar(max)");
@@ -722,6 +784,12 @@ namespace UniCourses.Dal.Migrations
                         .HasColumnType("char(10)")
                         .HasMaxLength(10);
 
+                    b.Property<int>("PictureID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PictureURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("RegisteryDate")
                         .HasColumnType("datetime");
 
@@ -763,6 +831,30 @@ namespace UniCourses.Dal.Migrations
                     b.HasIndex("MemberId");
 
                     b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("UniCourses.Dal.Entities.Picture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImageData")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MemberID")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MemberID")
+                        .IsUnique();
+
+                    b.ToTable("Picture");
                 });
 
             modelBuilder.Entity("UniCourses.Dal.Entities.Question", b =>
@@ -835,6 +927,9 @@ namespace UniCourses.Dal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CourseID")
+                        .HasColumnType("int");
 
                     b.Property<int>("LessonID")
                         .HasColumnType("int");
@@ -1023,6 +1118,10 @@ namespace UniCourses.Dal.Migrations
                         .HasForeignKey("EducatorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("UniCourses.Dal.Entities.Member", null)
+                        .WithMany("Courses")
+                        .HasForeignKey("MemberID");
                 });
 
             modelBuilder.Entity("UniCourses.Dal.Entities.CourseCategory", b =>
@@ -1051,6 +1150,21 @@ namespace UniCourses.Dal.Migrations
                     b.HasOne("UniCourses.Dal.Entities.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UniCourses.Dal.Entities.CourseMember", b =>
+                {
+                    b.HasOne("UniCourses.Dal.Entities.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniCourses.Dal.Entities.Member", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1086,6 +1200,15 @@ namespace UniCourses.Dal.Migrations
                         .HasForeignKey("LessonID");
                 });
 
+            modelBuilder.Entity("UniCourses.Dal.Entities.Image", b =>
+                {
+                    b.HasOne("UniCourses.Dal.Entities.Course", "Course")
+                        .WithOne("Image")
+                        .HasForeignKey("UniCourses.Dal.Entities.Image", "CourseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("UniCourses.Dal.Entities.Lesson", b =>
                 {
                     b.HasOne("UniCourses.Dal.Entities.Course", "Course")
@@ -1099,6 +1222,15 @@ namespace UniCourses.Dal.Migrations
                     b.HasOne("UniCourses.Dal.Entities.Member", "member")
                         .WithMany()
                         .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UniCourses.Dal.Entities.Picture", b =>
+                {
+                    b.HasOne("UniCourses.Dal.Entities.Member", "Member")
+                        .WithOne("Picture")
+                        .HasForeignKey("UniCourses.Dal.Entities.Picture", "MemberID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

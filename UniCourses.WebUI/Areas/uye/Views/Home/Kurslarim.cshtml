@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CourseMember>
+@using UniCourses.Dal.Entities
+
+
+@{
+    ViewData["Title"] = "Kurslarim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Kurslarim</h1>
+
+<div class="col-md-6 col-lg-8 order-md-2">
+    <div class="row">
+        
+            @foreach (CourseMember course in Model)
+            {
+
+                <div class="col-md-12 col-lg-6 mb-5">
+                    <div class="block-19">
+                        <br />
+                        <figure>
+                            <a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Course.Id"><img src="~/img/@course.Course.ImageURL" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="text">
+                            <h2 class="heading"><a asp-area="default" asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Course.Id"> @course.Course.Name</a></h2>
+                            <p class="mb-4"></p>
+                            <div class="meta d-flex align-items-center">
+                                <div class="number">
+                                    <span>@course.Course.Score /5,0</span>
+                                </div>
+                                <div class="number">
+                                    <span>@course.Course.NumberOfStudent Öğrenen</span>
+                                </div>
+                                <div class="price text-right">
+                                    @if (course.IsDone != 1)
+                                    {
+                                        <span><a asp-controller="Home" asp-area="uye" asp-action="Lessons" asp-route-id="@course.Course.Id"> Kursa Devam Et </a></span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>}
+        </div>
+</div>
