@@ -61,3 +61,12 @@ C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.csproj.CoreCompileInputs.cache
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.dll
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.pdb
+D:\Github\UniCourses\UniCourses.Dal\bin\Debug\netstandard2.1\UniCourses.Dal.deps.json
+D:\Github\UniCourses\UniCourses.Dal\bin\Debug\netstandard2.1\UniCourses.Dal.dll
+D:\Github\UniCourses\UniCourses.Dal\bin\Debug\netstandard2.1\UniCourses.Dal.pdb
+D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.csprojAssemblyReference.cache
+D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.AssemblyInfoInputs.cache
+D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.AssemblyInfo.cs
+D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.csproj.CoreCompileInputs.cache
+D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.dll
+D:\Github\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.pdb

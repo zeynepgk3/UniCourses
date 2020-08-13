@@ -13,7 +13,7 @@ namespace UniCourses.Dal.Contexts
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=LAPTOP-M6D6S6HL; database=DBUniCourses; integrated security=true;");
+            optionsBuilder.UseSqlServer("server=DESKTOP-RCC8S1I\\SQLEXPRESS; database=DBUniCourses; integrated security=true;");
             base.OnConfiguring(optionsBuilder);
         }
         public MyContext(DbContextOptions<MyContext> options) : base(options) { }

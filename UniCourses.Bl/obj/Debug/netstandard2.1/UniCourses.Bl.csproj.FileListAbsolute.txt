@@ -82,3 +82,15 @@ C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.csproj.CopyComplete
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.dll
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.pdb
+D:\Github\UniCourses\UniCourses.Bl\bin\Debug\netstandard2.1\UniCourses.Bl.deps.json
+D:\Github\UniCourses\UniCourses.Bl\bin\Debug\netstandard2.1\UniCourses.Bl.dll
+D:\Github\UniCourses\UniCourses.Bl\bin\Debug\netstandard2.1\UniCourses.Bl.pdb
+D:\Github\UniCourses\UniCourses.Bl\bin\Debug\netstandard2.1\UniCourses.Dal.dll
+D:\Github\UniCourses\UniCourses.Bl\bin\Debug\netstandard2.1\UniCourses.Dal.pdb
+D:\Github\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.csprojAssemblyReference.cache
+D:\Github\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.AssemblyInfoInputs.cache
+D:\Github\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.AssemblyInfo.cs
+D:\Github\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.csproj.CoreCompileInputs.cache
+D:\Github\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.csproj.CopyComplete
+D:\Github\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.dll
+D:\Github\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.pdb

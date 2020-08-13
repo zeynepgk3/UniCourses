@@ -52,6 +52,22 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         {
             return View();
         }
+        public IActionResult Build()
+        {
+            return View();
+        }
+        public IActionResult Statisctic()
+        {
+            return View();
+        }
+        public IActionResult CourseList()
+        {
+            return View();
+        }
+        public IActionResult Profile()
+        {
+            return View();
+        }
         public async Task<IActionResult> Cikis()
         {
             await HttpContext.SignOutAsync();

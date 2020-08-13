@@ -214,6 +214,7 @@ namespace UniCourses.WebUI.Controllers
             //List<Course> lastCourse = new List<Course>();
             List<Course> courses = new List<Course>();
             List<Category> categories = myContext.Category.Include(x => x.SubCategories).ToList();
+
             if (User.Identity.IsAuthenticated) {
                 string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
                 List<CourseMember> courseMembers = rCourseMember.GetAll(x => x.MemberId == Convert.ToInt32(uyeid)).ToList();
@@ -246,17 +247,21 @@ namespace UniCourses.WebUI.Controllers
            
             Category category = rCategory.GetBy(x => x.Id == id);
             List<Category> Subcategories = null;
+            Category Pcategory = new Category();
             if (category.ParentID == null)
             {
                 Subcategories = myContext.Category.Include(x => x.SubCategories).Include(x => x.Courses).ToList();
+                category = rCategory.GetBy(x => x.Id == category.ParentID);
             }
-            
-            
 
+
+            Pcategory = rCategory.GetBy(x => x.Id == category.ParentID);
             CourseCategoryVM courcatVM = new CourseCategoryVM
             {
                 Courses = courses,
                 Categories = categories,
+                Category = Pcategory,
+                SubCategory = category,
                 Scategories = Subcategories
 
             };

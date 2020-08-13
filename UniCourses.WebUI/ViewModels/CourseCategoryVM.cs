@@ -13,6 +13,7 @@ namespace UniCourses.WebUI.ViewModels
         public List<Category> Categories { get; set; }
         public List<Category> Scategories { get; set; }
         public Category Category { get; set; }
+        public Category SubCategory { get; set; }
 
     }
 }

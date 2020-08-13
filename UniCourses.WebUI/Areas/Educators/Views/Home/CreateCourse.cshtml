@@ -1,7 +1,7 @@
 ﻿@model UniCourses.Dal.Entities.Course
 @{
     ViewData["Title"] = "CreateCourse";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Educators/Views/Shared/_Layout.cshtml";
 }
 <!--
 
@@ -16,138 +16,135 @@
 
 -->
 <script src="https://cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
-<div class="py-5">
-    <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center section-heading">
-                <h2 class="text-primary heading">Kurs Oluştur</h2>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1> </h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active">Kurs Oluştur</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Yeni Kurs Oluştur</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form role="form" method="post">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label for="Name">Kurs Başlığı</label>
+                                        <input asp-for="@Model.Name" id="Name" class="form-control py-2" required>
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label for="Title">Alt Başlık</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="form-group col-md-4">
+                                        <label>Kategori Seç</label>
+                                        <select class="custom-select" asp-for="@Model.CategoryID" asp-items="@ViewBag.dgr">
+                                            <option>Seçiniz</option>
+
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-4">
+                                        <label for="Category">Kapak Fotoğrafı</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="exampleInputFile">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="Langugage">Kurs Dili</label>
+                                        <input asp-for="@Model.Language" id="Langugage" class="form-control py-2" required>
+                                        <input type="hidden" asp-for="@Model.NumberOfStudent" id="NumberOfStudent" name="NumberOfStudent" value="1" class="form-control py-2">
+                                        <input type="hidden" id="Duration" name="Duration" value="1" class="form-control py-2">
+                                        <input type="hidden" id="Score" name="Score" value="0" class="form-control py-2">
+                                        <input type="hidden" id="State" name="State" value="0" class="form-control py-2">
+
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                        <label for="Price">Kurs Ucreti</label>
+                                        <input asp-for="@Model.Price" id="Price" class="form-control py-2" required>
+                                    </div>
+                                    <div class="form-group col-md-4 ">
+                                        <label>Seviye</label>
+                                        <select asp-for="@Model.Duzey" id="Duzey" class="custom-select" required>
+                                            <!--boş döndürülmüyor, hocaya sor-->
+                                            <option value="Diger">Diğer</option>
+                                            <option value="1.Sinif">1.Sınıf</option>
+                                            <option value="2.Sinif">2.Sınıf</option>
+                                            <option value="3.Sinif">3.Sınıf</option>
+                                            <option value="4.Sinif">4.Sınıf</option>
+                                        </select>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        Kurs Tanıtımı
+                                    </h3>
+                                    <!-- tools box -->
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
+                                                title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
+                                                title="Remove">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /. tools -->
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body pad">
+                                    <div>
+                                        <textarea class="textarea" placeholder="Place some text here"
+                                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary" asp-action="CreateLesson">Oluştur</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row align-items-center">
-            <div class="col-md-12 pr-md-5">
-                <form action="#" method="post" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-md-4 form-group">
-                            <label for="Name">Kurs Adı</label>
-                            <input asp-for="@Model.Name" id="Name" class="form-control py-2" required>
-                        </div>
-                        <div class="col-md-8 form-group">
-                            <label for="Title">Alt Başlık</label>
-                            <input asp-for="@Model.Title" id="Title" class="form-control py-2" required>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-4">
-                            <label for="Categoryi">Kategori sec:</label>
-                            <select asp-for="@Model.CategoryID" asp-items="@ViewBag.dgr">
-                                <option value=""> Lütfen Seçiniz</option>
-                            </select>
-
-                            @*<select name="Categoryi" id="Categoryi">
-                                @foreach (Category category in Model.Categories)
-                                {
-                                    if (category.ParentID != null)
-                                    {
-                                        <option value="@category.Id">@category.CategoryName</option>
-                                    }
-                                }
-                            </select>*@
-                            <!-- <input type="hidden" id="Educatori" name="Educatori" value=1 class="form-control py-2">
-                            <input type="hidden" id="Categoryi" name="Categori" value=2 class="form-control py-2">-->
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="form-group col-md-4">
-                            <label for="courseimg">Kurs Görseli Yükle</label>
-                            <input type="file" name="file" multiple="multiple"  id="courseimg" class="form-control-file">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-8 form-group">
-                            <label for="Langugage">Kurs Dili</label>
-                            <input asp-for="@Model.Language" id="Langugage" class="form-control py-2" required>
-                            <input type="hidden" asp-for="@Model.NumberOfStudent" id="NumberOfStudent" name="NumberOfStudent" value="1" class="form-control py-2">
-                            <input type="hidden" id="Duration" name="Duration" value="1" class="form-control py-2">
-                            <input type="hidden" id="Score" name="Score" value="0" class="form-control py-2">
-                            <input type="hidden" id="State" name="State" value="0" class="form-control py-2">
-                        </div>
-                        <div class="col-md-8 form-group">
-                            <label for="Price">Kurs Ucreti</label>
-                            <input asp-for="@Model.Price" id="Price" class="form-control py-2" required>
-                        </div>
-                        <div class="col-md-4 form-group">
-                            <label>Seviye</label>
-                            <select asp-for="@Model.Duzey" id="Duzey" class="form-control border-0" required>
-                                <!--boş döndürülmüyor, hocaya sor-->
-                                <option value="Diger">Diğer</option>
-                                <option value="1.Sinif">1.Sınıf</option>
-                                <option value="2.Sinif">2.Sınıf</option>
-                                <option value="3.Sinif">3.Sınıf</option>
-                                <option value="4.Sinif">4.Sınıf</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 form-group">
-                            <label for="Description">Kurs Açıklaması</label>
-                            <textarea name="Description" id="Description" class="form-control py-2" cols="20" rows="8" required></textarea><!--boş olduğunda algılamıyor, hocaya sor-->
-                            <script>
-                                CKEDITOR.replace('Description');
-                            </script>
-                        </div>
-                    </div>
-                    <div class="row justify-content-between">
-
-                        <div class="col-md-6 form-group" style="float:left;">
-                            <input type="submit" value="Kursu Oluştur" class="btn btn-primary">
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-
-
-    </div>
+    </section>
 </div>
-
-@*<script>
-        $("#create").click(function () {
-            swal({
-                    title: "Good job!",
-                    text: "You clicked the button!",
-                    icon: "success",
-                    button: "Aww yiss!",
-                });
-            var courseheader = $("#courseheader").val();
-            var shortdescription = $("#shortdescription").val();
-            var courseimg = $("#courseimg").val();
-            var school = $("#school").val();
-            var level = $("#level").val();
-            var longdescription = $("#longdescription").val();
-
-            //alert(courseheader + " " + shortdescription + " " + courseimg + " " + school + " " + level + " " + longdescription);
-
-            if (courseheader == '' || shortdescription == '' || courseimg == '' || school == '' || level == '') {
-                alert("Nope!");
-                swal({
-                    title: "Empty Area!",
-                    text: "Fill everything!",
-                    icon: "warning",
-                    button: "nooo",
-                });
-
-            }
-            else {
-                swal({
-                    title: "Good job!",
-                    text: "You clicked the button!",
-                    icon: "success",
-                    button: "Aww yiss!",
-                });
-            }
-        });
-
-    </script>*@

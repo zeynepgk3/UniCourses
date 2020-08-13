@@ -71,8 +71,7 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
 
             return View(CartVM);
         }
-      
-        [HttpPost]
+        
         public IActionResult RemoveFromCart(int courseId)
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;

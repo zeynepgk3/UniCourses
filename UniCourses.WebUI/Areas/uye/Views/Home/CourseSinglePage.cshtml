@@ -39,10 +39,12 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-12 col-md-6 pb-1">
-                                <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-controller="Home" asp-action="Courses" asp-route-id="@Model.Courses.CategoryID">Kurslara Dön</a>
+                                <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-controller="Home" asp-action="Courses" asp-route-id="@Model.Courses.CategoryID">
+                                Kurslara Dön</a>
                             </div>
                             <div class="col-12 col-md-6 pb-1">
-                                <button type="submit" asp-area="uye" asp-controller="Home" asp-action="AddToCart" asp-route-id="@Model.Courses.Id" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">Sepete Ekle</button>
+                                <button type="submit" asp-area="uye" asp-controller="Home" asp-action="AddToCart" asp-route-id="@Model.Courses.Id" value="Add to Cart" class="btn btn-primary btn-square 
+                                        btn-lg form-control" style="height:50px;">Sepete Ekle</button>
                             </div>
                         </div>
                     </div>
