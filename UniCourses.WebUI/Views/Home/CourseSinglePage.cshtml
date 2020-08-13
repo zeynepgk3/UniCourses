@@ -4,7 +4,7 @@
     ViewData["Title"] = "CourseSinglePage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="        background-image: url(/img/@Model.Courses.ImageURL">
+<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="        background-image: url(/img/@Model.Courses.ImageURL")>
     <div class="container">
         <div class="row align-items-center justify-content-center site-hero-sm-inner">
             <div class="col-md-7 text-center">
@@ -29,7 +29,7 @@
     if (Model.courseMember != null)
     {
         <div class="col-12 col-md-6 pb-1">
-            <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-area="uye" asp-controller="Home" asp-action="Lessons" asp-route-id="@Model.Courses.Id">Kursa Devam Et</a>
+            <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-area="uye" asp-controller="Home" asp-action="Lessons" asp-route-lessonname="Lessons" asp-route-coursename="@MyTool.urlConvert(Model.Courses.Name)" asp-route-id="@Model.Courses.Id">Kursa Devam Et</a>
         </div>
     }
     else if (Model.Cart == null)
@@ -51,7 +51,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-12 col-md-6 pb-1">
-                                <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-controller="Home" asp-action="Courses" asp-route-id="@Model.Courses.CategoryID">Kurslara Dön</a>
+                                <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-controller="Home" asp-action="Courses"  asp-route-id="@Model.Courses.CategoryID">Kurslara Dön</a>
                             </div>
                             <div class="col-12 col-md-6 pb-1">
                                 <button type="submit" asp-area="uye" asp-controller="Home" asp-action="AddToCart" asp-route-id="@Model.Courses.Id" value="Add to Cart" class="btn btn-primary btn-square btn-lg form-control" style="height:50px;">Sepete Ekle</button>
@@ -96,23 +96,21 @@ else
 
                     <div class="site-section element-animate">
                         <div class="container">
-                            <div class="col-md-12 mb-2"> <h2>Dersler</h2></div>
+                            <div class="col-md-12 mb-2"> <h1>Dersler</h1></div>
                             @foreach (Lesson lesson in Model.Lessons)
                             {<div class="row">
                                     <div class="col-md-12">
                                         <div class="accordion block-8" id="accordion">
                                             <div class="accordion-item">
-
-                                                <h3 class="mb-0 heading">
-                                                    <a class="btn-block" data-toggle="collapse" href="#@lesson.Id" role="button" aria-expanded="true" aria-controls="collapseOne">@lesson.LessonName <span class="icon"></span></a>
-                                                </h3>
+                                                <h2 class="mb-0 heading">
+                                                    <a class="btn-block" data-toggle="collapse" href="#@lesson.Id" role="button" aria-expanded="true" aria-controls="collapseOne"> @lesson.LessonName <span class="icon"></span></a>
+                                                </h2>
                                                 <div id="@lesson.Id" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                     <div class="card-body">
+                                                        <h5><a asp-area="uye" asp-controller="Home" asp-action="Lessons" asp-route-lessonname="@UniCourses.WebUI.Common.MyTool.urlConvert(lesson.LessonName)" asp-route-coursename="@UniCourses.WebUI.Common.MyTool.urlConvert(Model.Courses.Name)" asp-route-id="@lesson.Id">@lesson.LessonDescription</a></h5>
                                                         <div class="row align-items-center p-4 episode">
                                                             <div class="col-md-10">
-                                                                <p class="meta"><a asp-area="uye" asp-controller="Home" asp-action="Lessons" asp-route-id="@lesson.CourseID">1.Video Süresi : @lesson.Duration</a></p>
-                                                                <h2><a href="#">Some Title Here For The Video</a></h2>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, fugit!</p>
+                                                                <p class="meta"><a asp-area="uye" asp-controller="Home" asp-action="Lessons" asp-route-lessonname="@UniCourses.WebUI.Common.MyTool.urlConvert(lesson.LessonName)" asp-route-coursename="@UniCourses.WebUI.Common.MyTool.urlConvert(Model.Courses.Name)" asp-route-id="@lesson.Id">Ders Uzunluğu: @(lesson.Duration/60) Dakika @(lesson.Duration%60) saniye</a></p>
                                                             </div>
                                                             <div class="col-md-2 text-center">
                                                                 <a href="#" class="play"><span class="ion-ios-play"></span></a>

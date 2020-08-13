@@ -33,8 +33,15 @@ using UniCourses.Dal.Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\Views\_ViewImports.cshtml"
+using UniCourses.WebUI.Common;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6a2a5f60ca090bfe0f26b053856fe54aafd054b0", @"/Views/Shared/Components/UserOption/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9610a0b4e08ff27db021206b3e1634715074c956", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"046cb80209a1bb73991b3ca11cb3939ec8dac1d7", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_UserOption_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<UniCourses.Dal.Entities.Member>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-light action-button"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -85,7 +92,7 @@ using UniCourses.Dal.Entities;
 #line hidden
 #nullable disable
             WriteLiteral("            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b07549", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b07750", async() => {
                 WriteLiteral(" Eğitimci ol ");
             }
             );
@@ -131,7 +138,7 @@ using UniCourses.Dal.Entities;
 #line hidden
 #nullable disable
             WriteLiteral("            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b010672", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b010873", async() => {
                 WriteLiteral("Eğitmen Sayfası ");
             }
             );
@@ -184,7 +191,7 @@ using UniCourses.Dal.Entities;
 #line hidden
 #nullable disable
             WriteLiteral("</a>\r\n            <div class=\"dropdown-menu\" aria-labelledby=\"dropdown05\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b014497", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b014698", async() => {
                 WriteLiteral("Profilim");
             }
             );
@@ -205,7 +212,7 @@ using UniCourses.Dal.Entities;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b016160", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b016361", async() => {
                 WriteLiteral("<i class=\"fa fa-graduation-cap\" aria-hidden=\"true\"></i>  Kurslarım");
             }
             );
@@ -226,7 +233,7 @@ using UniCourses.Dal.Entities;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b017885", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b018086", async() => {
                 WriteLiteral("<i class=\"fa fa-shopping-cart\" aria-hidden=\"true\"></i>  Sepetim");
             }
             );
@@ -247,7 +254,7 @@ using UniCourses.Dal.Entities;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b019607", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b019808", async() => {
                 WriteLiteral("<i class=\"fa fa-sliders\" aria-hidden=\"true\"></i>  Ayarlar");
             }
             );
@@ -268,7 +275,7 @@ using UniCourses.Dal.Entities;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b021325", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a2a5f60ca090bfe0f26b053856fe54aafd054b021526", async() => {
                 WriteLiteral("<i class=\"fa fa-power-off\" aria-hidden=\"true\"></i>  Çıkış ");
             }
             );

@@ -93,14 +93,15 @@
     <div id="content">
         <div class="container-fluid block-11">
             <div class="row">
+                @*await Component.InvokeAsync("VideoPlayer")*@
                 <div class="col-md-10 bg-light">
                     <video id="myplayer"
-                           style="width: 100% !important;height:auto;"
+                           style="width: 1600px; height:1000px; "
                            class="video-js vjs-big-play-centered"
                            controls
                            preload="auto"
                            data-setup='{}'>
-                        <source src="/videos/video.mp4#t=2" type="video/mp4" />
+                        <source src="@Model.Video.VideoPath#t=2" type="video/mp4" />
                         <p class="vjs-no-js">
                             To view this video please enable JavaScript, and consider upgrading to a
                             web browser that
@@ -109,65 +110,40 @@
                             </a>
                         </p>
                     </video>
-
                 </div>
-
                 <!--Sidebar starts-->
                 <div class="col-md-2" style="background-color:#1b1b1b;">
                     <div style="color: white; font-size: 25px; font-weight: 500; line-height: 65px; text-align:center; letter-spacing: 1px;">@Model.Courses.Name</div>
-
                     <div class="accordion block-8" id="accordion">
                         <div class="accordion-item">
-                        @foreach(Lesson lesson in Model.Lessons)
-                        { 
-                            <h3 class="mb-0 heading">
-                                <a style="color:white;" class="btn-block" data-toggle="collapse" href="#@lesson.Id" role="button" aria-expanded="true" aria-controls="collapseOne">@lesson.LessonNo | @lesson.LessonName<span class="icon"></span></a>
-                            </h3>
-                            <div id="@lesson.Id" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            @foreach (Lesson lesson in Model.Lessons)
+                            {
+                                <h3 class="mb-0 heading">
+                                    <a style="color:white;" class="btn-block" data-toggle="collapse" href="#@lesson.Id" role="button" aria-expanded="true" aria-controls="collapseOne">@lesson.LessonNo | @lesson.LessonName<span class="icon"></span></a>
+                                </h3>
+                                <div id="@lesson.Id" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
 
-                                <ul style="list-style-type:none;">
-                                    @foreach (Videos videos in Model.Videos)
-                                    {
-                                        if (videos.LessonID == lesson.Id)
+                                    <ul style="list-style-type:none;">
+                                        @foreach (Videos videos in Model.Videos)
                                         {
-                                        <li>
-                                            <a href="~@videos.VideoPath">@videos.Name</a>
-                                        </li>
+                                            if (videos.LessonID == lesson.Id)
+                                            {
+                                                <li>
+                                                    <a asp-action="Lessons" asp-route-id="@videos.LessonID">@videos.Name</a>
+                                                </li>
+                                            }
+
                                         }
-                                    
-	                                }
-                                    
-                                        @*
-                                    <a href="#"><video controls="controls">
-                                                    <source src="~/videos/video.mp4" type="video/mp4" />
-                                                    <source src="~/videos/video.webm" type="video/webm" />
-                                                    <source src="~/videos/video.ogv" type="video/ogg" />
-                                                </video> 1</a>
-                                </li>
-                                <li>
-                                    <a href="#"><video controls="controls">
-                                                <source src="~/videos/video.mp4" type="video/mp4" />
-                                                <source src="~/videos/video.webm" type="video/webm" />
-                                                <source src="~/videos/video.ogv" type="video/ogg" />
-                                            </video> 2</a>
-                                </li>
-                                <li>
-                                    <a href="#"><video controls="controls">
-                                                <source src="~/videos/video.mp4" type="video/mp4" />
-                                                <source src="~/videos/video.mp4.webm" type="video/webm" />
-                                                <source src="~/videos/video.mp4.ogv" type="video/ogg" />
-                                            </video> 3</a> 
-                                </li>*@
-                            </ul>
-                        </div>
-                     }
-                    </div> <!-- .accordion-item -->
+                                    </ul>
+                                </div>
+                            }
+                        </div> <!-- .accordion-item -->
 
+                    </div>
                 </div>
-            </div>
-            <!--Sidebar ends-->
+                <!--Sidebar ends-->
 
-        </div>
+            </div>
         <div class="row">
             <div class="col-md-10">
                 <div id="Page1">

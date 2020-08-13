@@ -33,8 +33,15 @@ using UniCourses.Dal.Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\Views\_ViewImports.cshtml"
+using UniCourses.WebUI.Common;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"89973b5c343668a963a01b34e566fbfaa3c22f27", @"/Views/Home/Register.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9610a0b4e08ff27db021206b3e1634715074c956", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"046cb80209a1bb73991b3ca11cb3939ec8dac1d7", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Register : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<UniCourses.Dal.Entities.Member>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -178,7 +185,7 @@ media (max-width:991px) {
     }
 </style>
 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f277819", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f278020", async() => {
                 WriteLiteral(@"
     <meta charset=""utf-8"">
     <meta name=""viewport"" content=""width=device-width, initial-scale=1.0, shrink-to-fit=no"">
@@ -208,7 +215,7 @@ media (max-width:991px) {
                 <div class=""mb-5 element-animate"">
                     <h1 class=""mb-2"">Kayıt Ol</h1>
                     <p class=""bcrumb"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f279608", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f279809", async() => {
                 WriteLiteral("Anasayfa");
             }
             );
@@ -224,9 +231,9 @@ media (max-width:991px) {
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral(" <span class=\"sep ion-android-arrow-dropright px-2\"></span>  <span class=\"current\">Kayıt Ol</span></p>\r\n                </div>\r\n\r\n            </div>\r\n        </div>\r\n    </div>\r\n</section>\r\n\r\n<!-- END section -->\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f2710997", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f2711198", async() => {
                 WriteLiteral("\r\n    <div class=\"register-photo\" >\r\n        <div class=\"form-container\">\r\n            <div class=\"image-holder\"></div>\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f2711399", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f2711600", async() => {
                     WriteLiteral(@"
                 <h2 class=""text-center""><strong>Yeni</strong>Hesap Oluştur.</h2>
                 <div class=""form-group""><input class=""form-control"" type=""email"" name=""Mail"" placeholder=""Email"" required></div>
@@ -273,7 +280,7 @@ WriteAttributeValue("", 4638, DateTime.Now, 4638, 13, false);
                     <div class=""form-check""><label class=""form-check-label""><input class=""form-check-input"" type=""checkbox"" required>Koşul ve Şartları Kabul Ediyorum.</label></div>
                 </div>
                 <div class=""form-group""><input type=""submit"" class=""btn btn-primary px-5 py-2"" value=""Kayıt Ol""></div>");
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f2714573", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f2714774", async() => {
                         WriteLiteral("Zaten Hesabın Var Mı? Buradan Giriş Yap.");
                     }
                     );
@@ -334,7 +341,7 @@ WriteAttributeValue("", 4638, DateTime.Now, 4638, 13, false);
                 <div class=""form-wrap"">
                     <h2 class=""mb-5"">Yeni Hesap Aç</h2>
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f2718429", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "89973b5c343668a963a01b34e566fbfaa3c22f2718630", async() => {
                 WriteLiteral(@"
                         <div>
                             <div class=""row"">

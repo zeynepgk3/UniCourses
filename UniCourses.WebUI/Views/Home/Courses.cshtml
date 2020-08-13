@@ -1,5 +1,5 @@
 ﻿@model UniCourses.WebUI.ViewModels.CourseCategoryVM
-@using UniCourses.Dal.Entities
+
 
 
 <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(images/big_image_2.jpg);">
@@ -92,15 +92,14 @@
                     {
                         @foreach (Course course in Model.Courses)
                         {
-
                             <div class="col-md-12 col-lg-6 mb-5">
                                 <div class="block-19">
                                     <br />
                                     <figure>
-                                        <a asp-controller="Home" asp-action="CourseSinglePage"  asp-route-id="@course.Id"><img src="~/img/@course.ImageURL" alt="Image" class="img-fluid"></a>
+                                        <a asp-controller="Home" asp-action="CourseSinglePage" asp-route-courname="@UniCourses.WebUI.Common.MyTool.urlConvert(course.Name)" asp-route-catname="@UniCourses.WebUI.Common.MyTool.urlConvert(Model.Category.CategoryName)" asp-route-id="@course.Id"><img src="~/img/@course.ImageURL" alt="Image" class="img-fluid"></a>
                                     </figure>
                                     <div class="text">
-                                        <h2 class="heading"><a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Id"> @course.Name</a></h2>
+                                        <h2 class="heading"><a asp-controller="Home" asp-route-courname="@course.Name" asp-action="CourseSinglePage" asp-route-id="@course.Id"> @course.Name</a></h2>
                                         <p class="mb-4"></p>
                                         <div class="meta d-flex align-items-center">
                                             <div class="number">
@@ -113,7 +112,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>}
+                            </div>
+                            }
                     }
 
                     <div class="row mb-5">

@@ -8,22 +8,7 @@ namespace UniCourses.Dal.Entities
 {
     public class Videos
     {
-        /*
-        private int userId;
-        private int ıd;
-        private string fileName;
-        private DateTime now;
-        private string url;
         
-        public Videos(string name, DateTime now, string url, int lessonID)
-        {
-            
-            Name = name;
-            UploadDate = now;
-            VideoPath = url;
-            LessonID = lessonID;
-        }
-        */
         [Key]
         public int Id { get; set; }
         public int LessonID { get; set; }

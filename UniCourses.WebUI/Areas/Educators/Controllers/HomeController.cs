@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using MediaToolkit;
+using MediaToolkit.Model;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -135,8 +137,8 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
                     int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid)?.Value);
                     string userName = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value);
                     string folder = Path.Combine(_environment.WebRootPath, "video");
-                    string url = @"\video\" + userName + @"\" + file.FileName;
-                    string pathString = Path.Combine(folder, userName);
+                    string url = @"\video\" + userName.Replace(" ", "_") + @"\" + file.FileName;
+                    string pathString = Path.Combine(folder, userName.Replace(" ", "_"));
                     if (!Directory.Exists(pathString))
                     {
                         Directory.CreateDirectory(pathString);
@@ -146,14 +148,23 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
                     {
                         await file.CopyToAsync(stream);
                         // rVideos.Add(new Videos(video.Name, DateTime.Now, url, video.LessonID));
-                        video.Name = userName;
+                        video.Name = lesson.LessonName;
                         video.LessonID = lesson.Id;
                         video.CourseID = lesson.CourseID;
                         video.UploadDate = DateTime.Now;
                         video.VideoPath = url;
                         rVideos.Add(video);
-
+                        
                     }
+                    
+                    var inputFile = new MediaFile { Filename = @"C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\wwwroot" + video.VideoPath };
+                    using (var engine = new Engine())
+                    {
+                        engine.GetMetadata(inputFile);
+                    }
+                    lesson.Duration = (int)inputFile.Metadata.Duration.TotalSeconds;
+                    rLesson.Update(lesson);
+                    
                 }
                 catch (Exception ex)
                 {

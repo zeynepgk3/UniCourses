@@ -57,7 +57,7 @@
                     <div class="row">
                         <div class="col-md-12 form-group">
                             <label for="message">Ders Açıklaması</label>
-                            <textarea name="message" id="message" class="form-control py-2" cols="20" rows="8"></textarea>
+                            <textarea asp-for="@Model.LessonDescription" id="message" class="form-control py-2" cols="20" rows="8"></textarea>
                             <script>
                                 CKEDITOR.replace('message');
                             </script>

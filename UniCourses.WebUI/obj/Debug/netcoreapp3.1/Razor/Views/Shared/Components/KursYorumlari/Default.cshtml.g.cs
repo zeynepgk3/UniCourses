@@ -33,8 +33,15 @@ using UniCourses.Dal.Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\Views\_ViewImports.cshtml"
+using UniCourses.WebUI.Common;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"26188dea907bb048e33e77e0b23723f3c4550d01", @"/Views/Shared/Components/KursYorumlari/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9610a0b4e08ff27db021206b3e1634715074c956", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"046cb80209a1bb73991b3ca11cb3939ec8dac1d7", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_KursYorumlari_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<UniCourses.Dal.Entities.Comment>>
     {
         #pragma warning disable 1998

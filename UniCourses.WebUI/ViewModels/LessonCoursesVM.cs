@@ -17,6 +17,7 @@ namespace UniCourses.WebUI.ViewModels
         public Member Member { get; set; }
         public List<Category> Categories { get; set; }
         public List<Videos> Videos { get; set; }
+        public Videos Video { get; set; }
         public string ImageDataURL { get; set; }
         public Educator Educator { get; set; }
         public CourseMember courseMember { get; set; }

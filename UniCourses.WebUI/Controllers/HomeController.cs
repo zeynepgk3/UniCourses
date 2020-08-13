@@ -72,12 +72,12 @@ namespace UniCourses.WebUI.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        [HttpGet]
+        [HttpGet, Route("/UyeKayit")]
         public IActionResult Register()
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost, Route("/UyeKayit")]
         public async Task<IActionResult> RegisterAsync(Member m)
         {
             rMember.Add(m);
@@ -208,8 +208,8 @@ namespace UniCourses.WebUI.Controllers
 
             return View();
         }
-        [Route("/Kurslar")]
-        public IActionResult Courses(int id)
+        [Route("/Kurslar/{name?}/{id?}")]
+        public IActionResult Courses(int id, string name)
         {
             //List<Course> lastCourse = new List<Course>();
             List<Course> courses = new List<Course>();
@@ -250,42 +250,48 @@ namespace UniCourses.WebUI.Controllers
             {
                 Subcategories = myContext.Category.Include(x => x.SubCategories).Include(x => x.Courses).ToList();
             }
-            
-            
+
+
 
             CourseCategoryVM courcatVM = new CourseCategoryVM
             {
                 Courses = courses,
+                Category = category,
                 Categories = categories,
                 Scategories = Subcategories
 
             };
             return View(courcatVM);
         }
-        public IActionResult CourseSinglePage(int id)
+        [Route("/{catname?}/{courname}/{id}")]
+        public IActionResult CourseSinglePage(int id, string courname)
         {
-            var course = rCourse.GetBy(c => c.Id == id);
-            Cart cart = null;
-            CourseMember courseMember = new CourseMember();
-            if (User.Identity.IsAuthenticated) // Sepete ekle
+            if (courname != "images")
             {
-                int uyeid = Convert.ToInt32(User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value);
-                cart = rCart.GetBy(
-                    x => x.MemberId == uyeid
-                    && x.CourseId == id);
+                var course = rCourse.GetBy(c => c.Id == id);
+                Cart cart = null;
+                CourseMember courseMember = new CourseMember();
+                if (User.Identity.IsAuthenticated) // Sepete ekle
+                {
+                    int uyeid = Convert.ToInt32(User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value);
+                    cart = rCart.GetBy(
+                        x => x.MemberId == uyeid
+                        && x.CourseId == id);
 
-                courseMember = rCourseMember.GetBy(
-                    x => x.MemberId == uyeid
-                    && x.CourseId == id);
+                    courseMember = rCourseMember.GetBy(
+                        x => x.MemberId == uyeid
+                        && x.CourseId == id);
+                }
+                Course courses = rCourse.GetBy(x => x.Id == id);
+                int educatid = courses.EducatorID;
+                Educator educators = rEducator.GetBy(x => x.ID == educatid);
+                List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
+                //Image getir
+                Image img = myContext.Images.FirstOrDefault(i => i.CourseID == courses.Id);
+                LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart, courseMember = courseMember };
+                return View(lessonCourses);
             }
-            Course courses = rCourse.GetBy(x => x.Id == id);
-            int educatid = courses.EducatorID;
-            Educator educators = rEducator.GetBy(x => x.ID == educatid);
-            List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
-            //Image getir
-            Image img = myContext.Images.FirstOrDefault(i => i.CourseID == courses.Id);
-            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart, courseMember = courseMember };
-            return View(lessonCourses);
+            else return View();
         }
 
     }

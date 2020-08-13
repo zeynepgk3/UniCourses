@@ -82,20 +82,21 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             };
             return View(courcatVM);
         }
+        [Route("/Kurs/{coursename?}/{lessonname?}/{id?}")]
         public IActionResult Lessons(int id)
         {
-
+            Lesson lesson = rLesson.GetBy(x => x.Id == id);
             //Courses.Where(x=>x.KategoriId == kategoriId).OrderByDescending(x => x.Id).Take(adet).ToList
-            Course courses = rCourse.GetBy(x => x.Id == id);
-            int educatid = courses.EducatorID;
-            List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
-            Educator educator = rEducator.GetBy(x => x.ID == educatid);
-            List<Videos> videos = rVideos.GetAll(x => x.CourseID == id).ToList();
-            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educator, Videos = videos };
+            Course course = rCourse.GetBy(x => x.Id == lesson.CourseID);
+            List<Lesson> lessons = rLesson.GetAll(x => x.CourseID == course.Id).ToList();
+            Educator educator = rEducator.GetBy(x => x.ID == course.EducatorID);
+            Videos video = rVideos.GetBy(x => x.LessonID == id);
+            List<Videos> videos = rVideos.GetAll(x => x.CourseID == course.Id).ToList();
+            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lessons, Courses = course, Educator = educator, Video = video, Lesson = lesson, Videos = videos };
             //return View(rCourse.GetAll(x=>x.CategoryID == id).ToList(), rCategory.GetAll().ToList());
             return View(lessonCourses);
         }
-        [HttpPost]
+        [HttpPost, Route("/Kurs/{coursename?}/{lessonname?}/{id?}")]
         public IActionResult Lessons(Comment comment)
         {
             comment.MemberID = Convert.ToInt32(User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value);
@@ -180,25 +181,6 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             return View();
         }
         
-        [HttpPost]
-        public IActionResult UploadImage()
-        {
-            foreach (var file in Request.Form.Files)
-            {
-                Image img = new Image();
-                img.ImageTitle = file.FileName;
-                var yeniresimad = Guid.NewGuid() + img.ImageTitle;
-                var yuklenecekyer = Path.Combine(Directory.GetCurrentDirectory(),
-                            "wwwroot/img/" + yeniresimad);
-                var stream = new FileStream(yuklenecekyer, FileMode.Create);
-                file.CopyTo(stream);
-                img.ImageData = yeniresimad;
-                img.CourseID = 1;
-                rImage.Add(img);
-            }
-            ViewBag.Message = "Image(s) stored in database!";
-            return View("Index");
-        }
         public IActionResult Ayarlar()
         {/*
         Image img = myContext.Images.FirstOrDefault(i => i.CourseID==2);

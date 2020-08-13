@@ -33,8 +33,15 @@ using UniCourses.Dal.Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\Views\_ViewImports.cshtml"
+using UniCourses.WebUI.Common;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9610a0b4e08ff27db021206b3e1634715074c956", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"046cb80209a1bb73991b3ca11cb3939ec8dac1d7", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Category>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -91,7 +98,7 @@ using UniCourses.Dal.Entities;
                     <div class=""block-17"">
                         <h2 class=""heading text-center mb-4"">Sıra arkadaşından kaçırdığın dersin tekrarını al</h2>
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb7061", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb7262", async() => {
                 WriteLiteral(@"
                             <div class=""fields d-block d-lg-flex"">
                                 <div class=""textfield-search one-third""><input type=""text"" class=""form-control"" placeholder=""Kurs ara""></div>
@@ -104,7 +111,7 @@ using UniCourses.Dal.Entities;
                 BeginWriteAttribute("id", " id=\"", 1260, "\"", 1265, 0);
                 EndWriteAttribute();
                 WriteLiteral(" class=\"form-control\">\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb8260", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb8461", async() => {
                     WriteLiteral("Kurs Kategorisi");
                 }
                 );
@@ -129,7 +136,7 @@ using UniCourses.Dal.Entities;
 #line hidden
 #nullable disable
                 WriteLiteral("                                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb9849", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb10050", async() => {
 #nullable restore
 #line 25 "C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\Views\Home\Index.cshtml"
                                                                                  Write(v.CategoryName);
@@ -179,7 +186,7 @@ using UniCourses.Dal.Entities;
                 BeginWriteAttribute("id", " id=\"", 2184, "\"", 2189, 0);
                 EndWriteAttribute();
                 WriteLiteral(" class=\"form-control\">\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb12743", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb12945", async() => {
                     WriteLiteral("Sınıf");
                 }
                 );
@@ -195,7 +202,7 @@ using UniCourses.Dal.Entities;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb14006", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb14208", async() => {
                     WriteLiteral("1.Sınıf");
                 }
                 );
@@ -211,7 +218,7 @@ using UniCourses.Dal.Entities;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb15271", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb15473", async() => {
                     WriteLiteral("2.Sınıf");
                 }
                 );
@@ -227,7 +234,7 @@ using UniCourses.Dal.Entities;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb16536", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb16738", async() => {
                     WriteLiteral("3.Sınıf");
                 }
                 );
@@ -243,7 +250,7 @@ using UniCourses.Dal.Entities;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb17801", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb18003", async() => {
                     WriteLiteral("4.Sınıf");
                 }
                 );
@@ -306,7 +313,7 @@ using UniCourses.Dal.Entities;
                         <h3 class=""heading"">Tekrar Et ve Öğren</h3>
                         <p>Sınıf arkadaşının anlatımı ve notları ile kaçırdığın dersi izleme fırsatı yakala veya tekrar ederek konuları pekiştir</p>
                         <p>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb21918", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb22120", async() => {
                 WriteLiteral("Daha fazlası <span class=\"ion-arrow-right-c\"></span>");
             }
             );
@@ -476,7 +483,7 @@ using UniCourses.Dal.Entities;
                     </figure>
                     <div class=""text"">
                         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb29748", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "968d3efe27eb3f59c0e09ceef47a59cc9eebc8fb29950", async() => {
                 WriteLiteral("Hakkımızda");
             }
             );
