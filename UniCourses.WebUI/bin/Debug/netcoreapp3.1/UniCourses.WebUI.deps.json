@@ -33,6 +33,7 @@
           "Stripe.net": "37.30.0",
           "UniCourses.Bl": "1.0.0",
           "UniCourses.Dal": "1.0.0",
+          "X.PagedList": "8.0.7",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies.Reference": "3.1.0.0",
@@ -2421,6 +2422,17 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0"
+        }
+      },
+      "X.PagedList/8.0.7": {
+        "runtime": {
+          "lib/netstandard2.0/X.PagedList.dll": {
+            "assemblyVersion": "8.0.7.0",
+            "fileVersion": "8.0.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/X.PagedList.dll": {}
         }
       },
       "UniCourses.Bl/1.0.0": {
@@ -5356,6 +5368,13 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "X.PagedList/8.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eX1Wd5MrIehx9RaFWketo1LrZJDsEcJYx06LBQnaMNZX+CQgUS4A0z7GeaotkSZo6Cau6IGllj26XPpO8Lns4Q==",
+      "path": "x.pagedlist/8.0.7",
+      "hashPath": "x.pagedlist.8.0.7.nupkg.sha512"
     },
     "UniCourses.Bl/1.0.0": {
       "type": "project",

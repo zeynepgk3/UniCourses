@@ -13,6 +13,8 @@ namespace UniCourses.WebUI.ViewModels
         public List<Category> Categories { get; set; }
         public List<Category> Scategories { get; set; }
         public Category Category { get; set; }
-
+        public IEnumerable<Course> CoursesPage { get; set; }
+        public int PageSize { get; set; }
+        public int Pagenumber { get; set; }
     }
 }

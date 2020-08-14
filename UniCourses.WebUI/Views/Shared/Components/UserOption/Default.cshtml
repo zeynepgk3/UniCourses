@@ -4,17 +4,21 @@
         //if (Enum.IsDefined(Model.Member.Role, 1))
         if (Model.RoleNumber == 1)
         {
-            <a class="btn btn-light action-button" asp-area="educators" asp-controller="Home" asp-action="Rolata" asp-route-id="@Model.ID"> Eğitimci ol </a>
+            <p class="nav-link mb-0 pb-0">
+                <a class="btn btn-outline-primary" asp-area="educators" asp-controller="Home" asp-action="Rolata" asp-route-id="@Model.ID"> Eğitimci ol </a>
+            </p>
             <input type="hidden" id="rnumber" value="2">
-            }
-        else if(Model.RoleNumber == 2)
+        }
+        else if (Model.RoleNumber == 2)
         {
-            <a asp-area="educators" asp-controller="Home" asp-action="Index" asp-route-id="@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value">Eğitmen Sayfası </a>
+            <p class="nav-link mb-0 pb-0">
+                <a class="btn btn-outline-primary" asp-area="educators" asp-controller="Home" asp-action="Index" asp-route-id="@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value">Eğitmen Sayfası </a>
+            </p>
         }
 
         @* asp-route-id="@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value" *@
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</a>
             <div class="dropdown-menu" aria-labelledby="dropdown05">
                 <a class="dropdown-item" asp-area="uye" asp-controller="Home" asp-action="Profil">Profilim</a>
                 <a class="dropdown-item" asp-area="uye" asp-controller="Home" asp-action="Kurslarim"><i class="fa fa-graduation-cap" aria-hidden="true"></i>  Kurslarım</a>
@@ -24,5 +28,5 @@
             </div>
         </li>
     }
-   
+
 }

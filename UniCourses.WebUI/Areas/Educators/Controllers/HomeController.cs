@@ -54,30 +54,29 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> Cikis()
+        public IActionResult Course()
         {
-            await HttpContext.SignOutAsync();
-            return Redirect("/");
+            return View();
         }
-        [HttpGet]
-        public IActionResult Register(int id)
+        public IActionResult EditCourse()
         {
-            Member member = rMember.GetBy(x => x.ID == id);
-            EducatorMemberVM educatorMemberVM = new EducatorMemberVM { Member = member};
-            return View(educatorMemberVM);
+            return View();
         }
-        [HttpPost]
-        public IActionResult Register(Educator ed)
+        public IActionResult Build()
         {
-            rEducator.Add(ed);
-            return RedirectToAction("Index");
+            return View();
         }
-        public IActionResult Rolata(int id)
+        public IActionResult Statisctic()
         {
-            var d = rMember.Bul(id);
-            d.RoleNumber = 2;
-            rMember.Save();
-            return RedirectToAction("Register",new { id });
+            return View();
+        }
+        public IActionResult CourseList()
+        {
+            return View();
+        }
+        public IActionResult Profile()
+        {
+            return View();
         }
         [HttpGet]
         public IActionResult CreateCourse()
@@ -226,6 +225,31 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
                 ViewBag.Message = "You have not specified a file.";
             }
             return RedirectToAction("UploadVideo");
+        }
+        public async Task<IActionResult> Cikis()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
+        }
+        [HttpGet]
+        public IActionResult Register(int id)
+        {
+            Member member = rMember.GetBy(x => x.ID == id);
+            EducatorMemberVM educatorMemberVM = new EducatorMemberVM { Member = member };
+            return View(educatorMemberVM);
+        }
+        [HttpPost]
+        public IActionResult Register(Educator ed)
+        {
+            rEducator.Add(ed);
+            return RedirectToAction("Index");
+        }
+        public IActionResult Rolata(int id)
+        {
+            var d = rMember.Bul(id);
+            d.RoleNumber = 2;
+            rMember.Save();
+            return RedirectToAction("Register", new { id });
         }
 
     }

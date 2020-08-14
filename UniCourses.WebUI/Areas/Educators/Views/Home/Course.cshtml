@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewData["Title"] = "Course";
+    Layout = "~/Areas/Educators/Views/Shared/_Layout.cshtml";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a asp-action="Index">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item"><a asp-action="CourseList">Kurslar</a></li>
+                        <li class="breadcrumb-item active">#kurs Adı</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card card-solid">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-4">
+                        <div class="col-12">
+                            <img src="/images/img_2.jpg" alt="Image" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-8">
+                        <h3 class="my-3">#kurs adı</h3>
+                        <p>
+                            title title title title title title title title
+                        </p>
+                        <br />
+                        <p>
+                            aciklama aciklama aciklama aciklama aciklama aciklama aciklama aciklama aciklama aciklama aciklama aciklama aciklama aciklama aciklama aciklama
+                            aciklama aciklama aciklama aciklama aciklama aciklama aciklama
+                        </p>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+                                <div class="info-box bg-light">
+                                    <div class="info-box-content">
+                                        <span class="info-box-text text-center text-muted">Ders Sayısı</span>
+                                        <span class="info-box-number text-center text-muted mb-0">10 Ders</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="info-box bg-light">
+                                    <div class="info-box-content">
+                                        <span class="info-box-text text-center text-muted">Toplam Süre</span>
+                                        <span class="info-box-number text-center text-muted mb-0">17:56</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <div class="info-box bg-light">
+                                    <div class="info-box-content">
+                                        <span class="info-box-text text-center text-muted">Fiyat</span>
+                                        <span class="info-box-number text-center text-muted mb-0">20 tl</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+
+                    </div>
+                </div>
+                <div class="row d-flex align-items-center justify-content-center">
+                    <div class="text-center mt-5 mb-3">
+                        <a asp-action="EditCourse" class="btn btn-sm btn-warning">Kursu Düzenle</a>
+                        <a href="#" class="btn btn-sm btn-danger">Kursu Sil</a>
+                    </div>
+                </div>
+                <!--/. edit, delete buttons-->
+                <div class="row">
+                    <div class="col-9 mt-4">
+                        <nav class="w-100">
+                            <div class="nav nav-tabs" id="product-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Description</a>
+                                <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Yorumlar</a>
+                                <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">Rating</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content p-3" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae condimentum erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed posuere, purus at efficitur hendrerit, augue elit lacinia arcu, a eleifend sem elit et nunc. Sed rutrum vestibulum est, sit amet cursus dolor fermentum vel. Suspendisse mi nibh, congue et ante et, commodo mattis lacus. Duis varius finibus purus sed venenatis. Vivamus varius metus quam, id dapibus velit mattis eu. Praesent et semper risus. Vestibulum erat erat, condimentum at elit at, bibendum placerat orci. Nullam gravida velit mauris, in pellentesque urna pellentesque viverra. Nullam non pellentesque justo, et ultricies neque. Praesent vel metus rutrum, tempus erat a, rutrum ante. Quisque interdum efficitur nunc vitae consectetur. Suspendisse venenatis, tortor non convallis interdum, urna mi molestie eros, vel tempor justo lacus ac justo. Fusce id enim a erat fringilla sollicitudin ultrices vel metus.
+                            </div>
+                            <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4>Recent Activity</h4>
+                                        <div class="post">
+                                            <div class="user-block">
+                                                <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                                                <span class="username">
+                                                    <a href="#">Jonathan Burke Jr.</a>
+                                                </span>
+                                                <span class="description">Shared publicly - 7:45 PM today</span>
+                                            </div>
+                                            <!-- /.user-block -->
+                                            <p>
+                                                Lorem ipsum represents a long-held tradition for designers,
+                                                typographers and the like. Some people hate it and argue for
+                                                its demise, but others ignore.
+                                            </p>
+
+                                            <p>
+                                                <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
+                                            </p>
+                                        </div>
+
+                                        <div class="post clearfix">
+                                            <div class="user-block">
+                                                <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
+                                                <span class="username">
+                                                    <a href="#">Sarah Ross</a>
+                                                </span>
+                                                <span class="description">Sent you a message - 3 days ago</span>
+                                            </div>
+                                            <!-- /.user-block -->
+                                            <p>
+                                                Lorem ipsum represents a long-held tradition for designers,
+                                                typographers and the like. Some people hate it and argue for
+                                                its demise, but others ignore.
+                                            </p>
+                                            <p>
+                                                <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 2</a>
+                                            </p>
+                                        </div>
+
+                                        <div class="post">
+                                            <div class="user-block">
+                                                <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                                                <span class="username">
+                                                    <a href="#">Jonathan Burke Jr.</a>
+                                                </span>
+                                                <span class="description">Shared publicly - 5 days ago</span>
+                                            </div>
+                                            <!-- /.user-block -->
+                                            <p>
+                                                Lorem ipsum represents a long-held tradition for designers,
+                                                typographers and the like. Some people hate it and argue for
+                                                its demise, but others ignore.
+                                            </p>
+
+                                            <p>
+                                                <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v1</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">
+                                Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam dignissim aliquam ligula, aliquet feugiat nibh rhoncus ut. Aliquam efficitur lacinia lacinia. Morbi ac molestie lectus, vitae hendrerit nisl. Nullam metus odio, malesuada in vehicula at, consectetur nec justo. Quisque suscipit odio velit, at accumsan urna vestibulum a. Proin dictum, urna ut varius consectetur, sapien justo porta lectus, at mollis nisi orci et nulla. Donec pellentesque tortor vel nisl commodo ullamcorper. Donec varius massa at semper posuere. Integer finibus orci vitae vehicula placerat.
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.comments-->
+                    <div class="col-3">
+                        bölümler burada gözükecek (dersler tablo halinde ya da akerdeon)
+                        <div class="text-center mt-5 mb-3">
+                            <a href="#" class="btn btn-sm btn-warning">Ders Ekle</a>
+                        </div>
+                    </div>
+                    <!--/.bölümler ve dersler-->
+
+                </div>
+                <!--/.row-->
+
+
+
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

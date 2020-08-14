@@ -222,6 +222,10 @@
             "Stripe.net": {
               "target": "Package",
               "version": "[37.30.0, )"
+            },
+            "X.PagedList": {
+              "target": "Package",
+              "version": "[8.0.7, )"
             }
           },
           "imports": [

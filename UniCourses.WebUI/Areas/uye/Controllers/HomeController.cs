@@ -88,11 +88,18 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             Lesson lesson = rLesson.GetBy(x => x.Id == id);
             //Courses.Where(x=>x.KategoriId == kategoriId).OrderByDescending(x => x.Id).Take(adet).ToList
             Course course = rCourse.GetBy(x => x.Id == lesson.CourseID);
+            CourseMember courseMember = new CourseMember();
+            if (User.Identity.IsAuthenticated)
+            {
+            int uyeid = Convert.ToInt32(User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value);
+            courseMember = rCourseMember.GetBy(x => x.CourseId == course.Id
+                                                              && x.MemberId == uyeid);
+            }
             List<Lesson> lessons = rLesson.GetAll(x => x.CourseID == course.Id).ToList();
             Educator educator = rEducator.GetBy(x => x.ID == course.EducatorID);
             Videos video = rVideos.GetBy(x => x.LessonID == id);
             List<Videos> videos = rVideos.GetAll(x => x.CourseID == course.Id).ToList();
-            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lessons, Courses = course, Educator = educator, Video = video, Lesson = lesson, Videos = videos };
+            LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lessons, Courses = course, Educator = educator, Video = video, Lesson = lesson, Videos = videos, courseMember = courseMember };
             //return View(rCourse.GetAll(x=>x.CategoryID == id).ToList(), rCategory.GetAll().ToList());
             return View(lessonCourses);
         }

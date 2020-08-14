@@ -1,0 +1,136 @@
+﻿@model List<Course>
+@{ ViewData["Title"] = "SearchPage";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(images/big_image_2.jpg);">
+    <div class="container">
+        <div class="row align-items-center justify-content-center site-hero-sm-inner">
+            <div class="col-md-7 text-center">
+
+                <div class="mb-5 element-animate">
+                    <h1 class="mb-2">Courses</h1>
+                    <p class="bcrumb"><a href="index.html">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Courses</span></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
+<style type="text/css">
+    .menu {
+        list-style-type: none;
+    }
+
+        .menu > li {
+            float: left;
+            position: relative;
+            margin-right: 15px;
+        }
+
+        .menu ul {
+            display: none;
+            position: absolute;
+            transition: 300ms;
+            list-style-type: none;
+            left: -40px;
+        }
+
+        .menu > li a {
+            display: block;
+            background-color: #00ffff;
+            color: #093734;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        .menu > li:hover ul {
+            display: block;
+        }
+</style>
+
+
+
+
+@foreach (Course course in Model)
+{
+
+<div class="col-md-12 col-lg-6 mb-5">
+    <div class="block-19">
+        <br />
+        <figure>
+            <a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Id"><img src="~/img/@course.ImageURL" alt="Image" class="img-fluid"></a>
+        </figure>
+        <div class="text">
+            <h2 class="heading"><a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Id"> @course.Name</a></h2>
+            <p class="mb-4"></p>
+            <div class="meta d-flex align-items-center">
+                <div class="number">
+                    <span>@course.Score /5,0</span>
+                </div>
+                <div class="number">
+                    <span>@course.NumberOfStudent Öğrenen</span>
+                </div>
+                <div class="price text-right"><del class="mr-3">@course.Price</del><span>Free</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+<div class="row mb-5">
+    <div class="col-md-12 text-center">
+        <div class="block-27">
+            <ul>
+                @*
+                <li><a asp-action="Courses" asp-route-page="@{Model.Pagenumber--;} " asp-route-id="@Model.Category.Id">&lt;</a></li>
+                *@
+                @*
+                <li class="active"><a asp-action="Course"><span>1</span></a></li>
+                *@
+
+                @for (int i = 1; i <= @ViewBag.pageNumber; i++)
+                {
+                    @if (i == ViewBag.dgr)
+                    {
+                <li class="active"><a asp-action="SearchPage" asp-route-page="@i">@i</a></li>
+                 }
+                else
+                {
+                <li><a asp-action="Courses" asp-route-page="@i">@i</a></li>
+                }
+                }
+                @*
+                <li><a href="#">3</a></li>
+                *@
+                @*
+                <li><a asp-action="Courses" asp-route-page="@{Model.Pagenumber=Model.Pagenumber+2;}" asp-route-id="@Model.Category.Id">&gt;</a></li>
+                *@
+            </ul>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+<!-- END content -->
+
+
+<div class="py-5 block-22">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0 pr-md-5">
+                <h2 class="heading">Create cool websites</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi accusantium optio und.</p>
+            </div>
+            <div class="col-md-6">
+                <form action="#" class="subscribe">
+                    <div class="form-group">
+                        <input type="email" class="form-control email" placeholder="Enter email">
+                        <input type="submit" class="btn btn-primary submit" value="Subscribe">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

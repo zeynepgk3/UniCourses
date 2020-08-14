@@ -20,7 +20,7 @@ using UniCourses.Dal.Contexts;
 using UniCourses.Dal.Entities;
 using UniCourses.WebUI.Models;
 using UniCourses.WebUI.ViewModels;
-
+using X.PagedList;
 namespace UniCourses.WebUI.Controllers
 {
 
@@ -56,12 +56,22 @@ namespace UniCourses.WebUI.Controllers
 
 
         }
-        public IActionResult Index()
+        public IActionResult Index(string search = null)
         {
+            if (!string.IsNullOrEmpty(search))
+            {
+                // 
+                return RedirectToAction("SearchPage", new { search });
+            }
             var user = User;
             return View(rCategory.GetAll());
         }
-
+        public IActionResult SearchPage(string search, int? page)
+        {
+            ViewBag.pageNumber = page;
+            List<Course> foundCourse = rCourse.GetAll(x => x.Name.Contains(search)).ToList();
+            return View(foundCourse);
+        }
         public IActionResult Privacy()
         {
             return View();
@@ -120,6 +130,7 @@ namespace UniCourses.WebUI.Controllers
                     ClaimsIdentity claimsIdentity = new ClaimsIdentity("adminIdentity");
                     claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, admin.Mail));
                     claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(ERole), ERole.admin)));
+                    claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, Enum.GetName(typeof(ERole), ERole.uye)));
                     ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal();
                     claimsPrincipal.AddIdentity(claimsIdentity);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsPrincipal), new AuthenticationProperties() { IsPersistent = true });
@@ -208,13 +219,13 @@ namespace UniCourses.WebUI.Controllers
 
             return View();
         }
-        [Route("/Kurslar/{name?}/{id?}")]
-        public IActionResult Courses(int id, string name)
+        [Route("/Kurslar/{name?}/{id?}/{page?}")]
+        public IActionResult Courses(int id, string name, int? page)
         {
             //List<Course> lastCourse = new List<Course>();
             List<Course> courses = new List<Course>();
             List<Category> categories = myContext.Category.Include(x => x.SubCategories).ToList();
-            if (User.Identity.IsAuthenticated) {
+            if (User.Identity.IsAuthenticated && User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Role).Value == "uye") {
                 string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
                 List<CourseMember> courseMembers = rCourseMember.GetAll(x => x.MemberId == Convert.ToInt32(uyeid)).ToList();
                 List<int> courseInt = new List<int>();
@@ -243,18 +254,25 @@ namespace UniCourses.WebUI.Controllers
                 courses = rCourse.GetAll(x => x.CategoryID == id).ToList();
             }
             
-           
             Category category = rCategory.GetBy(x => x.Id == id);
             List<Category> Subcategories = null;
             if (category.ParentID == null)
             {
                 Subcategories = myContext.Category.Include(x => x.SubCategories).Include(x => x.Courses).ToList();
             }
-
+            //pagination
+            var pageNumber = page ?? 1;
+            int pageSize = 2;
+            ViewBag.dgr = pageNumber;
+            IEnumerable<Course> onePage = courses.ToPagedList(pageNumber, pageSize);
+            pageSize = (int)Math.Ceiling(courses.Count / (double)pageSize);
 
 
             CourseCategoryVM courcatVM = new CourseCategoryVM
             {
+                CoursesPage = onePage,
+                PageSize = pageSize,
+                Pagenumber = pageNumber,
                 Courses = courses,
                 Category = category,
                 Categories = categories,
