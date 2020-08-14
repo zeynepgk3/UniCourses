@@ -1550,3 +1550,4 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcore
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\SearchPage.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\Course.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\EditCourse.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\uye\Views\Home\CourseSinglePage.cshtml.g.cs
