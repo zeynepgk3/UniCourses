@@ -1,0 +1,80 @@
+﻿@model UniCourses.Dal.Entities.Lesson
+
+@{
+    ViewData["Title"] = "Create Video";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<div class="py-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center section-heading">
+                <h2 class="text-primary heading">Ders Ekle</h2>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-md-12 pr-md-5">
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Bölüm Seç</label>
+                            <select asp-for="@Model.LessonNo" class="form-control border-0">
+                                <option value="1">Bölüm #1</option>
+                                <option value="2">Bölüm #2</option>
+                                <option value="3">Bölüm #3</option>
+                                <option value="4">Bölüm #4</option>
+                                <option value="5">Bölüm #5</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Kurs Seç</label>
+                            <select asp-for="@Model.CourseID" asp-items="@ViewBag.dgr" class="form-control border-0">
+                                <option value=""> Lütfen Seçiniz</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <label for="Name">Yeni Bölüm Oluştur</label>
+                            <input asp-for="@Model.LessonName" id="Name" class="form-control py-2" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="exampleFormControlFile1">Ders Videonu Yükle</label>
+                            <input name="file" type="file"  id="exampleFormControlFile1">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleFormControlFile1">(Varsa) Video Altyazısı Yükle</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleFormControlFile1">(Varsa) Transkript Yükle</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="message">Ders Açıklaması</label>
+                            <textarea asp-for="@Model.LessonDescription" id="message" class="form-control py-2" cols="20" rows="8"></textarea>
+                            <script>
+                                CKEDITOR.replace('message');
+                            </script>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-md-6 form-group" style="float:right;">
+                            <input type="submit" value="İlk Dersi Ekle" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+

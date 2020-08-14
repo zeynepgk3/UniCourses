@@ -1,0 +1,153 @@
+﻿@model UniCourses.Dal.Entities.Course
+@{
+    ViewData["Title"] = "CreateCourse";
+    Layout = "~/Areas/Educators/Views/Shared/_Layout.cshtml";
+}
+<!--
+
+    Kurs Başlığı
+    Kurs Alt Başlığı (anasayfada vs kartta göstermek için kısa metin)
+    Kurs Kategorisi
+    Kurs Açıklaması (eğitim içeriği, öncesinde bilinmesi gerekenler vs)
+    Hangi okulun dersi olduğu
+    Kurs düzeyi (sınıf bazında)
+    Video ekleme bölümü
+
+
+-->
+<script src="https://cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
+<div class="py-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center section-heading">
+                <h2 class="text-primary heading">Kurs Oluştur</h2>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-12 pr-md-5">
+                <form action="#" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label for="Name">Kurs Adı</label>
+                            <input asp-for="@Model.Name" id="Name" class="form-control py-2" required>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <label for="Title">Alt Başlık</label>
+                            <input asp-for="@Model.Title" id="Title" class="form-control py-2" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="Categoryi">Kategori sec:</label>
+                            <select asp-for="@Model.CategoryID" asp-items="@ViewBag.dgr">
+                                <option value=""> Lütfen Seçiniz</option>
+                            </select>
+
+                            @*<select name="Categoryi" id="Categoryi">
+                                @foreach (Category category in Model.Categories)
+                                {
+                                    if (category.ParentID != null)
+                                    {
+                                        <option value="@category.Id">@category.CategoryName</option>
+                                    }
+                                }
+                            </select>*@
+                            <!-- <input type="hidden" id="Educatori" name="Educatori" value=1 class="form-control py-2">
+                            <input type="hidden" id="Categoryi" name="Categori" value=2 class="form-control py-2">-->
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="courseimg">Kurs Görseli Yükle</label>
+                            <input type="file" name="file" multiple="multiple"  id="courseimg" class="form-control-file">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8 form-group">
+                            <label for="Langugage">Kurs Dili</label>
+                            <input asp-for="@Model.Language" id="Langugage" class="form-control py-2" required>
+                            <input type="hidden" asp-for="@Model.NumberOfStudent" id="NumberOfStudent" name="NumberOfStudent" value="1" class="form-control py-2">
+                            <input type="hidden" id="Duration" name="Duration" value="1" class="form-control py-2">
+                            <input type="hidden" id="Score" name="Score" value="0" class="form-control py-2">
+                            <input type="hidden" id="State" name="State" value="0" class="form-control py-2">
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <label for="Price">Kurs Ucreti</label>
+                            <input asp-for="@Model.Price" id="Price" class="form-control py-2" required>
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>Seviye</label>
+                            <select asp-for="@Model.Duzey" id="Duzey" class="form-control border-0" required>
+                                <!--boş döndürülmüyor, hocaya sor-->
+                                <option value="Diger">Diğer</option>
+                                <option value="1.Sinif">1.Sınıf</option>
+                                <option value="2.Sinif">2.Sınıf</option>
+                                <option value="3.Sinif">3.Sınıf</option>
+                                <option value="4.Sinif">4.Sınıf</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="Description">Kurs Açıklaması</label>
+                            <textarea name="Description" id="Description" class="form-control py-2" cols="20" rows="8" required></textarea><!--boş olduğunda algılamıyor, hocaya sor-->
+                            <script>
+                                CKEDITOR.replace('Description');
+                            </script>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+
+                        <div class="col-md-6 form-group" style="float:left;">
+                            <input type="submit" value="Kursu Oluştur" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+@*<script>
+        $("#create").click(function () {
+            swal({
+                    title: "Good job!",
+                    text: "You clicked the button!",
+                    icon: "success",
+                    button: "Aww yiss!",
+                });
+            var courseheader = $("#courseheader").val();
+            var shortdescription = $("#shortdescription").val();
+            var courseimg = $("#courseimg").val();
+            var school = $("#school").val();
+            var level = $("#level").val();
+            var longdescription = $("#longdescription").val();
+
+            //alert(courseheader + " " + shortdescription + " " + courseimg + " " + school + " " + level + " " + longdescription);
+
+            if (courseheader == '' || shortdescription == '' || courseimg == '' || school == '' || level == '') {
+                alert("Nope!");
+                swal({
+                    title: "Empty Area!",
+                    text: "Fill everything!",
+                    icon: "warning",
+                    button: "nooo",
+                });
+
+            }
+            else {
+                swal({
+                    title: "Good job!",
+                    text: "You clicked the button!",
+                    icon: "success",
+                    button: "Aww yiss!",
+                });
+            }
+        });
+
+    </script>*@

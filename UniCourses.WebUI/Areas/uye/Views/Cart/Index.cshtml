@@ -1,0 +1,205 @@
+﻿@model UniCourses.WebUI.ViewModels.CartVM
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--Section: Block Content-->
+<section class="site-section">
+    <div class="container">
+        <!--Grid row-->
+        <div class="row">
+
+            <!--Grid column-->
+            <div class="col-md-8">
+                <form>
+                    <div class="card element-animate mb-3 border-0">
+                        <div class="card-body block-28">
+
+                            <h5 class="mb-4">Sepet</h5>
+
+                            <div class="row mb-4">
+                                @if (Model.ListCart.Count() > 0)
+                                {
+                                    <div class="card-body">
+                                        @foreach (var item in Model.ListCart)
+                                        {
+                                            if (item.MemberId.ToString() == User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value)
+                                            {
+                                                <div class="col-md-5 col-lg-3 col-xl-3">
+                                                    <a asp-area="" asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@item.Course.Id" asp-route-courname="@item.Course.Name" asp-route-catname="Kategori">
+                                                        <img src="/img/@item.Course.ImageURL" alt="Image" class="img-fluid" style="width:100%;">
+                                                    </a>
+
+                                                </div>
+                                                <div class="col-md-7 col-lg-9 col-xl-9">
+                                                    <div>
+                                                        <div class="d-flex justify-content-between">
+                                                            <div>
+                                                                <a asp-area="" asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@item.Course.Id" asp-route-courname="@item.Course.Name" asp-route-catname="Kategori">
+                                                                    <h5>@item.Course.Name</h5>
+                                                                </a>
+
+                                                                <a>
+                                                                    <small>@item.Course.Description</small>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <div>
+                                                                <a type="button" class="card-link-secondary small text-uppercase mr-3"
+                                                                   asp-controller="Cart" asp-action="RemoveFromCart" asp-route-courseId="@item.CourseId">
+                                                                    <i class="fas fa-trash-alt mr-1"></i> Kaldır
+                                                                </a>
+                                                                <a href="#!" type="button" class="card-link-secondary small text-uppercase">
+                                                                    <i class="fas fa-heart mr-1"></i> İstek Listesine Taşı
+                                                                </a>
+                                                            </div>
+                                                            <p class="mb-0"><span><strong>@item.Course.Price</strong></span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>@*
+                                    <div class="row">
+                                        <div class="d-none d-lg-block col-lg-1 text-center py-2">
+                                            <img src="https://via.placeholder.com/150" class="rounded" width="100%" />
+                                        </div>
+                                        <div class="col-12 text-sm-center col-lg-6 text-lg-left">
+                                            <h5><strong><a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@item.Course.Id">@item.Course.Name</a></strong></h5>
+                                            <p><small>@item.Course.Description</small></p>
+                                        </div>
+                                        <div class="col-12 text-sm-center col-lg-5 text-lg-right row">
+                                            <div class="col-4 text-md-right" style="padding-top:5px;">
+                                                <h6><strong>@item.Course.Price<span class="text-muted"> &#x20BA;</span></strong></h6>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                                *@
+                                                <hr />
+                                            }
+                                        }
+                                        <div class="row">
+                                            <div class="col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8 pr-4">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item d-flex justify-content-between bg-light">
+                                                        <span class="text-info"> Toplam</span>
+
+                                                        <strong class="text-info">&#x20BA;<span id="txtOrderTotal">@Model.Order.OrderTotal</span></strong>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="container m-5"> Sepete Hiç Ürün Eklenmemiş</div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card element-animate border-0 mb-3">
+                        <!--Start of Wishlist-->
+                        <div class="card-body block-28">
+
+                            <h5 class="mb-4">İstek Listesi (<span>2</span> kurs)</h5>
+
+                            <div class="row mb-4">
+                                <div class="col-md-5 col-lg-3 col-xl-3">
+
+                                    <img src="/images/img_3.jpg" alt="Image" class="img-fluid" style="width:100%;">
+
+
+                                </div>
+                                <div class="col-md-7 col-lg-9 col-xl-9">
+                                    <div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <h5>ASP.Net Core MVC 3.1 Music Store List E-Ticaret List E-Ticaret List E-Ticaret</h5>
+                                                <small>Eğitmen: blabla Kategori:blabla</small>
+                                            </div>
+
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3">
+                                                    <i class="fas fa-trash-alt mr-1"></i> Kaldır
+                                                </a>
+                                                <a href="#!" type="button" class="card-link-secondary small text-uppercase">
+                                                    <i class="fas fa-shopping-cart mr-1"></i> Sepete Taşı
+                                                </a>
+                                            </div>
+                                            <p class="mb-0"><span><strong>$17.99</strong></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card mb-3 border-0 element-animate">
+
+                        <a asp-action="Summary" class="btn btn-outline-primary form-control">Ödeme Sayfasına Geç    <i class="fa fa-arrow-right"></i></a>
+
+                    </div>
+                </form>
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-4 element-animate ">
+
+                <!-- Card -->
+                <div class="card mb-3 border-0">
+                    <div class="block-25 mb-5">
+                        <div class="heading">Bunları Da Beğeneceksin</div>
+                        <ul>
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <figure class="image mr-3">
+                                        <img src="images/img_2_b.jpg" alt="" class="img-fluid">
+                                    </figure>
+                                    <div class="text">
+                                        <h3 class="heading">Create cool websites using this template</h3>
+                                        <span class="meta">$34</span>
+                                        <span class="meta">Sepete Ekle</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <figure class="image mr-3">
+                                        <img src="images/img_2_b.jpg" alt="" class="img-fluid">
+                                    </figure>
+                                    <div class="text">
+                                        <h3 class="heading">Create cool websites using this template</h3>
+                                        <span class="meta">$34</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <figure class="image mr-3">
+                                        <img src="images/img_2_b.jpg" alt="" class="img-fluid">
+                                    </figure>
+                                    <div class="text">
+                                        <h3 class="heading">Create cool websites using this template</h3>
+                                        <span class="meta">$34</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card -->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+    </div>
+</section>
+<!--Section: Block Content-->

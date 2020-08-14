@@ -1,0 +1,37 @@
+﻿@model List<Course>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<form method="post" action="#" enctype="multipart/form-data">
+    @*<label for="Categoryi">Kategori sec:</label>
+        <select asp-items="@ViewBag.dgr">
+            <option value="@"> Lütfen Seçiniz</option>
+        </select>
+        @foreach (Course c in Model.Where(w => w.ParentID == null))
+        {
+            <li>
+                <a class="dropdown-item" href="#">@c.CategoryName</a>
+                @if (c.SubCategories.Any())
+                {
+                    <ul>
+                        @foreach (Category sc in c.SubCategories)
+                        {
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Courses" asp-route-id="@sc.Id">@sc.CategoryName</a></li>
+                        }
+                    </ul>
+                }
+            </li>
+
+        }*@
+    <input name="file" type="file" />
+    <button type="submit">Upload</button>
+
+
+    <div class="row justify-content-between">
+        <div class="col-md-6 form-group" style="float:right;">
+            <input type="submit" value="İlk Video Ekle" class="btn btn-primary">
+        </div>
+    </div>
+</form>

@@ -22,6 +22,34 @@ namespace UniCourses.Bl.Repositories
         {
             return entities.FirstOrDefault(expression);
         }
+        public T GetFirstOrDefault(Expression<Func<T, bool>> expression, string includeProperties = null)
+        {
+            IQueryable<T> query = entities;
+            if (includeProperties != null)
+            {
+                foreach (var item in includeProperties.Split(new char[]
+                         { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(item);
+                }
+            }
+            return query.FirstOrDefault();
+        }
+        public IEnumerable<T> GetAllLazy(Expression<Func<T, bool>> expression,
+            string includeProperties = null)
+
+        {
+            IQueryable<T> query = entities.Where(expression);
+            if (includeProperties != null)
+            {
+                foreach (var item in includeProperties.Split(new char[]
+                         { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(item);
+                }
+            }
+            return query.ToList();
+        }
         public IQueryable<T> GetAll()
         {
             return entities;
@@ -41,11 +69,33 @@ namespace UniCourses.Bl.Repositories
             context.Remove(entity);
             context.SaveChanges();
         }
-
+        public void RemoveRange(IEnumerable<T> entity)
+        {
+            context.RemoveRange(entity);
+        }
         public void Update(T entity)
         {
             context.Update(entity);
             context.SaveChanges();
         }
+        public void Save()
+        {
+            context.SaveChanges();
+        }
+        public T Bul(int id)
+        {
+            return entities.Find(id);
+        }
+        
+        public IQueryable<T> GetInclude(Expression<Func<T, bool>> expression)
+        {
+            return entities.Include(expression);
+        }
+        
+        public IEnumerable<T> ListTo()
+        {
+            return entities.ToList();
+        }
+
     }
 }

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CourseMember>
+@using UniCourses.Dal.Entities
+
+
+@{
+    ViewData["Title"] = "Kurslarim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Kurslarim</h1>
+
+<div class="col-md-6 col-lg-8 order-md-2">
+    <div class="row">
+        
+            @foreach (CourseMember coursemember in Model)
+            {
+                <div class="col-md-12 col-lg-6 mb-5">
+                    <div class="block-19">
+                        <br />
+                        <figure>
+                            <a asp-controller="Home" asp-action="CourseSinglePage" asp-route-catname="Kategori" asp-route-courname="@UniCourses.WebUI.Common.MyTool.urlConvert(coursemember.Course.Name)"  asp-route-id="@coursemember.Course.Id">
+                                 <img src="~/img/@coursemember.Course.ImageURL" alt="Image" height="320px" width="320px" class="img-fluid">
+                                </a>
+                        </figure>
+                        <div class="text">
+                            <h2 class="heading"><a asp-controller="Home" asp-route-catname="Kategori" asp-action="CourseSinglePage" asp-route-id="@coursemember.Course.Id" asp-route-courname="@UniCourses.WebUI.Common.MyTool.urlConvert(coursemember.Course.Name)"> @coursemember.Course.Name</a></h2>
+                            <p class="mb-4"></p>
+                            <div class="meta d-flex align-items-center">
+                                <div class="number">
+                                    <span>@coursemember.Course.Score /5,0</span>
+                                </div>
+                                <div class="number">
+                                    <span>@coursemember.Course.NumberOfStudent Öğrenen</span>
+                                </div>
+                                <div class="price text-right">
+                                    @if (coursemember.IsDone != 1)
+                                    {
+                                        <span><a asp-controller="Home" asp-area="uye" asp-action="Lessons" asp-route-lessonname="Lessons" asp-route-coursename="@UniCourses.WebUI.Common.MyTool.urlConvert(coursemember.Course.Name)" asp-route-id="@coursemember.Course.Id"> Kursa Devam Et </a></span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>}
+        </div>
+</div>

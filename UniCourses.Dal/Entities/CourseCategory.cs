@@ -8,10 +8,13 @@ namespace UniCourses.Dal.Entities
     [Table("CourseCategory")]
     public class CourseCategory
     {
-        public int CourseId { get; set; }
+        
+        public int? CourseId { get; set; }
+        [ForeignKey("CourseId")]
         public Course Course { get; set; }
         
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
+        [ForeignKey("CategoryId")]
         public Category Category { get; set; }
     }
 }

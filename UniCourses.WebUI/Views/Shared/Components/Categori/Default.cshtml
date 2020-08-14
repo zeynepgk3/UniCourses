@@ -1,0 +1,35 @@
+﻿@using UniCourses.WebUI.ViewComponents
+@model IEnumerable<UniCourses.Dal.Entities.Category>
+    </UniCourses.WebUI.ViewComponents.Categori>
+    <div class="courses">
+        <div class="tab">
+            <ul class="mainmenu">
+                <li>
+                    <div class="tab">
+                        @foreach (Category category in Model)
+                        {
+                            @if (@category.ParentID == null)
+                            {
+                                <button class="tablinks bg-warning" onmouseover="openCity(event, 'submenu')">@category.CategoryName</button>
+                            }
+                            <!--  <a asp-area="uye" asp-controller="Home" asp-action="Courses" asp-route-id="@category.Id">@category.CategoryName</a> -->
+                            <ul class="submenu">
+                                <li>
+                                    <div id="submenu" class="tabcontent">
+                                        @foreach (Category subcategory in Model)
+                                        {
+                                            @if (category.Id == subcategory.ParentID)
+                                            {
+                                                <a asp-area="uye" asp-controller="Home" asp-action="Courses" asp-route-id="@subcategory.Id">@subcategory.CategoryName</a>
+                                            }
+                                        }
+                                    </div>
+                                    <!--  <a asp-area="uye" asp-controller="Home" asp-action="Courses" asp-route-id="subcategory.Id">subcategory.CategoryName</a>-->
+                                </li>
+                            </ul>
+                         }
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>

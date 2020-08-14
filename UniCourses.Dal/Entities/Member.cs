@@ -16,10 +16,7 @@ namespace UniCourses.Dal.Entities
             public int ID { get; set; }
 
             [StringLength(40), Column(TypeName = "varchar(40)"), Required(ErrorMessage = "İsim boş geçilemez"), Display(Name = "Üye Adı")]
-            public string Name { get; set; }
-
-            [StringLength(40), Column(TypeName = "varchar(40)"), Required(ErrorMessage = "Soy isim boş geçilemez"), Display(Name = "Üye Soyadı")]
-            public string LastName { get; set; }
+            public string NameSurName { get; set; }
 
             [StringLength(5), Column(TypeName = "varchar(5)"), Display(Name = "Cinsiyet")]
             public string Gender { get; set; }
@@ -47,12 +44,17 @@ namespace UniCourses.Dal.Entities
 
             [Column(TypeName = "int"), Required(), Display(Name = "Üye Rolü")]
             public int RoleNumber { get; set; }
-
-            /*
-             */
+            public ERole Role { get; set; }
+            public Educator Educator { get; set; }
+            public Picture Picture { get; set; }
+            public int PictureID { get; set; }
+            public string PictureURL { get; set; }
+        /*
+         */
             public virtual ICollection<Address> Addresses { get; set; }
             public virtual ICollection<Collection> Collections { get; set; }
             public virtual ICollection<Comment> Comments { get; set; }
+            public virtual ICollection<Course> Courses { get; set; }
 
 
         }

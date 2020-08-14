@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "Ayarlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ayarlar</h1>
+<h1>Resim ornegi</h1>
+<h1>@ViewBag.Message</h1>
+<h1>@ViewBag.ImageTitle</h1>
+<img src="@ViewBag.ImageDataUrl" />
+
+Ayarlarım
+
+<form asp-action="UploadImage"
+      asp-controller="Home"
+      asp-area="uye"
+      method="post"
+      enctype="multipart/form-data">
+    <input type="file" id="file1"
+           name="file"
+           multiple="multiple" />
+    <input type="submit"><div> Upload File(s) </div>
+</form>
