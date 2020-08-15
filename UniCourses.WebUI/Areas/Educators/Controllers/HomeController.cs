@@ -64,9 +64,10 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             };
             return View(lessonCoursesVM);
         }
-        public IActionResult Course()
+        public IActionResult Course(int id)
         {
-            return View();
+            List<Course> course = rCourse.GetAllLazy(x => x.Id == id, includeProperties: "Lessons").ToList();
+            return View(course);
         }
         public IActionResult EditCourse()
         {
@@ -82,9 +83,16 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         }
         public IActionResult CourseList()
         {
-            return View();
+            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+            Educator educator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
+            List<Course> courses = rCourse.GetAll(x => x.EducatorID == educator.ID).ToList();
+            return View(courses);
         }
         public IActionResult Profile()
+        {
+            return View();
+        }
+        public IActionResult RemoveCourse()
         {
             return View();
         }

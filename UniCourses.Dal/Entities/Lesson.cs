@@ -33,6 +33,7 @@ namespace UniCourses.Dal.Entities
         public int? CourseID { get; set; }
         public Course Course { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Videos> Videos { get; set; }
         public virtual ICollection<Exam> Exams { get; set; }
 
     }
