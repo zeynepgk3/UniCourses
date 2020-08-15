@@ -281,11 +281,9 @@ namespace UniCourses.WebUI.Controllers
             };
             return View(courcatVM);
         }
-        [Route("/{catname?}/{courname}/{id}")]
-        public IActionResult CourseSinglePage(int id, string courname)
+        [Route("/Detay/{catname}/{courname}/{id}")]
+        public IActionResult CourseSinglePage(int id)
         {
-            if (courname != "images")
-            {
                 var course = rCourse.GetBy(c => c.Id == id);
                 Cart cart = null;
                 CourseMember courseMember = new CourseMember();
@@ -308,8 +306,6 @@ namespace UniCourses.WebUI.Controllers
                 Image img = myContext.Images.FirstOrDefault(i => i.CourseID == courses.Id);
                 LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart, courseMember = courseMember };
                 return View(lessonCourses);
-            }
-            else return View();
         }
 
     }

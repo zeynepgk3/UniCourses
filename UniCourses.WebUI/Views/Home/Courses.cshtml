@@ -130,7 +130,7 @@
                                         <a asp-controller="Home" asp-action="CourseSinglePage" asp-route-courname="@UniCourses.WebUI.Common.MyTool.urlConvert(course.Name)" asp-route-catname="@UniCourses.WebUI.Common.MyTool.urlConvert(Model.Category.CategoryName)" asp-route-id="@course.Id"><img src="~/img/@course.ImageURL" alt="Image" class="img-fluid"></a>
                                     </figure>
                                     <div class="text">
-                                        <h2 class="heading"><a asp-controller="Home" asp-route-courname="@course.Name" asp-action="CourseSinglePage" asp-route-id="@course.Id"> @course.Name</a></h2>
+                                        <h2 class="heading"><a asp-controller="Home" asp-route-courname="@UniCourses.WebUI.Common.MyTool.urlConvert(course.Name)" asp-action="CourseSinglePage" asp-route-catname="@UniCourses.WebUI.Common.MyTool.urlConvert(Model.Category.CategoryName)" asp-route-id="@course.Id"> @course.Name</a></h2>
                                         <p class="mb-4"></p>
                                         <div class="meta d-flex align-items-center">
                                             <div class="number">
@@ -175,7 +175,7 @@
                     <li><a href="/Home/Courses/">Tüm Kurslar<span>12</span></a></li>
                     @foreach (Category category in Model.Categories)
                     {
-                        <li><a href="/Home/Courses/@category.Id">@category.CategoryName <span>@category.Count </span></a></li>
+                        <li><a asp-controller="Home" asp-action="Courses" asp-route-page="1" asp-route-name="Kategori" asp-route-id="@category.Id">@category.CategoryName <span>@category.Count </span></a></li>
                     }
                 </ul>
             </div>

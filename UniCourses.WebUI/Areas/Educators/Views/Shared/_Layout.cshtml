@@ -60,17 +60,17 @@
                     <span class="dropdown-item dropdown-header">15 Notifications</span>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
+                        <i class="fa fa-envelope mr-2"></i> 4 new messages
                         <span class="float-right text-muted text-sm">3 mins</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
+                        <i class="fa fa-users mr-2"></i> 8 friend requests
                         <span class="float-right text-muted text-sm">12 hours</span>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
+                        <i class="fa fa-file mr-2"></i> 3 new reports
                         <span class="float-right text-muted text-sm">2 days</span>
                     </a>
                     <div class="dropdown-divider"></div>
@@ -94,11 +94,11 @@
         <div class="sidebar">
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="/images/noface.png" class="img-circle elevation-2" alt="User Image">
-                </div>
+                @*<div class="image">
+            <img src="/images/noface.png" class="img-circle elevation-2" alt="User Image">
+        </div>*@
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a asp-action="EgitmenProfil" class="d-block"><i class="nav-icon fa fa-user"></i>@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</a>
                 </div>
             </div>
 
@@ -118,7 +118,7 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="fa fa-chalkboard nav-icon"></i>
+                            <i class="nav-icon fa fa-university"></i>
                             <p>
                                 Kurslarım
                                 <i class="fa fa-angle-left"></i>
@@ -128,13 +128,19 @@
                             <li class="nav-item ml-lg-5">
                                 <a asp-action="CreateCourse" class="nav-link">
                                     <i class="fa fa-plus-circle nav-icon"></i>
-                                    <p>Oluştur</p>
+                                    <p>Kurs Oluştur</p>
                                 </a>
                             </li>
                             <li class="nav-item ml-lg-5">
                                 <a asp-action="CourseList" class="nav-link">
                                     <i class="fa fa-list-alt nav-icon"></i>
                                     <p>Listele</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ml-lg-5">
+                                <a asp-action="CreateLesson" class="nav-link">
+                                    <i class="fa fa-flag nav-icon"></i>
+                                    <p>Ders Ekle</p>
                                 </a>
                             </li>
                         </ul>

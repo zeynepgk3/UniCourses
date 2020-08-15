@@ -34,8 +34,9 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         Repository<Videos> rVideos;
         IWebHostEnvironment _environment;
         Repository<Image> rImage;
+        Repository<Comment> rComment;
         MyContext myContext;
-        public HomeController(Repository<Videos> _rVideos, Repository<Image> _rImage, IWebHostEnvironment environment, MyContext _myContext, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
+        public HomeController(Repository<Videos> _rVideos, Repository<Comment> _rComment, Repository<Image> _rImage, IWebHostEnvironment environment, MyContext _myContext, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
         {
             rCategory = _rCategory;
             rAdmin = _rAdmin;
@@ -48,11 +49,20 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             _environment = environment;
             rVideos = _rVideos;
             myContext = _myContext;
+            rComment = _rComment;
             rImage = _rImage;
         }
         public IActionResult Index()
         {
-            return View();
+            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+            Educator educator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
+            List<Course> courses = rCourse.GetAllLazy(x => x.EducatorID == educator.ID, includeProperties: "Lessons").ToList();
+            LessonCoursesVM lessonCoursesVM = new LessonCoursesVM
+            {
+                Educator = educator,
+                Coursess = courses
+            };
+            return View(lessonCoursesVM);
         }
         public IActionResult Course()
         {
@@ -110,6 +120,8 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             course.EducatorID = educator.ID;
             course.ImageURL = img.ImageData;
             rCourse.Add(course);
+            rCategory.GetBy(x => x.Id == course.CategoryID).Count++;
+            rCategory.Save();
             img.CourseID = course.Id;
             rImage.Add(img);
             course.ImageID = img.Id;
@@ -162,6 +174,8 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
                         engine.GetMetadata(inputFile);
                     }
                     lesson.Duration = (int)inputFile.Metadata.Duration.TotalSeconds;
+                    rCourse.GetBy(x => x.Id == lesson.CourseID).Duration += lesson.Duration;
+                    rCourse.Save();
                     rLesson.Update(lesson);
                     
                 }
