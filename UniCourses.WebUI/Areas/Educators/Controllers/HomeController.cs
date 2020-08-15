@@ -56,7 +56,20 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         {
             string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
             Educator educator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
-            List<Course> courses = rCourse.GetAllLazy(x => x.EducatorID == educator.ID, includeProperties: "Lessons").ToList();
+            List<Course> courses = rCourse.GetAllLazy(x => x.EducatorID == educator.ID, includeProperties: "Lessons").ToList();//kursa lessoncount eklenince lazy loading ile commentler cekilecek.
+            /*List<Comment> comments = new List<Comment>();
+            //rComment.GetAll(x => x.CourseID == 1);
+            foreach (var item in courses)
+            {
+                foreach (var item2 in comments)
+                {
+                    item2.UserComment = rComment.GetBy(x=>x.CourseID== item.Id).UserComment;
+                    item2.MemberName = rComment.GetBy(x=>x.CourseID== item.Id).MemberName;
+                    item2.CommentDate = rComment.GetBy(x=>x.CourseID== item.Id).CommentDate;
+                    item2.Rate = rComment.GetBy(x=>x.CourseID== item.Id).Rate;
+                    rComment.Save();
+                }
+            }*/
             LessonCoursesVM lessonCoursesVM = new LessonCoursesVM
             {
                 Educator = educator,
@@ -173,7 +186,6 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
                         video.UploadDate = DateTime.Now;
                         video.VideoPath = url;
                         rVideos.Add(video);
-                        
                     }
                     
                     var inputFile = new MediaFile { Filename = @"C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\wwwroot" + video.VideoPath };
@@ -198,15 +210,17 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             }
             return RedirectToAction("Index");
         }
-        public IActionResult UploadVideo()
+        public IActionResult UploadVideo(int id)
         {
-            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
-            Educator educ = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
-            List<Educator> educator = myContext.Educator.Include(x => x.Courses).ToList();
             
-            List<Course> courses = myContext.Course.Where(x=>x.EducatorID == educ.ID).Include(x => x.Lessons).ToList();
-            //ViewBag.dgr = rLesson.GetAll(x => x. == dersin.).Select(s => new SelectListItem { Text = s.Name, Value = s.Id.ToString() });
-            return View(courses);
+            //ViewBag.Lessonid = rLesson.GetBy(x => x.Id == id);
+            Lesson lesson = rLesson.GetBy(x => x.Id == id);
+            Course course = rCourse.GetBy(x => x.Id == lesson.CourseID);
+            ViewBag.Courseid = course.Id;
+            ViewBag.CourseName = course.Name;
+            ViewBag.LessonName = lesson.LessonName;
+            ViewBag.Lessonid = lesson.Id;
+            return View();
         }
         
         [HttpPost]
@@ -219,8 +233,8 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
                     int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid)?.Value);
                     string userName = (User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value);
                     string folder = Path.Combine(_environment.WebRootPath, "video");
-                    string url = @"\video\" + userName + @"\" + file.FileName;
-                    string pathString = Path.Combine(folder, userName);
+                    string url = @"\video\" + userName.Replace(" ", "_") + @"\" + file.FileName;
+                    string pathString = Path.Combine(folder, userName.Replace(" ", "_"));
                     if (!Directory.Exists(pathString))
                     {
                         Directory.CreateDirectory(pathString);
@@ -230,12 +244,21 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
                     {
                         await file.CopyToAsync(stream);
                         // rVideos.Add(new Videos(video.Name, DateTime.Now, url, video.LessonID));
-                        video.Name = userName;
+                       
                         video.UploadDate = DateTime.Now;
                         video.VideoPath = url;
                         rVideos.Add(video);
-                        
                     }
+                    var inputFile = new MediaFile { Filename = @"C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\wwwroot" + video.VideoPath };
+                    using (var engine = new Engine())
+                    {
+                        engine.GetMetadata(inputFile);
+                    }
+                    Lesson lesson = rLesson.GetBy(x => x.Id == video.LessonID);
+                    lesson.Duration += (int)inputFile.Metadata.Duration.TotalSeconds;
+                    rCourse.GetBy(x => x.Id == lesson.CourseID).Duration += lesson.Duration;
+                    rCourse.Save();
+                    rLesson.Update(lesson);
                 }
                 catch (Exception ex)
                 {
@@ -246,7 +269,7 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             {
                 ViewBag.Message = "You have not specified a file.";
             }
-            return RedirectToAction("UploadVideo");
+            return RedirectToAction("Index");
         }
         public async Task<IActionResult> Cikis()
         {

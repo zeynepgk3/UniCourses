@@ -152,8 +152,6 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             };
 
             Member girenuye = rMember.GetBy(f => f.ID == fromClaim);
-
-
             CartVM.Order.member = rMember.GetBy(u => u.ID == fromClaim);
             CartVM.Order.MemberId = girenuye.ID;
 

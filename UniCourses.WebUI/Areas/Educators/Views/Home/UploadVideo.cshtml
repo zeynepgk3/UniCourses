@@ -1,37 +1,82 @@
-﻿@model List<Course>
+﻿@model UniCourses.Dal.Entities.Videos
 @{
-    Layout = null;
+    Layout = "~/Areas/Educators/Views/Shared/_Layout.cshtml";
 }
+    <div class="content-wrapper">
+        <div class="row align-items-center">
+            <div class="col-md-12 pr-md-5">
+                <form action="UploadVideo" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Kurs : @ViewBag.CourseName </label>
 
-<!DOCTYPE html>
-<form method="post" action="#" enctype="multipart/form-data">
-    @*<label for="Categoryi">Kategori sec:</label>
-        <select asp-items="@ViewBag.dgr">
-            <option value="@"> Lütfen Seçiniz</option>
-        </select>
-        @foreach (Course c in Model.Where(w => w.ParentID == null))
-        {
-            <li>
-                <a class="dropdown-item" href="#">@c.CategoryName</a>
-                @if (c.SubCategories.Any())
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Ders : @ViewBag.LessonName</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="exampleFormControlFile1">Ders Videonu Yükle</label>
+                            <input name="file" type="file" id="exampleFormControlFile1">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleFormControlFile1">(Varsa) Video Altyazısı Yükle</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleFormControlFile1">(Varsa) Transkript Yükle</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label>Video Adı</label>
+                            <input asp-for="Name" type="text" class="form-control py-2" required />
+                            <input asp-for="CourseID" type="hidden" value="@ViewBag.Courseid" />
+                            <input asp-for="LessonID" type="hidden" value="@ViewBag.Lessonid" />
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-md-6 form-group" style="float:right;">
+                            <input type="submit" value="Videoyu Ekle" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>@*
+        <!DOCTYPE html>
+        <form method="post" action="#" enctype="multipart/form-data">
+            <label for="Categoryi">Kategori sec:</label>
+                <select asp-items="@ViewBag.dgr">
+                    <option value="@"> Lütfen Seçiniz</option>
+                </select>
+                @foreach (Course c in Model.Where(w => w.ParentID == null))
                 {
-                    <ul>
-                        @foreach (Category sc in c.SubCategories)
+                    <li>
+                        <a class="dropdown-item" href="#">@c.CategoryName</a>
+                        @if (c.SubCategories.Any())
                         {
-                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Courses" asp-route-id="@sc.Id">@sc.CategoryName</a></li>
+                            <ul>
+                                @foreach (Category sc in c.SubCategories)
+                                {
+                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Courses" asp-route-id="@sc.Id">@sc.CategoryName</a></li>
+                                }
+                            </ul>
                         }
-                    </ul>
+                    </li>
+
                 }
-            </li>
-
-        }*@
+    <label for="exampleFormControlFile1">Ders Videonu Yükle</label>
     <input name="file" type="file" />
-    <button type="submit">Upload</button>
-
-
+    <input name="name" type="text" />
+    <input name="CourseID" type="hidden" value="@Model.Courses.Id" />
+    <input name="LessonID" type="hidden" value="@Model.Lesson.Id" />
     <div class="row justify-content-between">
         <div class="col-md-6 form-group" style="float:right;">
-            <input type="submit" value="İlk Video Ekle" class="btn btn-primary">
+            <input type="submit" value="Derse Video Ekle" class="btn btn-primary">
         </div>
     </div>
-</form>
+    </form>*@

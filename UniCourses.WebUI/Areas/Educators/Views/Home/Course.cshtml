@@ -75,8 +75,6 @@
                                 </div>
                             </div>
                             <hr>
-
-
                         </div>
                     </div>
                     <div class="row d-flex align-items-center justify-content-center">
@@ -103,64 +101,27 @@
                                 <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="post">
-                                                <div class="user-block">
-                                                    <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                                                    <span class="username">
-                                                        <a href="#">Jonathan Burke Jr.</a>
-                                                    </span>
-                                                    <span class="description">Shared publicly - 7:45 PM today</span>
-                                                </div>
-                                                <!-- /.user-block -->
-                                                <p>
-                                                    Lorem ipsum represents a long-held tradition for designers,
-                                                    typographers and the like. Some people hate it and argue for
-                                                    its demise, but others ignore.
-                                                </p>
+                                            @await Component.InvokeAsync("KursYorumlari", item.Id)
+                                            @*<div class="post">
+                                                    <div class="user-block">
+                                                        <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                                                        <span class="username">
+                                                            <a href="#">Jonathan Burke Jr.</a>
+                                                        </span>
+                                                        <span class="description">Shared publicly - 7:45 PM today</span>
+                                                    </div>
+                                                    <!-- /.user-block -->
+                                                    <p>
+                                                        Lorem ipsum represents a long-held tradition for designers,
+                                                        typographers and the like. Some people hate it and argue for
+                                                        its demise, but others ignore.
+                                                    </p>
 
-                                                <p>
-                                                    <a href="#" class="link-black text-sm"><i class="fa fa-link mr-1"></i> Demo File 1 v2</a>
-                                                </p>
-                                            </div>
+                                                    <p>
+                                                        <a href="#" class="link-black text-sm"><i class="fa fa-link mr-1"></i> Demo File 1 v2</a>
+                                                    </p>
+                                                </div> *@
 
-                                            <div class="post clearfix">
-                                                <div class="user-block">
-                                                    <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-                                                    <span class="username">
-                                                        <a href="#">Sarah Ross</a>
-                                                    </span>
-                                                    <span class="description">Sent you a message - 3 days ago</span>
-                                                </div>
-                                                <!-- /.user-block -->
-                                                <p>
-                                                    Lorem ipsum represents a long-held tradition for designers,
-                                                    typographers and the like. Some people hate it and argue for
-                                                    its demise, but others ignore.
-                                                </p>
-                                                <p>
-                                                    <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 2</a>
-                                                </p>
-                                            </div>
-
-                                            <div class="post">
-                                                <div class="user-block">
-                                                    <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                                                    <span class="username">
-                                                        <a href="#">Jonathan Burke Jr.</a>
-                                                    </span>
-                                                    <span class="description">Shared publicly - 5 days ago</span>
-                                                </div>
-                                                <!-- /.user-block -->
-                                                <p>
-                                                    Lorem ipsum represents a long-held tradition for designers,
-                                                    typographers and the like. Some people hate it and argue for
-                                                    its demise, but others ignore.
-                                                </p>
-
-                                                <p>
-                                                    <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v1</a>
-                                                </p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -230,12 +191,12 @@
                                                 <span class="badge badge-success">Tamamlandı</span>
                                             </td>
                                             <td class="project-actions text-right">
-                                                <a class="btn btn-primary btn-sm" asp-action="Course">
-                                                    <i class="fa fa-folder">
+                                                <a class="btn btn-primary btn-sm" asp-route-id="@lessons.Id" asp-action="UploadVideo">
+                                                    <i class="fa fa-file-video-o ">
                                                     </i>
-                                                    Görüntüle
+                                                    Video Ekle
                                                 </a>
-                                                <a class="btn btn-info btn-sm" asp-action="EditCourse">
+                                                <a class="btn btn-info btn-sm" asp-action="EditLesson">
                                                     <i class="fa fa-pencil">
                                                     </i>
                                                     Düzenle
