@@ -43,7 +43,7 @@ namespace UniCourses.Dal.Entities
         public int ImageID { get; set; }
         public string ImageURL { get; set; }
         public Image Image { get; set; }
-
+        public ICollection<Comment> Comments { get; set; }
         public ICollection<Lesson> Lessons { get; set; }
     }
 }

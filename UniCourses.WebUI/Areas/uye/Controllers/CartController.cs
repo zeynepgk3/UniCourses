@@ -18,17 +18,21 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
     {
         Repository<Cart> rCart;
         Repository<Member> rMember;
+        Repository<Course> rCourse;
         Repository<CourseMember> rCourseMember;
         Repository<Order> rOrder;
+        Repository<Educator> rEducator;
         // private readonly UserManager<IdentityUser> userManager;
         public CartVM CartVM { get; set; }
-        public CartController(Repository<CourseMember> _rCourseMember, Repository<Order> _rOrder, Repository<Member> _rMember,/*UserManager<IdentityUser> _userManager,*/ Repository<Cart> _rCart)
+        public CartController(Repository<CourseMember> _rCourseMember, Repository<Educator> _rEducator, Repository<Course> _rCourse, Repository<Order> _rOrder, Repository<Member> _rMember,/*UserManager<IdentityUser> _userManager,*/ Repository<Cart> _rCart)
         {
             //  userManager = _userManager;
             rCart = _rCart;
             rCourseMember = _rCourseMember;
             rOrder = _rOrder;
             rMember = _rMember;
+            rCourse = _rCourse;
+            rEducator = _rEducator;
         }
         public IActionResult Index()
         {
@@ -167,6 +171,10 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
                     CourseId = item.CourseId
 
                 };
+                rCourse.GetBy(x => x.Id == item.CourseId).NumberOfStudent++;
+                rEducator.GetBy(x => x.ID == item.Course.EducatorID).TotalStudent++;
+                rCourse.Save();
+                rEducator.Save();
                 rCourseMember.Add(CourseMember);
                 //---------------------------------------
             }

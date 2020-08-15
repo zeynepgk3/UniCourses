@@ -1,4 +1,4 @@
-﻿
+﻿@model UniCourses.WebUI.ViewModels.LessonCoursesVM
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Educators/Views/Shared/_Layout.cshtml";
@@ -59,7 +59,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner" style="color:white;">
-                        <h3>58</h3>
+                        <h3>@Model.Educator.TotalStudent</h3>
 
                         <p>Öğrenci</p>
                     </div>
@@ -102,86 +102,28 @@
         <!-- Main row -->
         <div class="row">
             <!-- Left col -->
-            <div class="col-md-6 col-lg-4 bg-light">
-                <!-- Custom tabs (Charts with tabs)-->
-                <div class="card  d-flex align-items-center justify-content-between">
-                    <div class="card-header">
-                        <a href="course.html">
-                            <h3 class="card-title">
-                                <i class="fas fa-book mr-1"></i>
-                                Kurs Adı
-                            </h3> <br />
-                        </a>
-                        <p>kurs açıklaması açıklama açıklama açıklama açıklama açıklama açıklama açıklama</p>
-                        <span style="">16 Ders</span>
-                        <span>34 Dakika</span>
-                    </div>
-
-
-
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4 bg-light">
-                <!-- Custom tabs (Charts with tabs)-->
-                <div class="card">
-                    <div class="card-header">
-                        <a href="course.html">
-                            <h3 class="card-title">
-                                <i class="fas fa-book mr-1"></i>
-                                Kurs Adı
-                            </h3> <br />
-                            <p>kurs açıklaması, fiyatı</p>
-
-                        </a>
+            @foreach (Course course in Model.Coursess)
+            {
+                <div class="col-md-6 col-lg-4 bg-light">
+                    <!-- Custom tabs (Charts with tabs)-->
+                    <div class="card  d-flex align-items-center justify-content-between">
+                        <div class="card-header">
+                            <a asp-action="Course" asp-route-id="@course.Id">
+                                <h3 class="card-title">
+                                    <i class="fa fa-book mr-1"></i>
+                                    @course.Name
+                                </h3> <br />
+                            </a>
+                            <p>@course.Title</p>
+                            <span style=""><i class="fa fa-th-list"></i>  @course.Lessons.Count Ders </span>
+                            <span><i class="fa fa-user"></i>  @course.NumberOfStudent Öğrenci</span>
+                            <br />
+                            <span><i class="fa fa-clock-o"></i>  @(course.Duration/3600) Saat @(course.Duration/60) Dakika </span>
+                            
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-4 bg-light">
-                <!-- Custom tabs (Charts with tabs)-->
-                <div class="card">
-                    <div class="card-header">
-                        <a href="course.html">
-                            <h3 class="card-title">
-                                <i class="fas fa-book mr-1"></i>
-                                Kurs Adı
-                            </h3> <br />
-                            <p>kurs açıklaması, fiyatı</p>
-
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 bg-light">
-                <!-- Custom tabs (Charts with tabs)-->
-                <div class="card">
-                    <div class="card-header">
-                        <a href="course.html">
-                            <h3 class="card-title">
-                                <i class="fas fa-book mr-1"></i>
-                                Kurs Adı
-                            </h3> <br />
-                            <p>kurs açıklaması</p>
-
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 bg-light">
-                <!-- Custom tabs (Charts with tabs)-->
-                <div class="card">
-                    <div class="card-header">
-                        <a href="course.html">
-                            <h3 class="card-title">
-                                <i class="fas fa-book mr-1"></i>
-                                Kurs Adı
-                            </h3> <br />
-                            <p>kurs açıklaması, fiyatı</p>
-
-                        </a>
-                    </div>
-                </div>
-            </div>
+            }
 
 
         </div>
@@ -195,14 +137,14 @@
                 <div class="card-tools">
                     <span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
+                        <i class="fa fa-minus"></i>
                     </button>
                     <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts"
                             data-widget="chat-pane-toggle">
-                        <i class="fas fa-comments"></i>
+                        <i class="fa fa-comments"></i>
                     </button>
                     <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
+                        <i class="fa fa-times"></i>
                     </button>
                 </div>
             </div>
@@ -410,8 +352,8 @@
                     <li>
                         <!-- drag handle -->
                         <span class="handle">
-                            <i class="fas fa-ellipsis-v"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
                         </span>
                         <!-- checkbox -->
                         <div class="icheck-primary d-inline ml-2">
@@ -421,98 +363,98 @@
                         <!-- todo text -->
                         <span class="text">Design a nice theme</span>
                         <!-- Emphasis label -->
-                        <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                        <small class="badge badge-danger"><i class="fa fa-clock"></i> 2 mins</small>
                         <!-- General tools such as edit or delete-->
                         <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
                         </div>
                     </li>
                     <li>
                         <span class="handle">
-                            <i class="fas fa-ellipsis-v"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
                         </span>
                         <div class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
                             <label for="todoCheck2"></label>
                         </div>
                         <span class="text">Make the theme responsive</span>
-                        <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
+                        <small class="badge badge-info"><i class="fa fa-clock"></i> 4 hours</small>
                         <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
                         </div>
                     </li>
                     <li>
                         <span class="handle">
-                            <i class="fas fa-ellipsis-v"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
                         </span>
                         <div class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo3" id="todoCheck3">
                             <label for="todoCheck3"></label>
                         </div>
                         <span class="text">Let theme shine like a star</span>
-                        <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
+                        <small class="badge badge-warning"><i class="fa fa-clock"></i> 1 day</small>
                         <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
                         </div>
                     </li>
                     <li>
                         <span class="handle">
-                            <i class="fas fa-ellipsis-v"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
                         </span>
                         <div class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo4" id="todoCheck4">
                             <label for="todoCheck4"></label>
                         </div>
                         <span class="text">Let theme shine like a star</span>
-                        <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
+                        <small class="badge badge-success"><i class="fr fa-clock"></i> 3 days</small>
                         <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
                         </div>
                     </li>
                     <li>
                         <span class="handle">
-                            <i class="fas fa-ellipsis-v"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
                         </span>
                         <div class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo5" id="todoCheck5">
                             <label for="todoCheck5"></label>
                         </div>
                         <span class="text">Check your messages and notifications</span>
-                        <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
+                        <small class="badge badge-primary"><i class="fa fa-clock"></i> 1 week</small>
                         <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
                         </div>
                     </li>
                     <li>
                         <span class="handle">
-                            <i class="fas fa-ellipsis-v"></i>
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
+                            <i class="fa fa-ellipsis-v"></i>
                         </span>
                         <div class="icheck-primary d-inline ml-2">
                             <input type="checkbox" value="" name="todo6" id="todoCheck6">
                             <label for="todoCheck6"></label>
                         </div>
                         <span class="text">Let theme shine like a star</span>
-                        <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
+                        <small class="badge badge-secondary"><i class="fa fa-clock"></i> 1 month</small>
                         <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
+                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-trash-o"></i>
                         </div>
                     </li>
                 </ul>
             </div>
             <!-- /.card-body -->
             <div class="card-footer clearfix">
-                <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add item</button>
+                <button type="button" class="btn btn-info float-right"><i class="fa fa-plus"></i> Add item</button>
             </div>
         </div>
         <!-- /.card -->
@@ -524,7 +466,7 @@
             <div class="card bg-gradient-primary">
                 <div class="card-header border-0">
                     <h3 class="card-title">
-                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <i class="fa fa-map-marker mr-1"></i>
                         Tıklanma Sayısı
                     </h3>
                     <!-- card tools -->
@@ -533,14 +475,14 @@
                                 class="btn btn-primary btn-sm daterange"
                                 data-toggle="tooltip"
                                 title="Date range">
-                            <i class="far fa-calendar-alt"></i>
+                            <i class="fa fa-calendar-alt"></i>
                         </button>
                         <button type="button"
                                 class="btn btn-primary btn-sm"
                                 data-card-widget="collapse"
                                 data-toggle="tooltip"
                                 title="Collapse">
-                            <i class="fas fa-minus"></i>
+                            <i class="fa fa-minus"></i>
                         </button>
                     </div>
                     <!-- /.card-tools -->
@@ -575,16 +517,16 @@
             <div class="card bg-gradient-info">
                 <div class="card-header border-0">
                     <h3 class="card-title">
-                        <i class="fas fa-th mr-1"></i>
+                        <i class="fa fa-th mr-1"></i>
                         Sales Graph
                     </h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
+                            <i class="fa fa-minus"></i>
                         </button>
                         <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
-                            <i class="fas fa-times"></i>
+                            <i class="fa fa-times"></i>
                         </button>
                     </div>
                 </div>
@@ -626,7 +568,7 @@
                 <div class="card-header border-0">
 
                     <h3 class="card-title">
-                        <i class="far fa-calendar-alt"></i>
+                        <i class="fa fa-calendar-alt"></i>
                         Calendar
                     </h3>
                     <!-- tools card -->
@@ -634,7 +576,7 @@
                         <!-- button with a dropdown -->
                         <div class="btn-group">
                             <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
-                                <i class="fas fa-bars"></i>
+                                <i class="fa fa-bars"></i>
                             </button>
                             <div class="dropdown-menu" role="menu">
                                 <a href="#" class="dropdown-item">Add new event</a>
@@ -644,10 +586,10 @@
                             </div>
                         </div>
                         <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
+                            <i class="fa fa-minus"></i>
                         </button>
                         <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
-                            <i class="fas fa-times"></i>
+                            <i class="fa fa-times"></i>
                         </button>
                     </div>
                     <!-- /. tools -->

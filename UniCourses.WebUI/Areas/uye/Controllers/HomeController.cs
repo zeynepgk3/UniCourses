@@ -107,7 +107,8 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         public IActionResult Lessons(Comment comment)
         {
             comment.MemberID = Convert.ToInt32(User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value);
-            comment.Member = rMember.GetBy(x => x.ID == comment.MemberID);
+          //  comment.Member = rMember.GetBy(x => x.ID == comment.MemberID);
+            comment.MemberName = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Name).Value;
             comment.CommentDate = DateTime.Now;
             comment.CommentState = 0;
             rComment.Add(comment);
