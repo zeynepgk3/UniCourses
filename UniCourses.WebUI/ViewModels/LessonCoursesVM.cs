@@ -13,6 +13,7 @@ namespace UniCourses.WebUI.ViewModels
         public Lesson Lesson { get; set; }
         public Cart Cart { get; set; }
         public Comment Comment { get; set; }
+        public List<Comment> Comments { get; set; }
         public Course Courses { get; set; }
         public List<Course> Coursess { get; set; }
         public Member Member { get; set; }
