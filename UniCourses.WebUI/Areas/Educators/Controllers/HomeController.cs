@@ -82,9 +82,21 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             List<Course> course = rCourse.GetAllLazy(x => x.Id == id, includeProperties: "Lessons").ToList();
             return View(course);
         }
-        public IActionResult EditCourse()
+        public IActionResult EditCourse(int id)
         {
-            return View();
+            Course course = rCourse.Bul(id);
+            return View(course);
+        }
+        [HttpPost]
+        public IActionResult EditCourse(Course course)
+        {
+            Course changedcourse = rCourse.Bul(course.Id);
+            changedcourse.Name = course.Name;
+            changedcourse.Price = course.Price;
+            changedcourse.Title = course.Title;
+            changedcourse.Description = course.Description;
+            rCourse.Update(changedcourse);
+            return RedirectToAction("EditCourse", new { course.Id});
         }
         public IActionResult Build()
         {
@@ -105,9 +117,26 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         {
             return View();
         }
-        public IActionResult RemoveCourse()
+        public IActionResult RemoveCourse(int id)
         {
-            return View();
+            return View(rCourse.GetBy(x=>x.Id == id));
+        }
+        public IActionResult Sil(int id, string mail, string password)
+        {
+            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+            Educator educator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
+            if (mail == educator.Mail && password == educator.Password)
+            {
+                Course course = rCourse.Bul(id);
+                course.State = false;
+                rCourse.Update(course);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("RemoveCourse");
+            }
+            
         }
         [HttpGet]
         public IActionResult CreateCourse()

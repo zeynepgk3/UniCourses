@@ -132,6 +132,14 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
             return View(rMember.GetBy(r => r.ID.ToString() == uyeid));
         }
+        [HttpPost]
+        public IActionResult Profil(Member member)
+        {
+            Member guncelmember = rMember.Bul(member.ID);
+            guncelmember.NameSurName = member.NameSurName;
+
+            return RedirectToAction("Profil", new { member.ID });
+        }
         public IActionResult CourseSinglePage(int id)
         {
             //Courses.Where(x=>x.KategoriId == kategoriId).OrderByDescending(x => x.Id).Take(adet).ToList();
