@@ -33,9 +33,10 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         Repository<CourseCategoryVM> rCourCat;
         Repository<Videos> rVideos;
         Repository<Image> rImage;
+        Repository<Picture> rPicture;
         Repository<CourseMember> rCourseMember;
         MyContext myContext;
-        public HomeController(Repository<Videos> _rVideos, Repository<CourseMember> _rCourseMember, Repository<Image> _rImage, Repository<Comment> _rComment, MyContext _myContext, Repository<Cart> _rCart, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
+        public HomeController(Repository<Videos> _rVideos, Repository<Picture> _rPicture, Repository<CourseMember> _rCourseMember, Repository<Image> _rImage, Repository<Comment> _rComment, MyContext _myContext, Repository<Cart> _rCart, Repository<Category> _rCategory, Repository<Exam> _rExam, Repository<Educator> _rEducator, Repository<Lesson> _rLesson, Repository<Member> _rMember, Repository<Admin> _rAdmin, Repository<Course> _rCourse, Repository<CourseCategoryVM> _rCourCat)
         {
             rCategory = _rCategory;
             rAdmin = _rAdmin;
@@ -51,6 +52,7 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             myContext = _myContext;
             rVideos = _rVideos;
             rImage = _rImage;
+            rPicture = _rPicture;
 
         }
         public IActionResult Index()
@@ -137,7 +139,27 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         {
             Member guncelmember = rMember.Bul(member.ID);
             guncelmember.NameSurName = member.NameSurName;
-
+            rMember.Update(guncelmember);
+            return RedirectToAction("Profil", new { member.ID });
+        }
+        public IActionResult UploadPicture()
+        {
+            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+            Member member = rMember.GetBy(x => x.ID == Convert.ToInt32(uyeid));
+            Picture img = rPicture.Bul(member.PictureID);
+            foreach (var file in Request.Form.Files)
+            {
+                img.ImageTitle = file.FileName;
+                var yeniresimad = Guid.NewGuid() + img.ImageTitle.Replace(" ", "_");
+                var yuklenecekyer = Path.Combine(Directory.GetCurrentDirectory(),
+                            "wwwroot/Picture/" + yeniresimad);
+                var stream = new FileStream(yuklenecekyer, FileMode.Create);
+                file.CopyTo(stream);
+                img.ImageData = yeniresimad;
+            }
+            member.PictureURL= img.ImageData;
+            rPicture.Update(img);
+            rMember.Update(member);
             return RedirectToAction("Profil", new { member.ID });
         }
         public IActionResult CourseSinglePage(int id)

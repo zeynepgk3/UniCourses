@@ -17,18 +17,29 @@
     <div class="row">
         <div style="text-align:right; margin-top:20px;" class=" col-md-5">
             <div>
-                <img style="width:100%; height: auto;max-width:256px;" src="/Picture/@Model.PictureURL" />
-                <!-- badge -->
-
+                <form method="post" asp-action="UploadPicture" enctype="multipart/form-data">
+                    <img style="width:100%; height: auto;max-width:256px;" src="/Picture/@Model.PictureURL" />
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="courseimg">Fotoğrafını Güncelle</label>
+                            <input type="file" name="file" multiple="multiple" id="courseimg" class="form-control-file" required>
+                            <input type="submit" class="btn btn-info" value="Resmi Güncelle">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-
         <div class="col-md-7 p-5 text-center">
             <div class="icon-row">
-                <form method="post" asp-action="Profil">
-                    <span style="font-size:1.3em; color:#1b1b1b;">
-                        <i class="fa fa-user m-2" aria-hidden="true" style="color:#cc2444;"></i><b>@Model.NameSurName</b>
-                    </span><br />
+                <form method="post" asp-action="Profil" enctype="multipart/form-data"><center>
+                    <span style="font-size:1.3em; color:#1b1b1b;" align="center">
+
+                        <i class="fa fa-user m-2" aria-hidden="true" style="color:#cc2444;"></i><b>İsim Soyisim</b>
+                    
+                        <input asp-for="@Model.NameSurName"  class="form-control" value="@Model.NameSurName" style="width:200px;" >
+                        <input asp-for="@Model.ID" type="hidden" class="form-control" value="@Model.ID">
+
+                    </span></center><br />
                     <span style="font-size:1.2em;">
                         <i class="fa fa-graduation-cap m-2" aria-hidden="true" style="color:#cc2444;"></i>**Okulu Eklenecek**
                     </span><br />

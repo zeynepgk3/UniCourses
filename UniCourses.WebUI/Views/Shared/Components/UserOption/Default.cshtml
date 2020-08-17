@@ -20,7 +20,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</a>
             <div class="dropdown-menu" aria-labelledby="dropdown05">
-                <a class="dropdown-item" asp-area="uye" asp-controller="Home" asp-action="Profil">Profilim</a>
+                <a class="dropdown-item" asp-area="uye" asp-controller="Home" asp-action="Profil"><i class="fa fa-user" aria-hidden="true"></i> Profilim</a>
                 <a class="dropdown-item" asp-area="uye" asp-controller="Home" asp-action="Kurslarim"><i class="fa fa-graduation-cap" aria-hidden="true"></i>  Kurslarım</a>
                 <a class="dropdown-item" asp-area="uye" asp-controller="Cart" asp-action="Index"><i class="fa fa-shopping-cart" aria-hidden="true"></i>  Sepetim</a>
                 <a class="dropdown-item" asp-area="uye" asp-controller="Home" asp-action="Ayarlar"><i class="fa fa-sliders" aria-hidden="true"></i>  Ayarlar</a>
