@@ -55,20 +55,20 @@
                     <div class="col-12 col-sm-8">
                         <form method="post" asp-action="EditCourse">
                             <div class="form-group">
-                                <label for="inputName">@Model.Name</label>
+                                <label for="inputName">Kurs İsmi</label>
                                 <input asp-for="@Model.Name" id="inputName" class="form-control" value="@Model.Name">
                                 <input asp-for="@Model.Id" type="hidden" class="form-control" value="@Model.Id">
                             </div>
                             <div class="form-group">
-                                <label for="inputDescription">@Model.Title</label>
+                                <label for="inputDescription">Kurs Başlığı</label>
                                 <textarea id="inputDescription" asp-for="@Model.Title" class="form-control" rows="4">@Model.Title</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="inputDescription">@Model.Description</label>
+                                <label for="inputDescription">Kurs Detayları</label>
                                 <textarea id="inputDescription" asp-for="@Model.Description" class="form-control" rows="4">@Model.Description</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="inputName">Fiyat</label>
+                                <label for="inputName">Ücret</label>
                                 <input asp-for="@Model.Price" id="price" class="form-control" value="@Model.Price">
                             </div>
                             <div class="form-group">
