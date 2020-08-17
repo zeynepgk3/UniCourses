@@ -1,0 +1,38 @@
+﻿@model UniCourses.Dal.Entities.Course
+@{
+    ViewData["Title"] = "Course";
+    Layout = "~/Areas/Educators/Views/Shared/_Layout.cshtml";
+}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div>
+                        @Model.Name İsimli kursunu kapatmak istediğine emin misin?
+                    </div>
+                    <br />
+
+                    <div>
+                        Bu işlemi onayladığında kursun artık kullanıcılar için görünür olmayacak ve site editörleri işlemi onayladığında kursun silinmiş olacak.
+                        (Bu işlem kursu satın alan kullanıcıları etkilemez)
+                    </div>
+                    <br />
+                    <div>
+                        <form action="#" method="post">
+                            <div class="col-md-4 form-group">
+                                <label for="Mail">Mail Adresinizi Doğrulayınız</label>
+                                <input name="mail" id="Mail" class="form-control py-2" required>
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label for="Password">Şifrenizi Doğrulayınız</label>
+                                <input name="password" id="Password" class="form-control py-2" required>
+                            </div>
+                            <label>@Model.Name kursunu silme işlemini onaylıyorum.</label>
+                            <br />
+                            <input type="submit" class="btn btn-danger" value="Kursu Sil" asp-route-id="@Model.Id" asp-action="Sil" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>

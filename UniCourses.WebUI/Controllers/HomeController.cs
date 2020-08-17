@@ -246,12 +246,12 @@ namespace UniCourses.WebUI.Controllers
 
                 foreach (var item in fark)
                 {
-                    courses.Add(rCourse.GetBy(x => x.Id == item));
+                    courses.Add(rCourse.GetBy(x => x.Id == item && x.State == true));
                 }
             }
             else
             {
-                courses = rCourse.GetAll(x => x.CategoryID == id).ToList();
+                courses = rCourse.GetAll(x => x.CategoryID == id && x.State == true).ToList();
             }
             
             Category category = rCategory.GetBy(x => x.Id == id);

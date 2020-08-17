@@ -1,6 +1,6 @@
 ﻿@model List<Course>
 @{ ViewData["Title"] = "SearchPage";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(images/big_image_2.jpg);">
     <div class="container">
@@ -51,32 +51,45 @@
 
 
 
-
-@foreach (Course course in Model)
+@if (Model.Any())
 {
+    @foreach (Course course in Model)
+    {
 
-<div class="col-md-12 col-lg-6 mb-5">
-    <div class="block-19">
-        <br />
-        <figure>
-            <a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Id"><img src="~/img/@course.ImageURL" alt="Image" class="img-fluid"></a>
-        </figure>
-        <div class="text">
-            <h2 class="heading"><a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Id"> @course.Name</a></h2>
-            <p class="mb-4"></p>
-            <div class="meta d-flex align-items-center">
-                <div class="number">
-                    <span>@course.Score /5,0</span>
+        <div class="col-md-12 col-lg-6 mb-5">
+            <div class="block-19">
+                <br />
+                <figure>
+                    <a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Id"><img src="~/img/@course.ImageURL" alt="Image" class="img-fluid"></a>
+                </figure>
+                <div class="text">
+                    <h2 class="heading"><a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@course.Id"> @course.Name</a></h2>
+                    <p class="mb-4"></p>
+                    <div class="meta d-flex align-items-center">
+                        <div class="number">
+                            <span>@course.Score /5,0</span>
+                        </div>
+                        <div class="number">
+                            <span>@course.NumberOfStudent Öğrenen</span>
+                        </div>
+                        <div class="price text-right"><del class="mr-3">@course.Price</del><span>Free</span></div>
+                    </div>
                 </div>
-                <div class="number">
-                    <span>@course.NumberOfStudent Öğrenen</span>
-                </div>
-                <div class="price text-right"><del class="mr-3">@course.Price</del><span>Free</span></div>
             </div>
         </div>
-    </div>
-</div>
+    }
 }
+else
+{
+    <div class="col-md-12 col-lg-6 mb-5">
+            <div class="block-19">
+                <h3>Aradığınız Kurs Bulunamadı </h3> 
+                <br />
+                <a class="btn btn-info" asp-action="Index">Anasayfa</a>
+            </div>
+    </div>
+}
+
 
 
 <div class="row mb-5">
@@ -84,28 +97,25 @@
         <div class="block-27">
             <ul>
                 @*
-                <li><a asp-action="Courses" asp-route-page="@{Model.Pagenumber--;} " asp-route-id="@Model.Category.Id">&lt;</a></li>
+                    <li><a asp-action="Courses" asp-route-page="@{Model.Pagenumber--;} " asp-route-id="@Model.Category.Id">&lt;</a></li>
                 *@
                 @*
-                <li class="active"><a asp-action="Course"><span>1</span></a></li>
+                    <li class="active"><a asp-action="Course"><span>1</span></a></li>
                 *@
 
                 @for (int i = 1; i <= @ViewBag.pageNumber; i++)
                 {
-                    @if (i == ViewBag.dgr)
-                    {
-                <li class="active"><a asp-action="SearchPage" asp-route-page="@i">@i</a></li>
-                 }
+    @if (i == ViewBag.dgr)
+    {
+<li class="active"><a asp-action="SearchPage" asp-route-page="@i">@i</a></li> }
                 else
                 {
-                <li><a asp-action="Courses" asp-route-page="@i">@i</a></li>
-                }
-                }
+<li><a asp-action="Courses" asp-route-page="@i">@i</a></li>                }}
                 @*
-                <li><a href="#">3</a></li>
+                    <li><a href="#">3</a></li>
                 *@
                 @*
-                <li><a asp-action="Courses" asp-route-page="@{Model.Pagenumber=Model.Pagenumber+2;}" asp-route-id="@Model.Category.Id">&gt;</a></li>
+                    <li><a asp-action="Courses" asp-route-page="@{Model.Pagenumber=Model.Pagenumber+2;}" asp-route-id="@Model.Category.Id">&gt;</a></li>
                 *@
             </ul>
         </div>
