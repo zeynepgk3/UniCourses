@@ -632,6 +632,9 @@ namespace UniCourses.Dal.Migrations
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
+                    b.Property<bool>("State")
+                        .HasColumnType("bit");
+
                     b.Property<int>("TotalStudent")
                         .HasColumnType("int");
 
@@ -947,6 +950,8 @@ namespace UniCourses.Dal.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("LessonID");
+
                     b.ToTable("Videos");
                 });
 
@@ -1093,7 +1098,7 @@ namespace UniCourses.Dal.Migrations
             modelBuilder.Entity("UniCourses.Dal.Entities.Comment", b =>
                 {
                     b.HasOne("UniCourses.Dal.Entities.Course", "Course")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("CourseID");
 
                     b.HasOne("UniCourses.Dal.Entities.Lesson", "Lesson")
@@ -1247,6 +1252,15 @@ namespace UniCourses.Dal.Migrations
                     b.HasOne("UniCourses.Dal.Entities.City", "City")
                         .WithMany("Towns")
                         .HasForeignKey("CityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UniCourses.Dal.Entities.Videos", b =>
+                {
+                    b.HasOne("UniCourses.Dal.Entities.Lesson", null)
+                        .WithMany("Videos")
+                        .HasForeignKey("LessonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

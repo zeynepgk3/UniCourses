@@ -141,7 +141,7 @@ keyframes fadeIn {
                             <div class="row mb-5">
                                 <div class="col-md-12 pt2">
                                     <h2>Kurs Hakkında</h2>
-                                    <p>@Model.Courses.Description </p>
+                                    <p>@Html.Raw(Model.Courses.Description)</p>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +177,7 @@ keyframes fadeIn {
                                                                 else
                                                                 {
                                                                     <div class="popup" onclick="myFunction()">
-                                                                        @lesson.LessonDescription
+                                                                        @Html.Raw(lesson.LessonDescription)
                                                                         <span class="popuptext" id="myPopup">Dersi İzlemek İçin Satın Almalısın</span>
                                                                     </div>
                                                                     <div class="row align-items-center p-4 episode">
@@ -200,7 +200,7 @@ keyframes fadeIn {
                                                             else
                                                             {
                                                                 <div class="popup" onclick="myFunction()">
-                                                                    @lesson.LessonDescription
+                                                                    @Html.Raw(lesson.LessonDescription)
                                                                     <span class="popuptext" id="myPopup">Dersi İzlemek İçin Üye Olmalısın</span>
                                                                 </div>
                                                                 <div class="row align-items-center p-4 episode">
@@ -237,13 +237,13 @@ keyframes fadeIn {
 
                     <div class="block-29 mb-5">
                         <ul>
-                            <li><span class="text-1">Öğrenci Sayısı</span> <span class="text-2">@Model.Courses.NumberOfStudent</span></li>
-                            <li><span class="text-1">Puan</span> <span class="text-2">@Model.Courses.Score/5</span></li>
-                            <li><span class="text-1">Sınavlar</span> <span class="text-2">8</span></li>
-                            <li><span class="text-1">Ders Sayısı</span> <span class="text-2">11</span></li>
-                            <li><span class="text-1">Toplam Süre</span> <span class="text-2">@Model.Courses.Duration Saat</span></li>
-                            <li><span class="text-1">Language</span> <span class="text-2">Türkçe</span></li>
-                            <li><span class="text-1">Ücret</span> <span class="text-2">@Model.Courses.Price &#x20BA;</span></li>
+                            <li><span class="text-1">Öğrenci Sayısı:</span> <span class="text-2">@Model.Courses.NumberOfStudent</span></li>
+                            <li><span class="text-1">Puan:</span> <span class="text-2">@Model.Courses.Score/5</span></li>
+                            <li><span class="text-1">Sınavlar:</span> <span class="text-2">0</span></li>
+                            <li><span class="text-1">Ders Sayısı:</span> <span class="text-2">@Model.Lessons.Count</span></li>
+                            <li><span class="text-1">Toplam Süre:</span> <span class="text-2">@(Model.Courses.Duration/60) Dakika @(Model.Courses.Duration%60) Saniye</span></li>
+                            <li><span class="text-1">Dil: </span> <span class="text-2">@Model.Courses.Language</span></li>
+                            <li><span class="text-1">Ücret:</span> <span class="text-2">@Model.Courses.Price &#x20BA;</span></li>
                         </ul>
                     </div>
 
@@ -251,14 +251,20 @@ keyframes fadeIn {
                         <figure>
                             <img src="images/person_3.jpg" alt="" class="img-fluid">
                         </figure>
-                        <h2 class="heading"><a asp-controller="Home" asp-action="EgitmenProfil" asp-route-id="@Model.Educator.ID">@Model.Educator.NameSurname</a></h2>
+                        <h2 class="heading"><a asp-controller="Home" asp-action="EgitimciGoruntule" asp-route-id="@Model.Educator.ID">@Model.Educator.NameSurname</a></h2>
                         <h3 class="subheading">@Model.Educator.Mail</h3>
                         <p>
-                            <a href="https://@Model.Educator.Twitter" class="fa fa-twitter p-2" target="_blank"></a>
-                            <a href="https://@Model.Educator.Youtube" class="fa fa-youtube p-2" target="_blank"></a>
-                            <a href="https://@Model.Educator.Linkedin" class="fa fa-linkedin p-2" target="_blank"></a>
-                            <a href="https://@Model.Educator.WebSite" class="fa fa-external-link p-2" target="_blank"></a>
-                        </p>
+                            @if (@Model.Educator.Twitter != null)
+                            {<a href="https://twitter.com/@Model.Educator.Twitter" class="fa fa-twitter p-2" target="_blank"></a>}
+                            @if (@Model.Educator.Youtube != null)
+                            {<a href="https://youtube.com/@Model.Educator.Youtube" class="fa fa-youtube p-2" target="_blank"></a>}
+                            @if (@Model.Educator.Linkedin != null)
+                            {<a href="https://linkedin.com/in/@Model.Educator.Linkedin" class="fa fa-linkedin p-2" target="_blank"></a>}
+                            @if (@Model.Educator.WebSite != null)
+                            {<a href="https://@Model.Educator.WebSite" class="fa fa-external-link p-2" target="_blank"></a>}
+                            @if (@Model.Educator.Instagram != null)
+                            {<a href="https://instagram.com/@Model.Educator.Instagram" class="fa fa-external-link p-2" target="_blank"></a>}
+                            </p>
                         <p>@Model.Educator.About</p>
                     </div>
                     <div class="block-24 mb-5">

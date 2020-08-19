@@ -3,36 +3,35 @@
     ViewData["Title"] = "Course";
     Layout = "~/Areas/Educators/Views/Shared/_Layout.cshtml";
 }
-    <div class="content-wrapper">
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div>
-                        @Model.Name İsimli kursunu kapatmak istediğine emin misin?
-                    </div>
-                    <br />
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row d-flex h-100">
+                <p>
+                    @Model.Name İsimli kursunu kapatmak istediğine emin misin?
+                </p>
+                <p>
+                    Bu işlemi onayladığında kursun artık kullanıcılar için görünür olmayacak ve site editörleri işlemi onayladığında kursun silinmiş olacak. (Bu işlem kursu satın alan kullanıcıları etkilemez)
+                </p>
+                <br />
+                <div class="align-self-center justify-content-center">
+                    <form action="#" method="post" style="margin:0 auto;">
+                        <div class="col-md-12 form-group">
+                            <label for="Mail">Mail Adresinizi Doğrulayınız</label>
+                            <input name="mail" id="Mail" class="form-control py-2" required>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label for="Password">Şifrenizi Doğrulayınız</label>
+                            <input name="password" id="Password" class="form-control py-2" required>
+                        </div>
+                        <label>@Model.Name kursunu silme işlemini onaylıyorum.</label>
+                        <br />
+                        <input type="submit" class="btn btn-danger" value="Kursu Sil" asp-route-id="@Model.Id" asp-action="Sil" />
+                    </form>
+                    <a class="btn btn-info" asp-route-id="@Model.Id" asp-action="Course">Geri Dön</a>
 
-                    <div>
-                        Bu işlemi onayladığında kursun artık kullanıcılar için görünür olmayacak ve site editörleri işlemi onayladığında kursun silinmiş olacak.
-                        (Bu işlem kursu satın alan kullanıcıları etkilemez)
-                    </div>
-                    <br />
-                    <div>
-                        <form action="#" method="post">
-                            <div class="col-md-4 form-group">
-                                <label for="Mail">Mail Adresinizi Doğrulayınız</label>
-                                <input name="mail" id="Mail" class="form-control py-2" required>
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label for="Password">Şifrenizi Doğrulayınız</label>
-                                <input name="password" id="Password" class="form-control py-2" required>
-                            </div>
-                            <label>@Model.Name kursunu silme işlemini onaylıyorum.</label>
-                            <br />
-                            <input type="submit" class="btn btn-danger" value="Kursu Sil" asp-route-id="@Model.Id" asp-action="Sil" />
-                        </form>
-                    </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>

@@ -203,11 +203,12 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
             rCart.RemoveRange(CartVM.ListCart);
             rCart.Save();
 
-            return RedirectToAction("OrderConfirmation", "Cart", new { id = CartVM.Order.Id });
+            return RedirectToAction("OrderConfirmation", "Cart", new { id = CartVM.Order.CourseId });
 
         }
         public IActionResult OrderConfirmation(int id)
         {
+            
             return View(id);
         }
         private static string ConvertToRawHtml(string description)

@@ -19,42 +19,147 @@
 </section>
 <!-- END section -->
 
-<section class="site-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-7">
-                <div class="form-wrap">
-                    <h2 class="mb-4">Hesabına Giriş Yap</h2>
-                    <form method="post">
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <label for="name">Email Adresi</label>
-                                @* <span asp-validation-for="@Model.Mail" class="text-danger"></span>*@
-                                <input type="text" asp-for="Mail" class="form-control py-2">
-                            </div>
+<body>
+    <section data-stellar-background-ratio="0.5" style="  background-color:#ff0000">
+        <div class="register-photo">
+            <div class="form-container">
+                <div class="image-holder"></div>
+                <form method="post">
+                    <h2 class="text-center"><strong>Giriş</strong> Yap</h2>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="name">Email Adresi</label>
+                            @* <span asp-validation-for="@Model.Mail" class="text-danger"></span>*@
+                            <input type="text" asp-for="Mail" class="form-control py-2">
                         </div>
-                        <div class="row mb-5">
-                            <div class="col-md-12 form-group">
-                                <label for="name">Parola</label>
-                                @*<span asp-validation-for="@Model.Password" class="text-danger"></span>*@
-                                <input type="password" asp-for="Password" class="form-control py-2">
-                            </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-md-12 form-group">
+                            <label for="name">Parola</label>
+                            @*<span asp-validation-for="@Model.Password" class="text-danger"></span>*@
+                            <input type="password" asp-for="Password" class="form-control py-2">
                         </div>
-                        <div asp-validation-summary="ModelOnly"> @ViewBag.Hata</div>
+                    </div>
+                    <div asp-validation-summary="ModelOnly"> @ViewBag.Hata</div>
 
-                        @*
-        Şifre vs yanlış ise burada error mesajı ver.
-                        *@
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <input type="submit" value="Login" class="btn btn-primary px-5 py-2">
-                            </div>
+                    @*
+                        Şifre vs yanlış ise burada error mesajı ver.
+                    *@
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="submit" value="Login" class="btn btn-primary px-5 py-2">
                         </div>
-                    </form>
-                   
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</body>
+<style>
+    .register-photo {
+        background: #f1f7fc;
+        padding: 80px 0;
+    }
 
+        .register-photo .image-holder {
+            display: table-cell;
+            width: auto;
+            background: url(/images/Giris_Ekrani.png);
+            background-size: cover;
+        }
+
+        .register-photo .form-container {
+            display: table;
+            max-width: 900px;
+            width: 90%;
+            margin: 0 auto;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+        }
+
+        .register-photo form {
+            display: table-cell;
+            width: 400px;
+            background-color: #ffffff;
+            padding: 40px 60px;
+            color: #505e6c;
+        }
+
+    media (max-width:991px) {
+        .register-photo form
+
+    {
+        padding: 40px;
+    }
+
+    }
+
+    .register-photo form h2 {
+        font-size: 24px;
+        line-height: 1.5;
+        margin-bottom: 30px;
+    }
+
+    .register-photo form .form-control {
+        background: #f7f9fc;
+        border: none;
+        border-bottom: 1px solid #dfe7f1;
+        border-radius: 0;
+        box-shadow: none;
+        outline: none;
+        color: inherit;
+        text-indent: 6px;
+        height: 40px;
+    }
+
+    .register-photo form .form-check {
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    .register-photo form .btn-primary {
+        background: #f4476b;
+        border: none;
+        border-radius: 4px;
+        padding: 11px;
+        box-shadow: none;
+        margin-top: 35px;
+        text-shadow: none;
+        outline: none !important;
+    }
+
+        .register-photo form .btn-primary:hover, .register-photo form .btn-primary:active {
+            background: #eb3b60;
+        }
+
+        .register-photo form .btn-primary:active {
+            transform: translateY(1px);
+        }
+
+    .register-photo form .already {
+        display: block;
+        text-align: center;
+        font-size: 12px;
+        color: #6f7a85;
+        opacity: 0.9;
+        text-decoration: none;
+    }
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>

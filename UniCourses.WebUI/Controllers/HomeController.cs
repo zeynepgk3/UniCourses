@@ -223,7 +223,14 @@ namespace UniCourses.WebUI.Controllers
 
              return new ChallengeResult("Google", properties);
          }*/
-
+        public IActionResult UyeGoruntule(int id)
+        {
+            return View(rMember.GetBy(r => r.ID == id));
+        }
+        public IActionResult EgitimciGoruntule(int id)
+        {
+            return View(rEducator.GetBy(r => r.ID == id));
+        }
         public IActionResult AboutUs()
         {
 
@@ -256,7 +263,11 @@ namespace UniCourses.WebUI.Controllers
 
                 foreach (var item in fark)
                 {
-                    courses.Add(rCourse.GetBy(x => x.Id == item && x.State == true));
+                    Course c = rCourse.GetBy(x => x.Id == item && x.State == true);
+                    if (c != null)
+                    {
+                        courses.Add(c);
+                    }
                 }
             }
             else
