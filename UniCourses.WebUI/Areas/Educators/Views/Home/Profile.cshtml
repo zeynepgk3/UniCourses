@@ -37,11 +37,21 @@
                                      src=""
                                      alt="User profile picture">
                             </div>
+                            @*<form method="post" asp-action="UploadPicture" enctype="multipart/form-data">
+                                    <img style="width:100%; height: auto;max-width:256px;" src="/Picture/@Model.PictureURL" />
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label for="courseimg">Fotoğrafını Güncelle</label>
+                                            <input type="file" name="file" multiple="multiple" id="courseimg" class="form-control-file" required>
+                                            <input type="submit" class="btn btn-info" value="Resmi Güncelle">
+                                        </div>
+                                    </div>
+                                </form>*@
                             <form method="post" asp-action="Profile">
+
                                 <div class="form-group">
                                     <label for="inputName">Ad</label>
                                     <input asp-for="@Model.NameSurname" id="inputName" class="form-control" value="@Model.NameSurname">
-                                    <input asp-for="@Model.MemberID" type="hidden" class="form-control" value="@Model.MemberID">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Meslek</label>
@@ -57,7 +67,14 @@
                                     <textarea id="inputAbout" asp-for="@Model.About" class="form-control" rows="4">@Model.About</textarea>
                                 </div>
 
+                                <div class="form-group">
+                                    <input asp-for="@Model.Twitter" type="hidden" class="form-control" value="@Model.Twitter">
+                                    <input asp-for="@Model.Instagram" type="hidden" class="form-control" value="@Model.Instagram">
+                                    <input asp-for="@Model.WebSite" type="hidden" class="form-control" value="@Model.WebSite">
+                                    <input asp-for="@Model.Linkedin" type="hidden" class="form-control" value="@Model.Linkedin">
+                                    <input asp-for="@Model.Youtube" type="hidden" class="form-control" value="@Model.Youtube">
 
+                                </div>
 
                                 @* <
                                     <p class="text-muted">
@@ -100,13 +117,13 @@
                                     <input type="text" class="form-control" id="linkedin" aria-describedby="linkedin-addon" asp-for="@Model.Linkedin" value="@Model.Linkedin">
                                 </div>
                                 @*
-                                    <label for="github">Github</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="github-addon">https://youtube.com/</span>
-                                        </div>
-                                        <input type="text" class="form-control" id="github" aria-describedby="github-addon" asp-for="@Model.Youtube" value="@Model.Youtube">
-                                    </div>*@
+        <label for="github">Github</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="github-addon">https://youtube.com/</span>
+            </div>
+            <input type="text" class="form-control" id="github" aria-describedby="github-addon" asp-for="@Model.Youtube" value="@Model.Youtube">
+        </div>*@
 
                                 <label for="website">Web Sitesi</label>
                                 <div class="input-group mb-3">
@@ -139,7 +156,13 @@
                                     </div>
                                     <input type="text" class="form-control" id="youtube" aria-describedby="youtube-addon" asp-for="@Model.Youtube" value="@Model.Youtube">
                                 </div>
+                                <div class="form-group">
+                                    <input asp-for="@Model.NameSurname" type="hidden" class="form-control" value="@Model.NameSurname">
+                                    <input asp-for="@Model.Job" type="hidden" class="form-control" value="@Model.Job">
+                                    <input asp-for="@Model.University" type="hidden" class="form-control" value="@Model.University">
+                                    <input asp-for="@Model.About" type="hidden" class="form-control" value="@Model.About">
 
+                                </div>
 
                                 <div class="form-group">
                                     <input type="submit" id="price" class="form-control btn-outline-primary" value="Linkleri Güncelle">

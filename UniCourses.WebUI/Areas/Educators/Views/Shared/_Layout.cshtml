@@ -56,7 +56,8 @@
 
                     <span class="badge badge-warning navbar-badge">15</span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                @* Bildirimler dinamik değil henüz. *@
+                @*<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <span class="dropdown-item dropdown-header">15 Notifications</span>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item">
@@ -75,7 +76,7 @@
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
+                </div>*@
             </li>
 
         </ul>
@@ -98,7 +99,7 @@
                         <img src="/images/noface.png" class="img-circle elevation-2" alt="User Image">
                     </div>*@
                 <div class="info">
-                    <a asp-action="Profile" class="d-block"><i class="nav-icon fa fa-user"></i>@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</a>
+                    <a asp-action="Profile" class="d-block"><i class="nav-icon fa fa-user"></i>     @User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</a>
                 </div>
             </div>
 

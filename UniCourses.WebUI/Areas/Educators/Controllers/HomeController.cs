@@ -117,15 +117,19 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         public IActionResult Profile(Educator educator)
         {
             string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
-            Educator changededucator = rEducator.Bul(Convert.ToInt32(uyeid));
+            Educator changededucator = rEducator.GetBy(x=>x.MemberID == Convert.ToInt32(uyeid));
 
             changededucator.NameSurname = educator.NameSurname;
             changededucator.Job = educator.Job;
             changededucator.University = educator.University;
+            changededucator.About = educator.About;
+
             changededucator.Twitter = educator.Twitter;
             changededucator.Instagram = educator.Instagram;
             changededucator.Linkedin = educator.Linkedin;
             changededucator.WebSite = educator.WebSite;
+            changededucator.Youtube = educator.Youtube;
+
             rEducator.Update(changededucator);
             return RedirectToAction("Profile", new { educator.ID });
         }
@@ -337,6 +341,11 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         {
             rEducator.Add(ed);
             return RedirectToAction("Index");
+        }
+        public IActionResult Statement()
+        {
+
+            return View();
         }
         public IActionResult Rolata(int id)
         {
