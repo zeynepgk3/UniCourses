@@ -9,6 +9,7 @@ namespace UniCourses.Dal.Entities
     public class Educator
     {
         public int ID { get; set; }
+        public bool State { get; set; }
 
         [StringLength(30), Column(TypeName = "Varchar(30)"), Display(Name = "Adı Soyadı")]
         public string NameSurname { get; set; }

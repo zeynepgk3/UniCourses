@@ -27,7 +27,7 @@
                                     {
                                         <div class="col-md-5 col-lg-3 col-xl-3">
                                             <a asp-controller="Home" asp-action="CourseSinglePage" asp-route-id="@item.Course.Id">
-                                                <img src="/images/img_3.jpg" alt="Image" class="img-fluid" style="width:100%;">
+                                                <img src="/img/@item.Course.ImageURL" alt="Image" class="img-fluid" style="width:100%;">
                                             </a>
 
                                         </div>
@@ -42,7 +42,7 @@
                                                         </a>
 
                                                         <a asp-controller="Home" asp-action="Profile">
-                                                            <small>@item.Course.Description</small>
+                                                            <small>@Html.Raw(item.Course.Description)</small>
                                                         </a>
                                                     </div>
 

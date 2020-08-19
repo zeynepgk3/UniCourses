@@ -1,0 +1,117 @@
+﻿@model UniCourses.WebUI.ViewModels.EducatorMemberVM
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    
+
+<h1>UniCourses Eğitmenlik Sayfası</h1>
+
+<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="        background-image: url(/images/online-learning-concept.png);">
+    <div class="container">
+        <div class="row align-items-center justify-content-center site-hero-sm-inner">
+            <div class="col-md-7 text-center">
+
+                <div class="mb-5 element-animate">
+                    <h1 class="mb-2">Eğitmen Ol</h1>
+                    <p class="bcrumb"><a asp-action="Index">Anasayfa</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Eğitmen Ol</span></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<h1>Eğitmenlik Şartları VS...</h1>
+<h1>...</h1>
+<br />
+<h1>...</h1>
+<br />
+<h1>...</h1>
+<br />
+<h1>...</h1>
+<br />
+<section class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="form-wrap">
+                    <h2 class="mb-5">Yeni Hesap Aç</h2>
+                    <form action="Index" method="post">
+                        <div>
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <label for="Mail"> Mail </label>
+                                    <input type="text" name="Mail" class="form-control py-2" placeholder="@Model.Member.Mail" value="@Model.Member.Mail" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <label for="NameSurName"> Isim Soyisim </label>
+                                    <input type="text" name="NameSurName" class="form-control py-2" placeholder="@Model.Member.NameSurName" value="@Model.Member.NameSurName" required>
+                                </div>
+                            </div>
+                           
+                            @*
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="BirthDate">Doğum Tarihi</label>
+                            <input type="date" name="BirthDate" class="form-control py-2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="Gender">Cinsiyet</label><br />
+                            <input type="radio" id="Gender1" name="Gender" value="Erkek">
+                            <label for="Gender1">Erkek</label><br />
+                            <input type="radio" id="Gender2" name="Gender" value="Kadın">
+                            <label for="Gender2">Kadın</label><br />
+                            <input type="radio" id="Gender3" name="Gender" value="Diğer">
+                            <label for="Gender3">Belirtmek İstemiyorum</label><br />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="Phone">Telefon Numarası</label>
+                            <input type="tel" id="Phone" name="Phone" placeholder="___ ___ __ __">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <input type="hidden" id="RoleNumber" value="0" name="RoleNumber" />
+                            @*<select name="RoleNumber">
+            <option value="1">Üye</option>
+            <option value="0">Eğitmen</option>
+        </select> </div>*@
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <input type="hidden" id="Password" name="Password" value=@Model.Member.Password class="form-control py-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <input type="hidden" id="RegisteryDate" name="RegisteryDate" value=@DateTime.Now class="form-control py-2">
+                                    <input type="hidden" id="BirthDate" name="BirthDate" value=@DateTime.Now class="form-control py-2">
+                                    <input type="hidden" id="Gender" name="Gender" value="Diğer" class="form-control py-2">
+                                    <input type="hidden" id="Phone" name="Phone" value="1234567890" class="form-control py-2">
+                                    <input type="hidden" id="RoleNumber" name="Role" value="3" class="form-control py-2">
+                                    <input type="hidden" id="LogDate" name="LogDate" value=@DateTime.Now class="form-control py-2">
+                                    <input type="hidden" id="MemberID" name="MemberID" value=@Model.Member.ID class="form-control py-2">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input type="submit" value="Eğitmen Ol" class="btn btn-primary px-5 py-2">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

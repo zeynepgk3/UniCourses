@@ -1,0 +1,241 @@
+﻿@model List<Educator>
+@{
+    ViewData["Title"] = "EducatorList";
+    Layout = "~/Areas/panel/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Eğitmenler</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a asp-action="Index">Ana Sayfa</a></li>
+                        <li class="breadcrumb-item active">Eğitmenler</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Onaylanan Eğitmenler</h3>
+
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+
+                            <table class="table table-striped projects">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 1%">
+                                            ID
+                                        </th>
+                                        <th style="width: 39%">
+                                            EGITMEN AD
+                                        </th>
+                                        <th style="width: 20%">
+                                            ILETISIM
+                                        </th>
+                                        <th style="width: 20%" class="text-center">
+                                            DURUM
+                                        </th>
+                                        <th style="width: 20%">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (Educator educator in Model)
+                                    {
+                                        if (educator.State == true)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @educator.ID
+                                                </td>
+
+                                                <td>
+                                                    <a>
+                                                        @educator.NameSurname
+                                                    </a>
+                                                    <br />
+                                                    <small>
+
+                                                    </small>
+                                                </td>
+
+
+
+                                                <td class="project_progress">
+
+                                                    <small>
+                                                       @educator.Mail
+                                                    </small>
+                                                </td>
+                                                <td class="project-state">
+                                                    <span class="badge badge-success">Onaylanmış</span>
+                                                </td>
+                                                <td class="project-actions text-right">
+                                                    <a class="btn btn-primary btn-sm" asp-action="Course">
+                                                        <i class="fa fa-folder">
+                                                        </i>
+                                                        Görüntüle
+                                                    </a>
+                                                    <a asp-route-id="@educator.ID" asp-action="ConfirmationCancelEducator" class="btn btn-danger btn-sm">
+                                                        <i class="fa fa-blackberry">
+                                                        </i>
+                                                        Onay Kaldır
+                                                    </a>
+                                                    <a class="btn btn-info btn-sm" asp-action="EditCourse">
+                                                        <i class="fa fa-pencil">
+                                                        </i>
+                                                        Düzenle
+                                                    </a>
+                                                    <a class="btn btn-danger btn-sm" href="#">
+                                                        <i class="fa fa-trash">
+                                                        </i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Onay Bekleyen Eğitmenler</h3>
+
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+
+                            <table class="table table-striped projects">
+                                <thead>
+
+                                    <tr>
+                                        <th style="width: 1%">
+                                            ID
+                                        </th>
+                                        <th style="width: 39%">
+                                            EGİTMEN AD
+                                        </th>
+                                        <th style="width: 20%">
+                                            ILETISIM
+                                        </th>
+                                        <th style="width: 20%" class="text-center">
+                                            DURUM
+                                        </th>
+                                        <th style="width: 20%">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (Educator educator in Model)
+                                    {
+                                        if (educator.State == false)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @educator.ID
+                                                </td>
+                                                <td>
+                                                    <a>
+                                                        @educator.NameSurname
+                                                    </a>
+                                                    <br />
+                                                   
+                                                </td>
+
+                                                <td class="project_progress">
+
+                                                    <small>
+                                                        @educator.Mail
+                                                    </small>
+                                                </td>
+                                                <td class="project-state">
+                                                    <span class="badge badge-danger">Onaylanmadı</span>
+                                                </td>
+                                                <td class="project-actions text-right">
+                                                    <a class="btn btn-primary btn-sm" href="#">
+                                                        <i class="fa fa-folder">
+                                                        </i>
+                                                        Görüntüle
+                                                    </a>
+                                                    <a asp-route-id="@educator.ID" asp-action="ConfirmationEducator" class="btn btn-success btn-sm">
+                                                        <i class="fa fa-trash">
+                                                        </i>
+                                                        Onayla
+                                                    </a>
+                                                    <a class="btn btn-info btn-sm" href="#">
+                                                        <i class="fa fa-pencil">
+                                                        </i>
+                                                        Düzenle
+                                                    </a>
+                                                    <a class="btn btn-danger btn-sm" href="#">
+                                                        <i class="fa fa-trash">
+                                                        </i>
+                                                        Sil
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+

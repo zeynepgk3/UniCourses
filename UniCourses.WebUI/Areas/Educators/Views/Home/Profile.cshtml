@@ -1,0 +1,208 @@
+﻿@model UniCourses.Dal.Entities.Educator
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Areas/Educators/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Profil</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="Index">Anasayfa</a></li>
+                        <li class="breadcrumb-item active">Eğitmen Profili</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+
+                    <!-- Profile Image -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     src=""
+                                     alt="User profile picture">
+                            </div>
+                            <form method="post" asp-action="Profile">
+                                <div class="form-group">
+                                    <label for="inputName">Ad</label>
+                                    <input asp-for="@Model.NameSurname" id="inputName" class="form-control" value="@Model.NameSurname">
+                                    <input asp-for="@Model.MemberID" type="hidden" class="form-control" value="@Model.MemberID">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName">Meslek</label>
+                                    <input asp-for="@Model.Job" id="inputName" class="form-control" value="@Model.Job">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName"><i class="fa fa-book mr-1"></i>  Okul</label>
+                                    <input asp-for="@Model.University" id="inputName" class="form-control" value="@Model.University">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputAbout">Ben Kimim?</label>
+                                    <textarea id="inputAbout" asp-for="@Model.About" class="form-control" rows="4">@Model.About</textarea>
+                                </div>
+
+
+
+                                @* <
+                                    <p class="text-muted">
+                                        <span class="tag tag-danger">UI Design</span>
+                                        <span class="tag tag-success">Coding</span>
+                                        <span class="tag tag-info">Javascript</span>
+                                        <span class="tag tag-warning">PHP</span>
+                                        <span class="tag tag-primary">Node.js</span>
+                                    </p>
+                                *@
+
+                                <div class="form-group">
+                                    <input type="submit" id="price" class="form-control btn-outline-primary" value="Güncelle">
+                                </div>
+
+                            </form>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+
+                    <!-- About Me Box -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form method="post" asp-action="Profile">
+
+                                <label for="linkedin">Linkedin</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="linkedin-addon">https://linkedin.com/in/</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="linkedin" aria-describedby="linkedin-addon" asp-for="@Model.Linkedin" value="@Model.Linkedin">
+                                </div>
+                                @*
+                                    <label for="github">Github</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="github-addon">https://youtube.com/</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="github" aria-describedby="github-addon" asp-for="@Model.Youtube" value="@Model.Youtube">
+                                    </div>*@
+
+                                <label for="website">Web Sitesi</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="website-addon">https://</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="website" aria-describedby="website-addon" asp-for="@Model.WebSite" value="@Model.WebSite">
+                                </div>
+
+                                <label for="twitter">Twitter</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="twitter-addon">https://twitter.com/</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="twitter" aria-describedby="twitter-addon" asp-for="@Model.Twitter" value="@Model.Twitter">
+                                </div>
+
+                                <label for="instagram">Instagram</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="instagram-addon">https://instagram.com/</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="instagram" aria-describedby="instagram-addon" asp-for="@Model.Linkedin" value="@Model.Linkedin">
+                                </div>
+
+                                <label for="youtube">Youtube</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="youtube-addon">https://youtube.com/</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="youtube" aria-describedby="youtube-addon" asp-for="@Model.Youtube" value="@Model.Youtube">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input type="submit" id="price" class="form-control btn-outline-primary" value="Linkleri Güncelle">
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DIRECT CHAT -->
+                    <div class="card direct-chat direct-chat-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Tüm Yorumlar</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <!-- Conversations are loaded here -->
+                            <div class="direct-chat-msg right">
+                                <div class="direct-chat-infos clearfix">
+                                    <span class="direct-chat-name float-right">Sarah Bullock</span>
+                                    <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+                                </div>
+                                <!-- /.direct-chat-infos -->
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <label for="yorumsil" class="btn btn-danger"><i class="fa fa-delete"></i></label>
+                                        <input type="file" id="yorumsil" style="display:none">
+                                    </div>
+                                    <!-- /.direct-chat-delete -->
+                                    <div class="direct-chat-text col-md-11">
+                                        You better believe it!
+                                    </div>
+                                    <!-- /.direct-chat-text -->
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+
+                    </div>
+                </div>
+                <!--/.column-->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

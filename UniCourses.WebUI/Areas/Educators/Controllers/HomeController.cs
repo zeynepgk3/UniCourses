@@ -113,10 +113,30 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             List<Course> courses = rCourse.GetAll(x => x.EducatorID == educator.ID).ToList();
             return View(courses);
         }
+        [HttpPost]
+        public IActionResult Profile(Educator educator)
+        {
+            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+            Educator changededucator = rEducator.Bul(Convert.ToInt32(uyeid));
+
+            changededucator.NameSurname = educator.NameSurname;
+            changededucator.Job = educator.Job;
+            changededucator.University = educator.University;
+            changededucator.Twitter = educator.Twitter;
+            changededucator.Instagram = educator.Instagram;
+            changededucator.Linkedin = educator.Linkedin;
+            changededucator.WebSite = educator.WebSite;
+            rEducator.Update(changededucator);
+            return RedirectToAction("Profile", new { educator.ID });
+        }
         public IActionResult Profile()
         {
-            return View();
+            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+            Educator educator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
+
+            return View(educator);
         }
+
         public IActionResult RemoveCourse(int id)
         {
             return View(rCourse.GetBy(x=>x.Id == id));
@@ -306,14 +326,14 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             return Redirect("/");
         }
         [HttpGet]
-        public IActionResult Register(int id)
+        public IActionResult RegisterEducator(int id)
         {
             Member member = rMember.GetBy(x => x.ID == id);
             EducatorMemberVM educatorMemberVM = new EducatorMemberVM { Member = member };
             return View(educatorMemberVM);
         }
         [HttpPost]
-        public IActionResult Register(Educator ed)
+        public IActionResult RegisterEducator(Educator ed)
         {
             rEducator.Add(ed);
             return RedirectToAction("Index");
@@ -323,7 +343,7 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             var d = rMember.Bul(id);
             d.RoleNumber = 2;
             rMember.Save();
-            return RedirectToAction("Register", new { id });
+            return RedirectToAction("RegisterEducator", new { id });
         }
 
     }

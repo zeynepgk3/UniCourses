@@ -35,6 +35,21 @@ namespace UniCourses.Bl.Repositories
             }
             return query.FirstOrDefault();
         }
+        public IEnumerable<T> GetAllLazy(string includeProperties = null)
+
+        {
+            IQueryable<T> query = entities;
+            if (includeProperties != null)
+            {
+                foreach (var item in includeProperties.Split(new char[]
+                         { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(item);
+                }
+            }
+            return query.ToList();
+        }
+
         public IEnumerable<T> GetAllLazy(Expression<Func<T, bool>> expression,
             string includeProperties = null)
 

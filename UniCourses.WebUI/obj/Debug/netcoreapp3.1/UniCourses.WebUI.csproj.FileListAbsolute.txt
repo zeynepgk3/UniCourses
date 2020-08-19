@@ -1296,10 +1296,8 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcore
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\UniCourses.WebUI.TagHelpers.output.cache
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\UniCourses.WebUI.RazorCoreGenerate.cache
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\Index.cshtml.g.cs
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\Register.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\Home\Index.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\uye\Views\Home\Ayarlar.cshtml.g.cs
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\uye\Views\Home\Courses.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\uye\Views\Home\Index.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\uye\Views\Home\Lessons.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\uye\Views\Home\Profil.cshtml.g.cs
@@ -1550,5 +1548,15 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcore
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\SearchPage.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\Course.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\EditCourse.cshtml.g.cs
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\uye\Views\Home\CourseSinglePage.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\RemoveCourse.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\RegisterEducator.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\Profile.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\Home\Build.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\Home\ContactUs.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\Home\CourseList.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\Home\EducatorList.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\Home\EducatorPage.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\_ViewImports.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\_ViewStart.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\EgitimciGoruntule.cshtml.g.cs
