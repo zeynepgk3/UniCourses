@@ -14,7 +14,7 @@ namespace UniCourses.Dal.Entities
         public string MemberName { get; set; }
         public string UserComment { get; set; }
         public DateTime CommentDate { get; set; }
-        public int CommentState { get; set; } //Admin tarafından onaylanma durumu
+        public bool State { get; set; } //Admin tarafından onaylanma durumu
         public int? MemberID { get; set; }
         public Member Member { get; set; }
         public int? LessonID { get; set; }

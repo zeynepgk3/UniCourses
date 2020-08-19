@@ -57,8 +57,11 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         }
         public IActionResult Index()
         {
+            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+            IEnumerable<CourseMember> courseMembers = rCourseMember.GetAllLazy(x => x.MemberId == Convert.ToInt32(uyeid), includeProperties: "Course");
 
-            return View();
+
+            return View(courseMembers);
         }
         public async Task<IActionResult> Cikis()
         {
@@ -112,7 +115,7 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
           //  comment.Member = rMember.GetBy(x => x.ID == comment.MemberID);
             comment.MemberName = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Name).Value;
             comment.CommentDate = DateTime.Now;
-            comment.CommentState = 0;
+            comment.State = false;
             rComment.Add(comment);
             return RedirectToAction("Lessons");
         }

@@ -1,8 +1,5 @@
-﻿
-@{
-    ViewData["Title"] = "AboutUs";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@{ ViewData["Title"] = "AboutUs";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 
 <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/big_image_2.jpg);">
@@ -24,7 +21,7 @@
 
 <div class="container site-section element-animate">
     <div class="block-3 d-md-flex pt-5">
-        <div class="image" style="background-image: url('images/img_1.jpg'); "></div>
+        <div class="image" style="background-image: url('../images/img_1.jpg'); "></div>
         <div class="text">
             <h4 class="subheading"></h4>
             <h2 class="heading">Biz Kimiz?</h2>
@@ -32,19 +29,11 @@
         </div>
     </div>
     <div class="block-3 d-md-flex">
-        <div class="image order-2" style="background-image: url('images/img_2.jpg'); "></div>
+        <div class="image order-2" style="background-image: url('../images/img_2.jpg'); "></div>
         <div class="text order-1">
             <h4 class="subheading">Nice text here</h4>
             <h2 class="heading">Nerden Çıktı "UniCourses" Fikri</h2>
-            <p>UniCourses geliştiricileri aynı zamanda tam zamanlı öğrenciler oldukları için, kendi ihtiyaçlarını baz alarak, birçok öğrencinin benzer sorunlar yaşadığını düşünerek yola çıktı</p>
-        </div>
-    </div>
-    <div class="block-3 d-md-flex">
-        <div class="image" style="background-image: url('images/img_3.jpg'); "></div>
-        <div class="text">
-            <h4 class="subheading">Nice text here</h4>
-            <h2 class="heading">World Class Education</h2>
-            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+            <p>UniCourses geliştiricileri aynı zamanda tam zamanlı öğrenciler oldukları için, kendi ihtiyaçlarını baz alarak, birçok öğrencinin dersi kaçırma veya tekrar etme isteği duyma gibi sorunlar yaşadığını düşünerek yola çıktı</p>
         </div>
     </div>
 </div>
@@ -63,7 +52,7 @@
                 <div class="accordion block-8" id="accordion">
                     <div class="accordion-item">
                         <h3 class="mb-0 heading">
-                            <a class="btn-block" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">What is the name of your company<span class="icon"></span></a>
+                            <a class="btn-block" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">UniCourses ücretli mi?<span class="icon"></span></a>
                         </h3>
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="body-text">
@@ -150,7 +139,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <input type="submit" value="Send Message" class="btn btn-primary">
+                            <input type="submit" value="Mail Gönder" class="btn btn-primary">
+                            <small>Henüz bu özellik aktif değil. Sorularınızı info@unicourses.com adresine yollayabilirsiniz.</small>
                         </div>
                     </div>
                 </form>
@@ -158,12 +148,11 @@
             <div class="col-md-4">
 
                 <div class="block-23">
-                    <h3 class="heading mb-5">Contact Information</h3>
+                    <h3 class="heading mb-5"></h3>
                     <ul>
-                        <li><span class="icon ion-android-pin"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                        <li><a href="#"><span class="icon ion-ios-telephone"></span><span class="text">+2 392 3929 210</span></a></li>
-                        <li><a href="#"><span class="icon ion-android-mail"></span><span class="text">info@yourdomain.com</span></a></li>
-                        <li><span class="icon ion-android-time"></span><span class="text">Monday &mdash; Friday 8:00am - 5:00pm</span></li>
+                        <li><span class="icon ion-android-pin"></span><span class="text">Merkez Şube: (Mecidiyeköy) Fulya Mah. Garaj Sk. No:3/5 Şişli - İstanbul</span></li>
+                        <li><a href="#"><span class="icon ion-ios-telephone"></span><span class="text">+90 212 909 21 89</span></a></li>
+                        <li><a href="#"><span class="icon ion-android-mail"></span><span class="text">info@unicourses.com</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -175,7 +164,114 @@
 </div>
 
 
+<div class="container site-section element-animate">
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-7 text-center section-heading">
+            <h2 class="text-primary heading">Geliştiriciler</h2>
+            <p>Infotech Academy stajyerleri</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-4">
+            <div class="block-2">
+                <div class="flipper">
+                    <div class="front" style="background-image: url(../images/kaya_tarik_seker.jpg);">
+                        <div class="box">
+                            <h2>Kaya Tarık Şeker</h2>
+                            <p>FullStack Developer</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <!-- back content -->
+                        <blockquote>
+                            <p>
+                                &ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line
+                                of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;<br /><br />
+                                <a href="#" class="fa fa-linkedin p-2"></a>
+                                <a href="#" class="fa fa-instagram p-2"></a>
+                                <a href="#" class="fa fa-github p-2"></a>
+                            </p>
+                        </blockquote>
+                        <div class="author d-flex">
+                            <div class="image mr-3 align-self-center">
+                                <img src="~/images/kaya_tarik_seker.jpg" alt="developer-1" />
+                            </div>
+                            <div class="name align-self-center">Kaya Tarık Şeker<span class="position">FullStack Developer</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .flip-container -->
+        </div>
 
+        <div class="col-md-6 col-lg-4">
+            <div class="block-2 ">
+                <div class="flipper">
+                    <div class="front" style="background-image: url(../images/yasin_taha_erol.jpg);">
+                        <div class="box">
+                            <h2>Yasin Taha Erol</h2>
+                            <p>FullStack Developer</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <!-- back content -->
+                        <blockquote>
+                            <p>
+                                &ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic
+                                life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;<br /><br />
+                                <a href="#" class="fa fa-linkedin p-2"></a>
+                                <a href="#" class="fa fa-instagram p-2"></a>
+                                <a href="#" class="fa fa-github p-2"></a>
+                            </p>
+                        </blockquote>
+                        <div class="author d-flex">
+                            <div class="image mr-3 align-self-center">
+                                <img src="~/images/yasin_taha_erol.jpg" alt="developer-2" />
+                            </div>
+                            <div class="name align-self-center">Yasin Taha Erol<span class="position">FullStack Developer</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .flip-container -->
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="block-2">
+                <div class="flipper">
+                    <div class="front" style="background-image: url(../images/zeynep_gok.jpg);">
+                        <div class="box">
+                            <h2>Zeynep Gök</h2>
+                            <p>FullStack Developer</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <!-- back content -->
+
+                        <blockquote>
+                            <p>
+                                &ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One
+                                day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;<br /><br />
+                                <a href="https://www.instagram.com/zeynep.gk3/" class="fa fa-linkedin p-2"></a>
+                                <a href="https://www.instagram.com/zeynep.gk3/" class="fa fa-instagram p-2"></a>
+                                <a href="https://github.com/zeynepgk3" class="fa fa-github p-2"></a>
+
+                            </p>
+
+                        </blockquote>
+
+
+                        <div class="author d-flex">
+                            <div class="image mr-3 align-self-center">
+                                <img src="~/images/zeynep_gok.jpg" alt="developer-3" />
+                            </div>
+                            <div class="name align-self-center">Zeynep Gök<span class="position">FullStack Developer</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .flip-container -->
+        </div>
+    </div>
+</div>
+<!-- END .block-2 -->
 
 
 <section class="site-section element-animate">

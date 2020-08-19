@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -21,6 +21,8 @@ using UniCourses.Dal.Entities;
 using UniCourses.WebUI.Models;
 using UniCourses.WebUI.ViewModels;
 using X.PagedList;
+using UniCourses.WebUI.Utility;
+
 namespace UniCourses.WebUI.Controllers
 {
 
@@ -237,7 +239,83 @@ namespace UniCourses.WebUI.Controllers
             return View();
         }
         [Route("/Kurslar/{name?}/{id?}/{page?}")]
-        public IActionResult Courses(int id, string name, int? page)
+        public IActionResult CoursesSort(int id, string sortOrder, string currentFilter, string searchString, int? pageNumber)
+        {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "Score" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.catid = id;
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
+            List<Course> courses = new List<Course>();
+            if (User.Identity.IsAuthenticated && User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Role).Value == "uye")
+            {
+                string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+                List<CourseMember> courseMembers = rCourseMember.GetAll(x => x.MemberId == Convert.ToInt32(uyeid)).ToList();
+                List<int> courseInt = new List<int>();
+                foreach (Course item in rCourse.GetAll(x => x.CategoryID == id).ToList())
+                {
+                    courseInt.Add(item.Id);
+                }
+
+                List<int> courseMemberInt = new List<int>();
+                foreach (CourseMember item in courseMembers)
+                {
+                    courseMemberInt.Add((int)item.CourseId);
+                }
+                IEnumerable<int> fark = new List<int>();
+                fark = courseInt.Except(courseMemberInt);
+
+
+                foreach (var item in fark)
+                {
+                    Course c = myContext.Course.FirstOrDefault(x => x.Id == item && x.State == true);
+                    if (c != null)
+                    {
+                        courses.Add(c);
+                    }
+                }
+            }
+            else
+            {
+                courses = rCourse.GetAll(x => x.CategoryID == id).ToList();
+            }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                courses = courses.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Title.ToUpper().Contains(searchString.ToUpper())).ToList();
+            }
+            switch (sortOrder)
+            {
+                case "Score":
+                    courses = courses.OrderByDescending(s => s.Score).ToList();//En çok Puan
+                    break;
+                case "Student":
+                    courses = courses.OrderByDescending(s => s.NumberOfStudent).ToList();//En çok öğrenci
+                    break;
+                case "Date":
+                    courses = courses.OrderBy(s => s.Duration).ToList(); // En yeni
+                    break;
+                case "date_desc":
+                    courses = courses.OrderByDescending(s => s.Duration).ToList();// En eski
+                    break;
+                default:
+                    courses = courses.OrderBy(s => s.Name).ToList();//İsim
+                    break;
+            }
+            int pageSize = 2;
+            ViewBag.dgr = pageNumber;
+            return View(PaginatedList<Course>.Create(courses, pageNumber ?? 1, pageSize));
+        }
+        
+        public IActionResult Courses(int id, string sortOrder, int? page)
         {
             //List<Course> lastCourse = new List<Course>();
             List<Course> courses = new List<Course>();
