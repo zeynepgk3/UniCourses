@@ -40,8 +40,15 @@ using UniCourses.WebUI.Common;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\Views\_ViewImports.cshtml"
+using UniCourses.WebUI.Utility;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f662b88988a0c3227d6a0ce16c80d3f72daa32df", @"/Views/Home/Register.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"046cb80209a1bb73991b3ca11cb3939ec8dac1d7", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"431a6833075c7f9cf5d1659ca1d972fd581d750e", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Register : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<UniCourses.Dal.Entities.Member>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("already"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -85,7 +92,7 @@ using UniCourses.WebUI.Common;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f662b88988a0c3227d6a0ce16c80d3f72daa32df5315", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f662b88988a0c3227d6a0ce16c80d3f72daa32df5517", async() => {
                 WriteLiteral(@"
     <meta charset=""utf-8"">
     <meta name=""viewport"" content=""width=device-width, initial-scale=1.0, shrink-to-fit=no"">
@@ -106,9 +113,9 @@ using UniCourses.WebUI.Common;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f662b88988a0c3227d6a0ce16c80d3f72daa32df6634", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f662b88988a0c3227d6a0ce16c80d3f72daa32df6836", async() => {
                 WriteLiteral("\r\n    <section data-stellar-background-ratio=\"0.5\">\r\n        <div class=\"register-photo\">\r\n            <div class=\"form-container\">\r\n                <div class=\"image-holder\"></div>\r\n                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f662b88988a0c3227d6a0ce16c80d3f72daa32df7105", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f662b88988a0c3227d6a0ce16c80d3f72daa32df7307", async() => {
                     WriteLiteral(@"
                     <h2 class=""text-center""><strong>Yeni</strong> Hesap Oluştur.</h2>
                     <div class=""form-group""><input class=""form-control"" type=""email"" name=""Mail"" placeholder=""Email"" required></div>
@@ -155,7 +162,7 @@ WriteAttributeValue("", 2034, DateTime.Now, 2034, 13, false);
                         <div class=""form-check""><label class=""form-check-label""><input class=""form-check-input"" type=""checkbox"" required>Koşul ve Şartları Kabul Ediyorum.</label></div>
                     </div>
                     <div class=""form-group""><input type=""submit"" class=""btn btn-primary px-5 py-2"" value=""Kayıt Ol""></div>");
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f662b88988a0c3227d6a0ce16c80d3f72daa32df10340", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f662b88988a0c3227d6a0ce16c80d3f72daa32df10542", async() => {
                         WriteLiteral("Zaten Hesabın Var Mı? Buradan Giriş Yap.");
                     }
                     );

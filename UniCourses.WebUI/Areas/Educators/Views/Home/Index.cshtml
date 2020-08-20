@@ -6,9 +6,7 @@
 
 @*
     <h1>Index</h1>
-
     <span>Hoş Geldiniz <span style="color:blue">@User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</span></span>
-
     <h1>BURASI EDUCATOR ANA SAYFASI</h1>
     <br />
     <div>
@@ -119,7 +117,7 @@
                             <span><i class="fa fa-user"></i>  @course.NumberOfStudent Öğrenci</span>
                             <br />
                             <span><i class="fa fa-clock-o"></i> @(course.Duration/3600) Saat @(course.Duration/60) Dakika </span>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -139,13 +137,13 @@
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fa fa-minus"></i>
                     </button>
-                   @* <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts"
-                            data-widget="chat-pane-toggle">
-                        <i class="fa fa-comments"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fa fa-times"></i>
-                    </button>*@
+                    @* <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts"
+                                data-widget="chat-pane-toggle">
+                            <i class="fa fa-comments"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fa fa-times"></i>
+                        </button>*@
                 </div>
             </div>
             <!-- /.card-header -->
@@ -175,9 +173,27 @@
                 </div>
                 <!--/.direct-chat-messages-->
                 <!-- Contacts are loaded here -->
-                
+
             </div>
             <!-- /.card-body -->
+<<<<<<< HEAD
+            @*<div class="card-footer">
+                    <form action="#" method="post">
+                        <div class="input-group">
+                            <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                            <span class="input-group-append">
+                                <button type="button" class="btn btn-primary">Send</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>*@
+            <!-- /.card-footer-->
+        </div>
+        <!--/.direct-chat -->
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-5 connectedSortable">
+=======
 
             @*<div class="card-footer">
                 <form action="#" method="post">
@@ -197,6 +213,7 @@
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
         <section class="col-lg-5 connectedSortable">
 
+>>>>>>> b6f54df2b80f49414116453fab98e9e8370a84c5
         </section>
 
         <!-- right col -->
@@ -205,8 +222,11 @@
 </div><!-- /.container-fluid -->
 <!-- /.content -->
 <!-- /.content-wrapper -->
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> b6f54df2b80f49414116453fab98e9e8370a84c5
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

@@ -1560,3 +1560,5 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcore
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\_ViewImports.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\_ViewStart.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\EgitimciGoruntule.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\CoursesSort.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\Comment\CommentList.cshtml.g.cs

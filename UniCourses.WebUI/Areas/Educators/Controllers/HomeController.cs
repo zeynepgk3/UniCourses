@@ -117,7 +117,11 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         public IActionResult Profile(Educator educator)
         {
             string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+<<<<<<< HEAD
+            Educator changededucator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
+=======
             Educator changededucator = rEducator.GetBy(x=>x.MemberID == Convert.ToInt32(uyeid));
+>>>>>>> b6f54df2b80f49414116453fab98e9e8370a84c5
 
             changededucator.NameSurname = educator.NameSurname;
             changededucator.Job = educator.Job;

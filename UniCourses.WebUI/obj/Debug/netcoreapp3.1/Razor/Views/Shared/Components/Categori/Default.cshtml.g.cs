@@ -34,6 +34,13 @@ using UniCourses.WebUI.Common;
 #line hidden
 #nullable disable
 #nullable restore
+#line 5 "C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\Views\_ViewImports.cshtml"
+using UniCourses.WebUI.Utility;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\Views\Shared\Components\Categori\Default.cshtml"
 using UniCourses.WebUI.ViewComponents;
 
@@ -41,7 +48,7 @@ using UniCourses.WebUI.ViewComponents;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e76810d539f94661f7adf002a418794b5286fe9a", @"/Views/Shared/Components/Categori/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"046cb80209a1bb73991b3ca11cb3939ec8dac1d7", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"431a6833075c7f9cf5d1659ca1d972fd581d750e", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_Categori_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<UniCourses.Dal.Entities.Category>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-area", "uye", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -140,7 +147,7 @@ using UniCourses.WebUI.ViewComponents;
 #line hidden
 #nullable disable
             WriteLiteral("                                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e76810d539f94661f7adf002a418794b5286fe9a7974", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e76810d539f94661f7adf002a418794b5286fe9a8176", async() => {
 #nullable restore
 #line 23 "C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\Views\Shared\Components\Categori\Default.cshtml"
                                                                                                                                        Write(subcategory.CategoryName);
