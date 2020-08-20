@@ -238,7 +238,12 @@ namespace UniCourses.WebUI.Controllers
         }
         public IActionResult EgitimciGoruntule(int id)
         {
-            return View(rEducator.GetBy(r => r.ID == id));
+            CourseCategoryVM courseCategoryVM = new CourseCategoryVM()
+            {
+                Educator = rEducator.GetBy(r => r.ID == id),
+                Courses = rCourse.GetAll(x => x.EducatorID == id).ToList()
+            };
+            return View(courseCategoryVM);
         }
         public IActionResult AboutUs()
         {
@@ -322,8 +327,9 @@ namespace UniCourses.WebUI.Controllers
             
             CourseCategoryVM courcat = new CourseCategoryVM() {
                 CourseList = PaginatedList<Course>.Create(courses, pageNumber ?? 1, pageSize),
-                Tags = rTag.GetAll(x=>x.CategoryId == id).ToList()
-            };
+                Tags = rTag.GetAll(x=>x.CategoryId == id).ToList(),
+                Categories = myContext.Category.Include(x => x.SubCategories).ToList()
+        };
             return View(courcat);
         }
         

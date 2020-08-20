@@ -2,72 +2,38 @@
 <footer class="site-footer">
     <div class="container">
         <div class="row mb-5">
-            <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
                 <h3>University</h3>
-                <p>Perferendis eum illum voluptatibus dolore tempora consequatur minus asperiores temporibus.</p>
+                <p>Bu sitede Colorlib tarafından tasarlanan University adlı şablon kullanılmıştır.</p>
             </div>
-            <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                <h3 class="heading">Quick Link</h3>
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                <h3 class="heading">Sayfalar</h3>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <ul class="list-unstyled">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Courses</a></li>
-                            <li><a href="#">Pages</a></li>
+                            <li><a asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+                            <li><a asp-controller="Home" asp-action="AboutUs">Hakkımızda</a></li>
+                            <li><a asp-controller="Home" asp-action="Courses">Kurslar</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Privacy</a></li>
-                        </ul>
-                    </div>
+                    @*<div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><a asp-area="uye" asp-controller="Home" asp-action="Profil">Profil</a></li>
+                                <li><a asp-area="uye" asp-controller="Home" asp-action="Kurslarim">Kurslarım</a></li>
+                                <li><a asp-area="uye" asp-controller="Cart" asp-action="Index">Sepetim</a></li>
+                                <li><a asp-area="uye" asp-controller="Home" asp-action="Ayarlar">Ayarlar</a></li>
+                            </ul>
+                        </div>*@
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                <h3 class="heading">Blog</h3>
-                <div class="block-21 d-flex mb-4">
-                    <div class="text">
-                        <h3 class="heading mb-0"><a href="#">Consectetur Adipisicing Elit</a></h3>
-                        <div class="meta">
-                            <div><a href="#"><span class="ion-android-calendar"></span> May 29, 2018</a></div>
-                            <div><a href="#"><span class="ion-android-person"></span> Admin</a></div>
-                            <div><a href="#"><span class="ion-chatbubble"></span> 19</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="block-21 d-flex mb-4">
-                    <div class="text">
-                        <h3 class="heading mb-0"><a href="#">Dolore Tempora Consequatur</a></h3>
-                        <div class="meta">
-                            <div><a href="#"><span class="ion-android-calendar"></span> May 29, 2018</a></div>
-                            <div><a href="#"><span class="ion-android-person"></span> Admin</a></div>
-                            <div><a href="#"><span class="ion-chatbubble"></span> 19</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="block-21 d-flex mb-4">
-                    <div class="text">
-                        <h3 class="heading mb-0"><a href="#">Perferendis eum illum</a></h3>
-                        <div class="meta">
-                            <div><a href="#"><span class="ion-android-calendar"></span> May 29, 2018</a></div>
-                            <div><a href="#"><span class="ion-android-person"></span> Admin</a></div>
-                            <div><a href="#"><span class="ion-chatbubble"></span> 19</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-                <h3 class="heading">Contact Information</h3>
+
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                <h3 class="heading">İletişim</h3>
                 <div class="block-23">
                     <ul>
-                        <li><span class="icon ion-android-pin"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                        <li><a href="#"><span class="icon ion-ios-telephone"></span><span class="text">+2 392 3929 210</span></a></li>
-                        <li><a href="#"><span class="icon ion-android-mail"></span><span class="text">info@yourdomain.com</span></a></li>
-                        <li><span class="icon ion-android-time"></span><span class="text">Monday &mdash; Friday 8:00am - 5:00pm</span></li>
+                        <li><span class="icon ion-android-pin"></span><span class="text">Merkez Şube: (Mecidiyeköy) Fulya Mah. Garaj Sk. No:3/5 Şişli - İstanbul</span></li>
+                        <li><a href="#"><span class="icon ion-ios-telephone"></span><span class="text">+90 212 909 21 89</span></a></li>
+                        <li><a href="#"><span class="icon ion-android-mail"></span><span class="text">info@unicourses.com</span></a></li>
                     </ul>
                 </div>
             </div>

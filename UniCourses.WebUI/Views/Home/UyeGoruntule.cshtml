@@ -1,0 +1,141 @@
+﻿@model UniCourses.Dal.Entities.Member
+
+@{
+    ViewData["Title"] = "UyeGoruntule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+
+<div class="container">
+    <div class="row element-animate">
+        <div class=" col-md-5">
+            <div style="text-align:right; margin-top:40px;">
+                <div class="d-flex align-items-center justify-content-center">
+                    <figure>
+                        <img style="width:100%; height: auto;max-width:256px;" src="~/Picture/@Model.PictureURL" />
+                        @*<span><i class="fa fa-star"></i>    Eğitimci Puanı</span>*@
+                        <div class="row d-flex align-items-center justify-content-center mt-4">
+
+
+                        </div>
+                        <!-- badge -->
+                    </figure>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7 text-center" style="margin-top:40px; margin-bottom:20px;">
+            <div class="block-19 p-5">
+
+                <div class="icon-row">
+
+                    <h4 style="font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 2em; color: #1b1b1b;">
+                        <b>@Model.NameSurName</b>
+                    </h4><br />
+                    <p>
+                        <i class="fa fa-pencil m-2" aria-hidden="true" style="color:#cc2444;"></i>  Model.Class
+                    </p>
+                    <p>
+                        <i class="fa fa-graduation-cap m-2" aria-hidden="true" style="color:#cc2444;"></i>  Model.University
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Tanıtım ends-->
+    <!--Kurslar starts-->
+    <div class="row bg-light element-animate">
+        <div class="col-md-12 block-25">
+
+            <div id="Page2">
+
+                <div class="row justify-content-between m-3 p-2">
+                    <div style="float:left; margin:5px;">
+                        <h4>@Model.NameSurName 'nin İzlediği Kurslar</h4>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class=" m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="m-2">
+                            <a href="#" class="d-flex" style="vertical-align:middle;">
+                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
+                                <div class="text m-2">
+                                    <h3 class="heading">Create cool websites using this template</h3>
+
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Courses ENDS-->
+
+            </div>
+        </div>
+    </div>
+
+    <!--kurslar sonu-->
+    <!--faaliyetler başı-->
+</div>
+<script>
+    function show(shown, hidden) {
+        document.getElementById(shown).style.display = 'block';
+        document.getElementById(hidden).style.display = 'none';
+        return false;
+    }
+</script>
+
+

@@ -4,6 +4,7 @@
     Layout = "~/Areas/Educators/Views/Shared/_Layout.cshtml";
 }
 
+<script src="https://cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -32,25 +33,54 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-sm-4">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Kurs Fotoğrafı</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td> <img src="/img/@Model.ImageURL" alt="Image" class="img-fluid"> <br />@Model.ImageURL</td>
-                                    <td class="text-right py-0 align-middle">
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="#" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                                            <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+
+                        <form method="post" id="profileimage" asp-action="UploadCoursePicture" enctype="multipart/form-data">
+                            <div class="card card-primary card-outline">
+                                <div class="card-body box-profile">
+                                    <div class="text-center">
+                                        <div class="row d-flex align-items-center justify-content-center">
+                                            <img class="profile-user-img img-fluid img-circle"
+                                                 style="max-width:250px; height: auto; margin:auto;" src="~/img/@Model.ImageURL" />
                                         </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row d-flex align-items-center justify-content-center m-3">
+
+                                <label for="profileimg" class="btn btn-outline-primary"><i class="fa fa-eye">Yeni Fotoğraf Yükle</i></label>
+                                <small>Tercihen 250x250 boyutunda ve kare fotoğraflar ekleyin</small>
+                                <small>Yeni fotoğraf ekledikten sonra kaydet tuşuna basınız. Değişiklik o zaman görünecek</small>
+                                <input type="file" name="file" multiple="multiple" id="profileimg" class="form-control-file" style="display:none;" required>
+                                <input type="hidden" name="id" value="@Model.Id" />
+                                @*<p>Seçilen fotoğraf: @Model.PictureURL</p>*@  <!--yeni eklenecek fotoğrafın linkini göstermeye çalışalım-->
+                                <input type="submit" class="btn btn-primary" value="Kaydet">
+                                <!--iki input yerine bir inputta yüklemeyi tamamlamaya çalışalım-->
+                            </div>
+                        </form>
+
+                        @*<table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Kurs Görseli</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> <img src="/img/@Model.ImageURL" alt="Image" class="img-fluid"> <br /></td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center py-0 align-middle">
+                                            <div class="btn-group btn-group-sm m-sm-3">
+                                                <label for="kursfotografi" class="btn btn-info"><i class="fa fa-eye">Değiştir</i></label>
+                                                <input type="file" id="kursfotografi" style="display:none;">
+                                                <input class="btn btn-primary" type="submit" id="kursfotografi" value="Kaydet">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>*@
                     </div>
                     <div class="col-12 col-sm-8">
                         <form method="post" asp-action="EditCourse">
@@ -63,16 +93,21 @@
                                 <label for="inputDescription">Kurs Başlığı</label>
                                 <textarea id="inputDescription" asp-for="@Model.Title" class="form-control" rows="4">@Model.Title</textarea>
                             </div>
+
                             <div class="form-group">
-                                <label for="inputDescription">Kurs Detayları</label>
-                                <textarea id="inputDescription" asp-for="@Model.Description" class="form-control" rows="4">@Model.Description</textarea>
+                                <label for="Description">Kurs Açıklaması</label>
+                                <textarea name="Description" id="Description" asp-for="@Model.Description" class="form-control py-2" cols="20" rows="8" required>@Model.Description</textarea><!--boş olduğunda algılamıyor, hocaya sor-->
+                                <script>
+                                    CKEDITOR.replace('Description');
+                                </script>
                             </div>
+
                             <div class="form-group">
                                 <label for="inputName">Ücret</label>
                                 <input asp-for="@Model.Price" id="price" class="form-control" value="@Model.Price">
                             </div>
                             <div class="form-group">
-                                <input type="submit" id="price" class="form-control" value="Kursu Güncelle">
+                                <input type="submit" id="price" class="form-control btn btn-primary" value="Kursu Güncelle">
                             </div>
                             <hr>
                         </form>

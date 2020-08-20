@@ -38,9 +38,19 @@
                         </div>
                         <div class="col-12 col-sm-8">
                             <h3 class="my-3">@item.Name</h3>
+
                             <p>
                                 @item.Title
                             </p>
+                            <br />
+                            @if (item.State == true)
+                            {
+                                <span class="badge badge-success"> Onaylandı</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-secondary"> Onay Bekliyor</span>
+                            }
                             <br />
                             <p>
                                 @Html.Raw(item.Description)
@@ -89,9 +99,9 @@
                         <div class="col-9 mt-4">
                             <nav class="w-100">
                                 <div class="nav nav-tabs" id="product-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Description</a>
+                                    <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Kurs Açıklaması</a>
                                     <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Yorumlar</a>
-                                    <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">Rating</a>
+                                    @*<a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">Rating</a>*@
                                 </div>
                             </nav>
                             <div class="tab-content p-3" id="nav-tabContent">
@@ -140,33 +150,33 @@
             <div class="card card-solid">
                 <div class="card-body">
                     <div class="row">
-                            <div class="card-header">
-                                <h3 class="card-title">Eklediğim Dersler</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body table-responsive p-0">
-                                <table class="table table-striped projects">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 10%">
-                                                Ders No
-                                            </th>
-                                            <th style="width: 30%">
-                                                Ders İsmi
-                                            </th>
-                                            <th style="width: 20%">
-                                                Toplam Uzunluk
-                                            </th>
-                                            <th style="width: 20%" class="text-center">
-                                                Durum
-                                            </th>
-                                            <th style="width: 20%">
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (Lesson lessons in item.Lessons)
-                                        {
+                        <div class="card-header">
+                            <h3 class="card-title">Eklediğim Dersler</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-striped projects">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10%">
+                                            Ders No
+                                        </th>
+                                        <th style="width: 20%">
+                                            Ders İsmi
+                                        </th>
+                                        <th style="width: 20%">
+                                            Toplam Uzunluk
+                                        </th>
+                                        <th style="width: 20%" class="text-center">
+                                            Durum
+                                        </th>
+                                        <th style="width: 30%">
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (Lesson lessons in item.Lessons)
+                                    {
                                         <tr>
                                             <td>
                                                 @lessons.LessonNo
@@ -196,7 +206,7 @@
                                                     </i>
                                                     Video Ekle
                                                 </a>
-                                                <a class="btn btn-info btn-sm" asp-action="EditLesson">
+                                                <a class="btn btn-info btn-sm" asp-action="EditLesson" asp-route-id="@item.Id">
                                                     <i class="fa fa-pencil">
                                                     </i>
                                                     Düzenle
@@ -207,13 +217,13 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            
+                                    }
+                                </tbody>
+                            </table>
+
                             <!-- /.card-body -->
                         </div>
-                        
+
                     </div>
                     <!--/Lessons row-->
                 </div>

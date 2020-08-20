@@ -1,15 +1,18 @@
-﻿@{ ViewData["Title"] = "AboutUs";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+﻿
+@{
+    ViewData["Title"] = "AboutUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 
-<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/big_image_2.jpg);">
+<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/big_image_22.jpg);">
     <div class="container">
         <div class="row align-items-center justify-content-center site-hero-sm-inner">
             <div class="col-md-7 text-center">
 
                 <div class="mb-5 element-animate">
                     <h1 class="mb-2">Hakkımızda</h1>
-                    <p class="bcrumb"><a asp-action="Index">Anasayfa</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Hakkımızda</span></p>
+                    <p class="bcrumb"><a href="Index.html">Anasayfa</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Hakkımızda</span></p>
                 </div>
 
             </div>
@@ -21,36 +24,23 @@
 
 <div class="container site-section element-animate">
     <div class="block-3 d-md-flex pt-5">
-<<<<<<< HEAD
         <div class="image" style="background-image: url('../images/img_1.jpg'); "></div>
-=======
-        <div class="image" style="background-image: url('~/wwwroot/images/img_1.jpg'); "></div>
->>>>>>> b6f54df2b80f49414116453fab98e9e8370a84c5
         <div class="text">
             <h4 class="subheading"></h4>
             <h2 class="heading">Biz Kimiz?</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A quibusdam nisi eos accusantium eligendi velit deleniti nihil ad deserunt rerum incidunt nulla nemo eius molestiae architecto beatae asperiores doloribus animi.</p>
+            <p>Öğrenmeye ve gelişmeye her zaman öncelik veren <a href="https://www.infotechacademy.com.tr/">Infotech Academy</a>'nin stajyerleriyiz. </p>
         </div>
     </div>
     <div class="block-3 d-md-flex">
-<<<<<<< HEAD
         <div class="image order-2" style="background-image: url('../images/img_2.jpg'); "></div>
         <div class="text order-1">
-            <h4 class="subheading">Nice text here</h4>
             <h2 class="heading">Nerden Çıktı "UniCourses" Fikri</h2>
-            <p>UniCourses geliştiricileri aynı zamanda tam zamanlı öğrenciler oldukları için, kendi ihtiyaçlarını baz alarak, birçok öğrencinin dersi kaçırma veya tekrar etme isteği duyma gibi sorunlar yaşadığını düşünerek yola çıktı</p>
+            <p>
+                UniCourses geliştiricileri aynı zamanda tam zamanlı öğrenciler oldukları için, kendi ihtiyaçlarını baz alarak, birçok öğrencinin dersi kaçırma veya tekrar etme isteği
+                duyma gibi sorunlar yaşadığını düşünerek yola çıktı
+            </p>
         </div>
     </div>
-=======
-        <div class="image order-2" style="background-image: url('~/wwwroot/images/img_2.jpg'); "></div>
-        <div class="text order-1">
-            <h4 class="subheading">Nice text here</h4>
-            <h2 class="heading">Nerden Çıktı "UniCourses" Fikri</h2>
-            <p>UniCourses geliştiricileri aynı zamanda tam zamanlı öğrenciler oldukları için, kendi ihtiyaçlarını baz alarak, birçok öğrencinin benzer sorunlar yaşadığını düşünerek yola çıktı</p>
-        </div>
-    </div>
-    
->>>>>>> b6f54df2b80f49414116453fab98e9e8370a84c5
 </div>
 
 
@@ -124,6 +114,8 @@
         <div class="row justify-content-center mb-5">
             <div class="col-md-7 text-center section-heading">
                 <h2 class="text-primary heading">İletişime Geçin</h2>
+                <small>*Henüz bu özellik aktif değil. Sorularınızı <b>info@unicourses.com</b> adresine yollayabilirsiniz.</small>
+
             </div>
         </div>
 
@@ -134,28 +126,27 @@
                 <form action="#" method="post">
                     <div class="row">
                         <div class="col-md-4 form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Ad Soyad</label>
                             <input type="text" id="name" class="form-control py-2">
                         </div>
                         <div class="col-md-4 form-group">
-                            <label for="phone">Phone</label>
+                            <label for="phone">Telefon</label>
                             <input type="text" id="phone" class="form-control py-2">
                         </div>
                         <div class="col-md-4 form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Mail</label>
                             <input type="email" id="email" class="form-control py-2">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <label for="message">Write Message</label>
+                            <label for="message">Mesajınızı Yazın</label>
                             <textarea name="message" id="message" class="form-control py-2" cols="30" rows="8"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <input type="submit" value="Mail Gönder" class="btn btn-primary">
-                            <small>Henüz bu özellik aktif değil. Sorularınızı info@unicourses.com adresine yollayabilirsiniz.</small>
                         </div>
                     </div>
                 </form>
@@ -193,69 +184,38 @@
                     <div class="front" style="background-image: url(../images/kaya_tarik_seker.jpg);">
                         <div class="box">
                             <h2>Kaya Tarık Şeker</h2>
-                            <p>FullStack Developer</p>
+                            <p>Full Stack Developer</p>
                         </div>
                     </div>
                     <div class="back">
                         <!-- back content -->
                         <blockquote>
-                            <p>
-                                &ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line
-                                of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;<br /><br />
-                                <a href="#" class="fa fa-linkedin p-2"></a>
-                                <a href="#" class="fa fa-instagram p-2"></a>
-                                <a href="#" class="fa fa-github p-2"></a>
+                            <p style="font-size:0.8em;">
+                                &ldquo;İstanbul Medeniyet Üniversitesi 4. sınıf Elektrik Elektronik Mühendisliği öğrencisiyim.
+                                Üniveristemizde kurduğumuz teknoloji takımımızla ulusal ve uluslararası projelerde elektronik sistem görevlerinde çalışıyorum.
+                                Ayrıca T3 Vakfı'nda, eğitmenlik ve mentörlük yapıyorum. Web projeleriyle çalışmaya ilk defa bu sene, İnfotech Academy'de yaptığım yaz stajımda başladım
+                                ve 1 aylık sürede çok fazla şey öğrendim.&rdquo;<br /><br />
+                                <a href="https://www.linkedin.com/in/kaya-tarık-şeker-414058192/" class="fa fa-linkedin p-2"></a>
+                                <a href="https://github.com/KayaTS" class="fa fa-github p-2"></a>
                             </p>
                         </blockquote>
                         <div class="author d-flex">
                             <div class="image mr-3 align-self-center">
                                 <img src="~/images/kaya_tarik_seker.jpg" alt="developer-1" />
                             </div>
-                            <div class="name align-self-center">Kaya Tarık Şeker<span class="position">FullStack Developer</span></div>
+                            <div class="name align-self-center">Kaya Tarık Şeker<span class="position">Full Stack Developer</span></div>
                         </div>
                     </div>
                 </div>
             </div> <!-- .flip-container -->
         </div>
-
-        <div class="col-md-6 col-lg-4">
-            <div class="block-2 ">
-                <div class="flipper">
-                    <div class="front" style="background-image: url(../images/yasin_taha_erol.jpg);">
-                        <div class="box">
-                            <h2>Yasin Taha Erol</h2>
-                            <p>FullStack Developer</p>
-                        </div>
-                    </div>
-                    <div class="back">
-                        <!-- back content -->
-                        <blockquote>
-                            <p>
-                                &ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic
-                                life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;<br /><br />
-                                <a href="#" class="fa fa-linkedin p-2"></a>
-                                <a href="#" class="fa fa-instagram p-2"></a>
-                                <a href="#" class="fa fa-github p-2"></a>
-                            </p>
-                        </blockquote>
-                        <div class="author d-flex">
-                            <div class="image mr-3 align-self-center">
-                                <img src="~/images/yasin_taha_erol.jpg" alt="developer-2" />
-                            </div>
-                            <div class="name align-self-center">Yasin Taha Erol<span class="position">FullStack Developer</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- .flip-container -->
-        </div>
-
         <div class="col-md-6 col-lg-4">
             <div class="block-2">
                 <div class="flipper">
                     <div class="front" style="background-image: url(../images/zeynep_gok.jpg);">
                         <div class="box">
                             <h2>Zeynep Gök</h2>
-                            <p>FullStack Developer</p>
+                            <p>Full Stack Developer</p>
                         </div>
                     </div>
                     <div class="back">
@@ -263,9 +223,8 @@
 
                         <blockquote>
                             <p>
-                                &ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One
-                                day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;<br /><br />
-                                <a href="https://www.instagram.com/zeynep.gk3/" class="fa fa-linkedin p-2"></a>
+                                &ldquo;İstanbul Üniversitesi-Cerrahpaşa'da okuyan, web programlamaya tutkulu bilgisayar mühendisi adayı. Her şey hakkında bir şey, bir şey hakkında her şeyi öğrenmeye çalışıyor.&rdquo;<br /><br />
+                                <a href="https://www.linkedin.com/in/zeynepgok/" class="fa fa-linkedin p-2"></a>
                                 <a href="https://www.instagram.com/zeynep.gk3/" class="fa fa-instagram p-2"></a>
                                 <a href="https://github.com/zeynepgk3" class="fa fa-github p-2"></a>
 
@@ -278,12 +237,47 @@
                             <div class="image mr-3 align-self-center">
                                 <img src="~/images/zeynep_gok.jpg" alt="developer-3" />
                             </div>
-                            <div class="name align-self-center">Zeynep Gök<span class="position">FullStack Developer</span></div>
+                            <div class="name align-self-center">Zeynep Gök<span class="position">Full Stack Developer</span></div>
                         </div>
                     </div>
                 </div>
             </div> <!-- .flip-container -->
         </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="block-2 ">
+                <div class="flipper">
+                    <div class="front" style="background-image: url(../images/yasin_taha_erol.jpg);">
+                        <div class="box">
+                            <h2>Yasin Taha Erol</h2>
+                            <p>Full Stack Developer</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <!-- back content -->
+                        <blockquote>
+                            <p style="font-size:0.8em;">
+                                &ldquo;Merhabalar. Yıldız Teknik üniveristesinde 4.sınıf matematik mühendisliği
+                                öğrencisiyim. Infotech Academy bünyesinde olşuturduğumuz unicourses.net projesinde
+                                ben de yer aldım. Arkadaşlarımla birlikte oluşturduğumuz bu projede üniversite öğrencilerinin
+                                kaçırdıkları dersleri telafi etmesini amaçladık. Aynı zamanda kazanılan paranın bir kısmını
+                                çeşitli hayır kurumlarına bağışlayarak çorbada bizimde tuzumuz olsun istedik. Projenin
+                                yapılış aşamasında bize destek veren Bekir Oturakçı ve Okan beye teşekkür ediyorum&rdquo;<br /><br />
+                                <a href="https://www.linkedin.com/in/yasin-taha-erol-2b533713b/" class="fa fa-linkedin p-2"></a>
+                                <a href="https://github.com/yasintahaerol" class="fa fa-github p-2"></a>
+                            </p>
+                        </blockquote>
+                        <div class="author d-flex">
+                            <div class="image mr-3 align-self-center">
+                                <img src="~/images/yasin_taha_erol.jpg" alt="developer-2" />
+                            </div>
+                            <div class="name align-self-center">Yasin Taha Erol<span class="position">Full Stack Developer</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- .flip-container -->
+        </div>
+
+
     </div>
 </div>
 <!-- END .block-2 -->

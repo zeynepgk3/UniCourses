@@ -13,11 +13,19 @@
                 (opsiyonel) teknik becerileri
         col 12  aldığım kurslar, verdiğim kurslar
 -->
+@*<style>
+        .p-file {
+            color: #cc2444;
+        }
+
+            .p-file:hover {
+                color: white;
+            }
+    </style>*@
 <div class="container">
-    <div class="row">
-        <div style="text-align:right; margin-top:20px;" class=" col-md-5">
-            <div>
-                <form method="post" asp-action="UploadPicture" enctype="multipart/form-data">
+    <div class="row element-animate mt-3">
+        <div class="col-md-4 mt-lg-5 mb-3">
+            @* <form method="post" asp-action="UploadPicture" enctype="multipart/form-data">
                     <img style="width:100%; height: auto;max-width:256px;" src="/Picture/@Model.PictureURL" />
                     <div class="row">
                         <div class="form-group col-md-4">
@@ -27,28 +35,68 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
-        <div class="col-md-7 p-5 text-center">
-            <div class="icon-row">
-                <form method="post" asp-action="Profil" enctype="multipart/form-data"><center>
-                    <span style="font-size:1.3em; color:#1b1b1b;" align="center">
+                        <label for="kursfotografi" class="btn btn-outline-primary m-auto"><i class="fa fa-eye">Profil Fotoğrafını Değiştir</i></label>
+                        <input type="file" id="kursfotografi" >
+                        @Model.PictureURL
+                        <input type="submit" class="btn btn-primary" value="Kaydet">
+            *@
 
-                        <i class="fa fa-user m-2" aria-hidden="true" style="color:#cc2444;"></i><b>İsim Soyisim</b>
-                    
-                        <input asp-for="@Model.NameSurName"  class="form-control" value="@Model.NameSurName" style="width:200px;" >
-                        <input asp-for="@Model.ID" type="hidden" class="form-control" value="@Model.ID">
 
-                    </span></center><br />
-                    <span style="font-size:1.2em;">
-                        <i class="fa fa-graduation-cap m-2" aria-hidden="true" style="color:#cc2444;"></i>**Okulu Eklenecek**
-                    </span><br />
-                    <span style="font-size:1.2em;">
-                        <i class="fa fa-pencil m-2" aria-hidden="true" style="color:#cc2444;"></i>**Bölüm ve Sınıf eklenecek**
-                    </span><br />
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-outline-danger m-4 p-2" value="Profili Güncelle">
+
+
+            <form method="post" id="profileimage" asp-action="UploadPicture" enctype="multipart/form-data">
+                <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            <div class="row d-flex align-items-center justify-content-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     style="max-width:250px; height: auto; margin:auto;" src="/Picture/@Model.PictureURL" />
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="row d-flex align-items-center justify-content-center m-3">
+
+                    <label for="profileimg" class="btn btn-outline-light"><i class="fa fa-eye">Yeni Fotoğraf Yükle</i></label>
+                    <small>Tercihen 250x250 boyutunda ve kare fotoğraflar ekleyin</small>
+                    <small>Yeni fotoğraf ekledikten sonra kaydet tuşuna basınız. Değişiklik o zaman görünecek</small>
+                    <input type="file" name="file" multiple="multiple" id="profileimg" class="form-control-file" style="display:none;" required>
+                    @*<p>Seçilen fotoğraf: @Model.PictureURL</p>*@  <!--yeni eklenecek fotoğrafın linkini göstermeye çalışalım-->
+                    <input type="submit" class="btn btn-primary" value="Kaydet">
+                    <!--iki input yerine bir inputta yüklemeyi tamamlamaya çalışalım-->
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-8 mt-lg-5 text-left">
+            <div class="icon-row">
+                @*<form method="post" asp-action="Profil" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <span class="form-text" style="font-size:1.2em; color:#1b1b1b;">
+
+                                <i class="fa fa-user m-2" aria-hidden="true" style="color:#cc2444;"></i>İsim Soyisim
+                            </span>
+                            <input type="text" asp-for="@Model.NameSurName" class="form-control" value="@Model.NameSurName">
+
+
+                        </div><br />
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary m-4 p-2" value="Profili Güncelle">
+                        </div>
+                    </form>*@
+
+                <form method="post" asp-action="Profil" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label for="nameSurname" class="col-md-4 col-form-label text-right"><i class="fa fa-user m-2" aria-hidden="true" style="color:#cc2444;"></i>İsim Soyisim</label>
+                        <div class="col-lg-6">
+                            <input type="text" asp-for="@Model.NameSurName" class="form-control" id="inputPassword" value="@Model.NameSurName">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" class="form-control btn btn-primary" value="Kaydet">
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -64,7 +112,7 @@
                         <h4>Takip Ettiğim Kurslar</h4>
                     </div>
                     <div style="float:right;margin:5px;">
-                        <a href="#" class="btn btn-primary" onclick="return show('Page2','Page1');">Sunduğum Kursları Göster</a>
+                        <a href="#" class="btn btn-outline-primary" onclick="return show('Page2','Page1');">Sunulan Kursları Göster</a>
                     </div>
                 </div>
 
@@ -161,7 +209,7 @@
                         <h4>Sunduğum Kurslar</h4>
                     </div>
                     <div style="float:right;margin:5px;">
-                        <a href="#" class="btn btn-primary" onclick="return show('Page1','Page2');">Takip Edilen Kursları Göster</a>
+                        <a href="#" class="btn btn-outline-primary" onclick="return show('Page1','Page2');">Takip Ettilen Kursları Göster</a>
                     </div>
                 </div>
                 <div class="row">
@@ -179,58 +227,6 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
-                        <div class=" m-2">
-                            <a href="#" class="d-flex" style="vertical-align:middle;">
-                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
-                                <div class="text m-2">
-                                    <h3 class="heading">Create cool websites using this template</h3>
-
-                                    <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class=" m-2">
-                            <a href="#" class="d-flex" style="vertical-align:middle;">
-                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
-                                <div class="text m-2">
-                                    <h3 class="heading">Create cool websites using this template</h3>
-
-                                    <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class=" m-2">
-                            <a href="#" class="d-flex" style="vertical-align:middle;">
-                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
-                                <div class="text m-2">
-                                    <h3 class="heading">Create cool websites using this template</h3>
-
-                                    <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="m-2">
-                            <a href="#" class="d-flex" style="vertical-align:middle;">
-                                <img style="height:100px; width:auto; margin:5px 10px 10px 0px;" src="/images/img_2_b.jpg" alt="" class="img-fluid">
-                                <div class="text m-2">
-                                    <h3 class="heading">Create cool websites using this template</h3>
-
-                                    <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -238,16 +234,7 @@
 
     <!--kurslar sonu-->
     <!--faaliyetler başı-->
-    <div class="row bg-light">
-        <div class="col-md-12 block-25 mt-4">
-            <div class="row justify-content-between m-3 p-2">
-                <div style="float:left; margin:5px;">
-                    <h4>Faaliyetler</h4>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    
 </div>
 <script>
     function show(shown, hidden) {
