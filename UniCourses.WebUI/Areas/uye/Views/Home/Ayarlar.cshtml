@@ -4,21 +4,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Ayarlar</h1>
-<h1>Resim ornegi</h1>
-<h1>@ViewBag.Message</h1>
-<h1>@ViewBag.ImageTitle</h1>
-<img src="@ViewBag.ImageDataUrl" />
+<div class="wrapper">
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex align-items-center justify-content-center">
+            <i class="fa fa-toolbox"></i>
+            <h3>Bu sayfa yapım aşamasındadır. Anlayışınız için teşekkür ederiz</h3>
+        </div>
+    </div>
+</div>
 
-Ayarlarım
+@*<h1>Ayarlar</h1>
+    <h1>Resim ornegi</h1>
+    <h1>@ViewBag.Message</h1>
+    <h1>@ViewBag.ImageTitle</h1>
+    <img src="@ViewBag.ImageDataUrl" />
 
-<form asp-action="UploadImage"
-      asp-controller="Home"
-      asp-area="uye"
-      method="post"
-      enctype="multipart/form-data">
-    <input type="file" id="file1"
-           name="file"
-           multiple="multiple" />
-    <input type="submit"><div> Upload File(s) </div>
-</form>
+    Ayarlarım
+
+    <form asp-action="UploadImage"
+          asp-controller="Home"
+          asp-area="uye"
+          method="post"
+          enctype="multipart/form-data">
+        <input type="file" id="file1"
+               name="file"
+               multiple="multiple" />
+        <input type="submit"><div> Upload File(s) </div>
+    </form>*@

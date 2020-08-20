@@ -1,118 +1,111 @@
 ﻿@model List<Category>
 
-        <header role="banner">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<header role="banner">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
 
-                    <a class="navbar-brand absolute" asp-controller="Home" asp-action="Index"><img style="width:200px;height:auto;" src="/images/uc_logo_uzun.png" /></a>
+            <a class="navbar-brand absolute" asp-controller="Home" asp-action="Index"><img style="width:200px;height:auto;" src="/images/uc_logo_uzun.png" /></a>
 
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
-                        <ul class="navbar-nav mx-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="fa fa-home" aria-hidden="true"></i>  Anasayfa</a>
-                            </li>
+            <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="fa fa-home" aria-hidden="true"></i>  Anasayfa</a>
+                    </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Courses" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-list-ul" aria-hidden="true"></i>  Kategoriler</a>
-                                <!--Bu kısım yana açılır şekilde ve alt kategorilerin de alt kategorileri olacak şekilde düzenlenecek-->
-                                @*<style type="text/css">
-                .menu {
-                    list-style-type: none;
-                }
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Courses" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-list-ul" aria-hidden="true"></i>  Kategoriler</a>
+                        <!--Bu kısım yana açılır şekilde ve alt kategorilerin de alt kategorileri olacak şekilde düzenlenecek-->
+                        @*<style type="text/css">
+                                .menu {
+                                    list-style-type: none;
+                                }
 
-                    .menu > li {
-                        float: left;
-                        position: relative;
-                        margin-right: 15px;
-                    }
+                                    .menu > li {
+                                        float: left;
+                                        position: relative;
+                                        margin-right: 15px;
+                                    }
 
-                    .menu ul {
-                        display: none;
-                        position: absolute;
-                        transition: 300ms;
-                        list-style-type: none;
-                        left: -40px;
-                    }
+                                    .menu ul {
+                                        display: none;
+                                        position: absolute;
+                                        transition: 300ms;
+                                        list-style-type: none;
+                                        left: -40px;
+                                    }
 
-                    .menu > li a {
-                        display: block;
-                        background-color: #00ffff;
-                        color: #093734;
-                        font-size: 20px;
-                        padding: 10px;
-                    }
+                                    .menu > li a {
+                                        display: block;
+                                        background-color: #00ffff;
+                                        color: #093734;
+                                        font-size: 20px;
+                                        padding: 10px;
+                                    }
 
-                    .menu > li:hover ul {
-                        display: block;
-                    }
-            </style>*@
-                                <div class="dropdown-menu" aria-labelledby="dropdown05">
-                                    @*<a class="dropdown-item" asp-controller="Home" asp-action="Courses" asp-route-id="@v.CourseId">@v.CaregoryName</a>*@
-                                    <ul class="mainmenu">
-                                        @foreach (Category c in Model.Where(w => w.ParentID == null))
+                                    .menu > li:hover ul {
+                                        display: block;
+                                    }
+                            </style>*@
+                        <div class="dropdown-menu" aria-labelledby="dropdown05">
+                            @*<a class="dropdown-item" asp-controller="Home" asp-action="Courses" asp-route-id="@v.CourseId">@v.CaregoryName</a>*@
+                            <ul class="mainmenu">
+                                @foreach (Category c in Model.Where(w => w.ParentID == null))
+                                {
+                                    <li>
+                                        <a class="dropdown-item" href="#">@c.CategoryName</a>
+                                        @if (c.SubCategories != null)
                                         {
-                                            <li>
-                                                <a class="dropdown-item" href="#">@c.CategoryName</a>
-                                                @if (c.SubCategories != null)
+                                            <ul>
+                                                @foreach (Category sc in c.SubCategories)
                                                 {
-                                                    <ul>
-                                                        @foreach (Category sc in c.SubCategories)
-                                                        {
-                                                            <li><a class="dropdown-item" asp-controller="Home" asp-action="CoursesSort" asp-route-page="1" asp-route-name="@sc.CategoryName" asp-route-id="@sc.Id">@sc.CategoryName</a></li>
-                                                        }
-                                                    </ul>
+                                                    <li><a class="dropdown-item" asp-controller="Home" asp-action="CoursesSort" asp-route-page="1" asp-route-name="@sc.CategoryName" asp-route-id="@sc.Id">@sc.CategoryName</a></li>
                                                 }
-                                            </li>
-
+                                            </ul>
                                         }
-                                    </ul>
+                                    </li>
 
-                                </div>
+                                }
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="default" asp-controller="Home" asp-action="AboutUs">Hakkımızda</a>
+                    </li>
+
+                    @{if (User.Identity.IsAuthenticated && User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Role).Value == "uye")
+                        {
+                            <li class="nav-item">
+                                @await Component.InvokeAsync("UserOption", User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value)
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <p class="nav-link mb-0 pb-0">
+                                    <a asp-controller="Home" asp-action="Uye" class="btn btn-outline-primary">Giriş Yap</a>
+                                </p>
+
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="default" asp-controller="Home" asp-action="AboutUs">Hakkımızda</a>
+                                <p class="nav-link mb-0 pb-0">
+                                    <a asp-controller="Home" asp-action="Register" class="btn btn-outline-primary">Kayıt Ol</a>
+                                </p>
+
                             </li>
 
-                            @{if (User.Identity.IsAuthenticated && User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Role).Value == "uye")
-                                {
-                                    <li class="nav-item">
-                                        @await Component.InvokeAsync("UserOption", User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Sid).Value)
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="nav-item">
-                                        <p class="nav-link mb-0 pb-0">
-                                            <a asp-controller="Home" asp-action="Uye" class="btn btn-outline-primary">Giriş Yap</a>
-                                        </p>
+                        }
+                    }
 
-                                    </li>
-                                    <li class="nav-item">
-                                        <p class="nav-link mb-0 pb-0">
-                                            <a asp-controller="Home" asp-action="Register" class="btn btn-outline-primary">Kayıt Ol</a>
-                                        </p>
-
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <p class="nav-link mb-0 pb-0">
-
-                                            <a class="btn btn-outline-success" asp-controller="Home" asp-action="Register">Eğitimci ol</a>
-                                        </p>
-
-                                    </li>
-                                }
-                            }
-
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 

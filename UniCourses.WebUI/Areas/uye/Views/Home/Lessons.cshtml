@@ -160,43 +160,40 @@
 
                             </div>
                             <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-md-10">
+                                @*<div class="row">
+                                <div class="col-md-10">
 
-                                        <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Mehmet Göreli</strong></a>
-
-
-                                        @* kaç like geldiğine göre değişecek yıldız sayısı
-                                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>*@
+                                    <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Mehmet Göreli</strong></a>
 
 
-                                        <div class="clearfix"></div>
-                                        <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                        <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-primary ml-2"><i class="fa fa-reply"></i> Yanıtla</a>
-                                        <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-danger ml-2"> <i class="fa fa-heart-o"></i></a>
+                                     kaç like geldiğine göre değişecek yıldız sayısı
+                                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                    <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+
+
+                                    <div class="clearfix"></div>
+                                    <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-primary ml-2"><i class="fa fa-reply"></i> Yanıtla</a>
+                                    <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-danger ml-2"> <i class="fa fa-heart-o"></i></a>
+
+                                </div>
+                            </div>*@
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        @await Component.InvokeAsync("KursYorumlari", Model.Courses.Id)
+
+
 
                                     </div>
+                                    @*<a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-primary ml-2"><i class="fa fa-reply"></i> Yanıtla</a>
+                                <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-danger ml-2"> <i class="fa fa-heart-o"></i></a>
+                                                                <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-danger ml-2"> <i class="fa fa-trash"></i></a>*@
+
                                 </div>
-                                <div class="card card-inner" style=" border: 0;">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-1">
-                                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                            </div>
 
-                                            @await Component.InvokeAsync("KursYorumlari", Model.Courses.Id)
-
-                                            <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-primary ml-2"><i class="fa fa-reply"></i> Yanıtla</a>
-                                            <a asp-controller="Home" asp-action="#" class="float-right btn btn-outline-danger ml-2"> <i class="fa fa-heart-o"></i></a>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
                                 <!--Yorum Yap-->
                                 <div class="row align-items-center">
                                     <div class="col-md-12 pr-md-5">
@@ -236,7 +233,7 @@
 
                             </div>
                             <div>
-                                <p>Eğitmen: @Model.Educator.NameSurname</p>
+                                <p>Eğitmen: <a asp-area="" asp-controller="Home" asp-action="EgitimciGoruntule" asp-route-id="@Model.Educator.ID">@Model.Educator.NameSurname</a></p>
                             </div>
                             <div>
                                 <p>Eğitmen: @Model.Educator.Mail</p>
@@ -260,7 +257,6 @@
 
                 </div>
             </div>
-
 
 
         </div>

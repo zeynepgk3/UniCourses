@@ -98,6 +98,41 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             rCourse.Update(changedcourse);
             return RedirectToAction("EditCourse", new { course.Id});
         }
+        [HttpPost]
+        public IActionResult UploadCoursePicture(int id)
+        {
+            Course course = rCourse.GetBy(x => x.Id == id);
+            Image img = rImage.Bul(Convert.ToInt32(course.ImageID));
+            foreach (var file in Request.Form.Files)
+            {
+                img.ImageTitle = file.FileName;
+                var yeniresimad = Guid.NewGuid() + img.ImageTitle.Replace(" ", "_");
+                var yuklenecekyer = Path.Combine(Directory.GetCurrentDirectory(),
+                            "wwwroot/img/" + yeniresimad);
+                var stream = new FileStream(yuklenecekyer, FileMode.Create);
+                file.CopyTo(stream);
+                img.ImageData = yeniresimad;
+            }
+            course.ImageURL = img.ImageData;
+            rImage.Update(img);
+            rCourse.Update(course);
+            return RedirectToAction("EditCourse", new { course.Id });
+        }
+        public IActionResult EditLesson(int id)
+        {
+            Lesson lesson = rLesson.Bul(id);
+            return View(lesson);
+        }
+        [HttpPost]
+        public IActionResult EditLesson(Lesson lesson)
+        {
+            Lesson changedlesson = rLesson.Bul(lesson.Id);
+            changedlesson.LessonName = lesson.LessonName;
+            changedlesson.LessonDescription = lesson.LessonDescription;
+
+            rLesson.Update(changedlesson);
+            return RedirectToAction("EditLesson", new { lesson.Id });
+        }
         public IActionResult Build()
         {
             return View();

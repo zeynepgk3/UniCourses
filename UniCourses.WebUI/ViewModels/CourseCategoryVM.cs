@@ -18,6 +18,7 @@ namespace UniCourses.WebUI.ViewModels
         public int PageSize { get; set; }
         public int Pagenumber { get; set; }
         public List<Educator> Educators { get; set; }
+        public Educator Educator { get; set; }
         public List<Member> Members { get; set; }
         public List<Tag> Tags { get; set; }
         public PaginatedList<Course> CourseList { get; set; }

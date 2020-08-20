@@ -4,17 +4,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container row">
-    <div class="col-12 text-center">
-        <h1 class="text-primary text-center">Sipariş Tamamlandı</h1><br />
-        <img src="~/images/Summary_Confirmation.png" width="20%" />
+<div class="container mt-5 mb-5">
+    <div class="row d-flex align-items-center justify-content-center p-auto">
+        <div class="col-12 text-center">
+            <h1 class="text-primary text-center">Sipariş Tamamlandı</h1><br />
+            <img src="~/images/Summary_Confirmation.png" style="width: 20%;" />
+        </div>
+        <div class="col-12 text-center" style="color:maroon">
+            <br />
+            Kursu Satın Aldığınız İçin Teşekkürler! <br />
+            <a asp-controller="Home" asp-action="Kurslarim">Kurslarım</a> sayfasından aldığınız kursları görüntüleyebilirsiniz.
+            <br />
+            <a asp-controller="Home" asp-action="Index">Anasayfaya dön</a>
+
+        </div>
     </div>
-    <div class="col-12 text-center" style="color:maroon">
-        <br />
-        Kursu Satın Aldığınız İçin Teşekkürler! <br />
-        Sipariş Bilgileriniz Email Üzerinden İletilecektir.
-        <br />
-        Your Order Number is : @Model
-    </div>
+
 </div>
 
