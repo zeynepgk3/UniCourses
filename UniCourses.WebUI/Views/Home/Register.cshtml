@@ -13,7 +13,21 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <section data-stellar-background-ratio="0.5">
+    <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/graduating.png);">
+        <div class="container">
+            <div class="row align-items-center justify-content-center site-hero-sm-inner">
+                <div class="element-animate col-md-7 text-center">
+                    <input type="hidden" value="uye" name="ReturnUrl" />
+                    <div class="mb-5 element-animate">
+                        <h1 class="mb-2">Kayıt Ol</h1>
+                        <p class="bcrumb"><a asp-controller="Home" asp-action="Index">Anasayfa</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Kayıt Ol</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END section -->
+    <section class="element-animate" data-stellar-background-ratio="0.5">
         <div class="register-photo">
             <div class="form-container">
                 <div class="image-holder"></div>
@@ -72,9 +86,7 @@
         }
 
     media (max-width:991px) {
-        .register-photo form
-
-    {
+        .register-photo form {
         padding: 40px;
     }
 
@@ -142,6 +154,7 @@
         background-color: #fff;
     }
 </style>
+
 @*
     <div class="row">
         <div class="col-md-12 form-group">
