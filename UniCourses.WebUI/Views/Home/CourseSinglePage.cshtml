@@ -101,7 +101,7 @@ keyframes fadeIn {
                     <div class="card">
                         <div class="row">
                             <div class="col-12 col-md-6 pb-1">
-                                <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;"asp-controller="Home" asp-action="Courses" asp-route-page="1" asp-route-name="Kategori" asp-route-id="@Model.Courses.CategoryID">
+                                <a class="btn btn-success form-control  btn-square btn-lg" style="height:50px;" asp-controller="Home" asp-action="CoursesSort" asp-route-page="1" asp-route-name="Kategori" asp-route-id="@Model.Courses.CategoryID">
                                     Kurslara Dön
                                 </a>
                             </div>
@@ -173,6 +173,17 @@ keyframes fadeIn {
                                                                             <a href="#" class="play"><span class="ion-ios-play"></span></a>
                                                                         </div>
                                                                     </div>
+                                                                    <div>
+                                                                        @{int count = 1;}
+                                                                        <h5>Videolar:</h5>
+                                                                        @foreach (Videos videos in lesson.Videos)
+                                                                        {
+
+                                                                            <p>@count - @videos.Name </p> <p>@videos.UploadDate Tarihinde Yüklendi</p>
+                                                                            count++;
+
+                                                                        }
+                                                                    </div>
                                                                 }
                                                                 else
                                                                 {
@@ -187,6 +198,18 @@ keyframes fadeIn {
                                                                         <div class="col-md-2 text-center">
                                                                             <a href="#" class="play"><span class="ion-ios-play"></span></a>
                                                                         </div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        @{int count = 1;}
+                                                                        <h5>Videolar:</h5>
+                                                                        @foreach (Videos videos in lesson.Videos)
+                                                                        {
+
+                                                                            <p>@count - @videos.Name </p> <p>@videos.UploadDate Tarihinde Yüklendi</p>
+                                                                            count++;
+                                                                            
+                                                                        }
                                                                     </div>
                                                                     <script>
                                                                         // When the user clicks on div, open the popup
@@ -210,6 +233,16 @@ keyframes fadeIn {
                                                                     <div class="col-md-2 text-center">
                                                                         <a href="#" class="play"><span class="ion-ios-play"></span></a>
                                                                     </div>
+                                                                </div>
+                                                                <div>
+                                                                    @{int count = 1;}
+                                                                    <h5>Videolar:</h5>
+                                                                    @foreach (Videos videos in lesson.Videos)
+                                                                    {
+                                                                        <p>@count - @videos.Name </p> <p>@videos.UploadDate Tarihinde Yüklendi</p>
+                                                                        count++;
+                                                                    }
+
                                                                 </div>
                                                                 <script>
                                                                     // When the user clicks on div, open the popup
@@ -290,16 +323,6 @@ keyframes fadeIn {
                             </ul>*@
                     </div>
 
-                    <div class="block-26 mb-5">
-                        <ul>
-                            <li><a href="#">code</a></li>
-                            <li><a href="#">design</a></li>
-                            <li><a href="#">typography</a></li>
-                            <li><a href="#">development</a></li>
-                            <li><a href="#">creative</a></li>
-                            <li><a href="#">codehack</a></li>
-                        </ul>
-                    </div>
                 </div>
                 <!-- END Sidebar -->
             </div>

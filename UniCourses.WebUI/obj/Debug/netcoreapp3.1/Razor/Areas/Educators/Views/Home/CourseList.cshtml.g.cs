@@ -21,7 +21,7 @@ using UniCourses.Dal.Entities;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4f19584cd36a07f0ec5ce07da77186714686eeaa", @"/Areas/Educators/Views/Home/CourseList.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b853c2693020103458b52d8246f923ca3fd89014", @"/Areas/_ViewImports.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"61b097cc864e19282c5285d8c04a0f0821fcd3e1", @"/Areas/Educators/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"444b4cd9ca1f2988814cb16b656851c0413ba2a0", @"/Areas/Educators/Views/_ViewImports.cshtml")]
     public class Areas_Educators_Views_Home_CourseList : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Course>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);

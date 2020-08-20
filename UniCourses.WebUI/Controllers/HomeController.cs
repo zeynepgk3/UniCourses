@@ -39,10 +39,11 @@ namespace UniCourses.WebUI.Controllers
         Repository<Picture> rPicture;
         Repository<Videos> rVideos;
         Repository<CourseMember> rCourseMember;
+        Repository<Tag> rTag;
         IWebHostEnvironment _environment;
         MyContext myContext;
 
-        public HomeController(Repository<Videos> _rVideos, Repository<Picture> _rPicture, Repository<CourseMember> _rCourseMember, IWebHostEnvironment environment, Repository<Admin> _rAdmin, MyContext _myContext, Repository<Lesson> _rLesson, Repository<Cart> _rCart, Repository<Educator> _rEducator, Repository<Category> _rcategory, Repository<Course> _rcourse, Repository<CourseCategoryVM> _rcourcat, Repository<Member> _rmember)
+        public HomeController(Repository<Videos> _rVideos, Repository<Tag> _rTag, Repository<Picture> _rPicture, Repository<CourseMember> _rCourseMember, IWebHostEnvironment environment, Repository<Admin> _rAdmin, MyContext _myContext, Repository<Lesson> _rLesson, Repository<Cart> _rCart, Repository<Educator> _rEducator, Repository<Category> _rcategory, Repository<Course> _rcourse, Repository<CourseCategoryVM> _rcourcat, Repository<Member> _rmember)
         {
             rAdmin = _rAdmin;
             rCategory = _rcategory;
@@ -57,17 +58,23 @@ namespace UniCourses.WebUI.Controllers
             rCourseMember = _rCourseMember;
             rVideos = _rVideos;
             rPicture = _rPicture;
-
+            rTag = _rTag;
         }
         public IActionResult Index(string search = null)
         {
             if (!string.IsNullOrEmpty(search))
             {
-                // 
                 return RedirectToAction("SearchPage", new { search });
             }
             var user = User;
-            return View(rCategory.GetAll());
+            CourseCategoryVM courseCategoryVM = new CourseCategoryVM
+            {
+                Courses = rCourse.GetAll().OrderByDescending(s => s.Score).ToList(),
+                Categories = rCategory.GetAll().ToList(),
+                Educators = rEducator.GetAll().ToList(),
+                Members = rMember.GetAll().ToList()
+            };
+            return View(courseCategoryVM);
         }
         public IActionResult SearchPage(string search, int? page)
         {
@@ -95,8 +102,8 @@ namespace UniCourses.WebUI.Controllers
         {
             rMember.Add(m);
             Picture img = new Picture();
-                img.ImageTitle = "Member-Default-Picture.png";
-                img.ImageData = "Member-Default-Picture.png";
+            img.ImageTitle = "Member-Default-Picture.png";
+            img.ImageData = "Member-Default-Picture.png";
             m.PictureURL= "Member-Default-Picture.png";
             rMember.Save();
             img.MemberID = m.ID;
@@ -290,7 +297,7 @@ namespace UniCourses.WebUI.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 courses = courses.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper())
-                                       || s.Title.ToUpper().Contains(searchString.ToUpper())).ToList();
+                                       || s.Title.ToUpper().Contains(searchString.ToUpper()) || s.Description.ToUpper().Contains(searchString.ToUpper())).ToList();
             }
             switch (sortOrder)
             {
@@ -312,7 +319,12 @@ namespace UniCourses.WebUI.Controllers
             }
             int pageSize = 2;
             ViewBag.dgr = pageNumber;
-            return View(PaginatedList<Course>.Create(courses, pageNumber ?? 1, pageSize));
+            
+            CourseCategoryVM courcat = new CourseCategoryVM() {
+                CourseList = PaginatedList<Course>.Create(courses, pageNumber ?? 1, pageSize),
+                Tags = rTag.GetAll(x=>x.CategoryId == id).ToList()
+            };
+            return View(courcat);
         }
         
         public IActionResult Courses(int id, string sortOrder, int? page)
@@ -398,9 +410,9 @@ namespace UniCourses.WebUI.Controllers
                         && x.CourseId == id);
                 }
                 Course courses = rCourse.GetBy(x => x.Id == id);
-                int educatid = courses.EducatorID;
+                int? educatid = courses.EducatorID;
                 Educator educators = rEducator.GetBy(x => x.ID == educatid);
-                List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
+                List<Lesson> lesson = rLesson.GetAllLazy(x => x.CourseID == id, includeProperties : "Videos").ToList();
                 //Image getir
                 Image img = myContext.Images.FirstOrDefault(i => i.CourseID == courses.Id);
                 LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart, courseMember = courseMember };
