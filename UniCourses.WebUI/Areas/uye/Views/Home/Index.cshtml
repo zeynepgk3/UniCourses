@@ -1,34 +1,25 @@
-﻿@model IEnumerable<CourseMember>
+﻿@model UniCourses.WebUI.ViewModels.CourseCategoryVM
+
 
 @{ ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/bilg_image_66.jpg);">
+<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/bilg_image_66.jpg);">
     <div class="container">
-        <div class="row align-items-center justify-content-center site-hero-inner">
-            <div class="col-md-10">
+        <div class="row align-items-center justify-content-center site-hero-sm-inner">
+            <div class="col-md-7 text-center">
 
-                <div class="mb-5 element-animate">
-                    <div class="block-17">
-                        <h1 class="text-center mb-2 box-shadow">Hoş Geldin, @User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</h1>
-                        <p class="text-center mb-5">Öğrenmeye Tam Gaz Devam Et </p>
-
-                        <form action="" method="post" class="d-block d-lg-flex mb-4">
-                            <div class="fields d-block d-lg-flex">
-                                <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Kurs ara"></div>
-                                
-                            </div>
-                            <input type="submit" class="search-submit btn btn-primary" value="Ara">
-                        </form>
-
-                    </div>
+                <div class="mb-5 element-animate box-shadow">
+                    <h1 class="mb-2 box-shadow">Hoş Geldin, @User.Claims.FirstOrDefault(f => f.Type == System.Security.Claims.ClaimTypes.Name).Value</h1>
+                    <p class="text-center mb-5">Öğrenmeye Tam Gaz Devam Et </p>
                 </div>
 
             </div>
         </div>
     </div>
 </section>
-<!-- END section -->
+
+
 <!--START izlemeye devam et-->
 <div class="site-section bg-light">
     <div class="container">
@@ -42,7 +33,7 @@
         <div class="nonloop-block-11 owl-carousel">
 
 
-            @foreach (CourseMember coursemember in Model)
+            @foreach (CourseMember coursemember in Model.courseMember)
             {
 
 <div class="item m-3">
@@ -145,146 +136,145 @@
         </div>
     </div>
 
+
+
     <div class="container-fluid block-11 element-animate">
         <div class="nonloop-block-11 owl-carousel">
-
-            <div class="item">
-                <div class="block-19">
-                    <br />
-                    <figure>
-                        <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
-                        <p class="mb-4"></p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="number">
-                                <span>puanı /6,000</span>
+            @foreach (var item in Model.Courses)
+            {
+                <div class="item">
+                    <div class="block-19">
+                        <br />
+                        <figure>
+                            <a asp-controller="Home" asp-route-catname="Kategori" asp-route-courname="@UniCourses.WebUI.Common.MyTool.urlConvert(item.Name)" asp-action="CourseSinglePage"><img src="~/img/@item.ImageURL" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="text">
+                            <h2 class="heading"><a href="/Home/CourseSinglePage">@item.Name</a></h2>
+                            <p class="mb-4"></p>
+                            <div class="meta d-flex align-items-center">
+                                <div class="number">
+                                    <span>@item.Score</span>
+                                </div>
+                                <div class="number">
+                                    <span>@item.NumberOfStudent Öğrenci</span>
+                                </div>
+                                <div class="price text-right">@item.Price</div>
                             </div>
-                            <div class="number">
-                                <span>50 Öğrenen</span>
+                        </div>
+                    </div>
+                </div>          
+             }
+    @*<div class="item">
+                    <div class="block-19">
+                        <br />
+                        <figure>
+                            <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="text">
+                            <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
+                            <p class="mb-4"></p>
+                            <div class="meta d-flex align-items-center">
+                                <div class="number">
+                                    <span>puanı /6,000</span>
+                                </div>
+                                <div class="number">
+                                    <span>50 Öğrenen</span>
+                                </div>
+                                <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
                             </div>
-                            <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-            <div class="item">
-                <div class="block-19">
-                    <br />
-                    <figure>
-                        <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
-                        <p class="mb-4"></p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="number">
-                                <span>puanı /6,000</span>
+                <div class="item">
+                    <div class="block-19">
+                        <br />
+                        <figure>
+                            <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="text">
+                            <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
+                            <p class="mb-4"></p>
+                            <div class="meta d-flex align-items-center">
+                                <div class="number">
+                                    <span>puanı /6,000</span>
+                                </div>
+                                <div class="number">
+                                    <span>50 Öğrenen</span>
+                                </div>
+                                <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
                             </div>
-                            <div class="number">
-                                <span>50 Öğrenen</span>
-                            </div>
-                            <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="item">
-                <div class="block-19">
-                    <br />
-                    <figure>
-                        <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
-                        <p class="mb-4"></p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="number">
-                                <span>puanı /6,000</span>
+                <div class="item">
+                    <div class="block-19">
+                        <br />
+                        <figure>
+                            <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="text">
+                            <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
+                            <p class="mb-4"></p>
+                            <div class="meta d-flex align-items-center">
+                                <div class="number">
+                                    <span>puanı /6,000</span>
+                                </div>
+                                <div class="number">
+                                    <span>50 Öğrenen</span>
+                                </div>
+                                <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
                             </div>
-                            <div class="number">
-                                <span>50 Öğrenen</span>
-                            </div>
-                            <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="item">
-                <div class="block-19">
-                    <br />
-                    <figure>
-                        <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
-                        <p class="mb-4"></p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="number">
-                                <span>puanı /6,000</span>
+                <div class="item">
+                    <div class="block-19">
+                        <br />
+                        <figure>
+                            <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="text">
+                            <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
+                            <p class="mb-4"></p>
+                            <div class="meta d-flex align-items-center">
+                                <div class="number">
+                                    <span>puanı /6,000</span>
+                                </div>
+                                <div class="number">
+                                    <span>50 Öğrenen</span>
+                                </div>
+                                <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
                             </div>
-                            <div class="number">
-                                <span>50 Öğrenen</span>
-                            </div>
-                            <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="item">
-                <div class="block-19">
-                    <br />
-                    <figure>
-                        <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
-                        <p class="mb-4"></p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="number">
-                                <span>puanı /6,000</span>
+                <div class="item">
+                    <div class="block-19">
+                        <br />
+                        <figure>
+                            <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                        </figure>
+                        <div class="text">
+                            <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
+                            <p class="mb-4"></p>
+                            <div class="meta d-flex align-items-center">
+                                <div class="number">
+                                    <span>puanı /6,000</span>
+                                </div>
+                                <div class="number">
+                                    <span>50 Öğrenen</span>
+                                </div>
+                                <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
                             </div>
-                            <div class="number">
-                                <span>50 Öğrenen</span>
-                            </div>
-                            <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>*@
 
-            <div class="item">
-                <div class="block-19">
-                    <br />
-                    <figure>
-                        <a href="/Home/CourseSinglePage"><img src="~/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="/Home/CourseSinglePage">Kurs adı</a></h2>
-                        <p class="mb-4"></p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="number">
-                                <span>puanı /6,000</span>
-                            </div>
-                            <div class="number">
-                                <span>50 Öğrenen</span>
-                            </div>
-                            <div class="price text-right"><del class="mr-3">50</del><span>Free</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+</div>
+</div>
 </div>
 <!-- END section -->
-<div class="container">
-    burada kendi kurslarının bulunduğu kategorilere göre öneride bulunacak
-</div>

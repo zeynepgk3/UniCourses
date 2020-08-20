@@ -12,7 +12,6 @@ namespace UniCourses.Dal.Entities
         [Key]
         public int Id { get; set; }
         public int CategoryId { get; set; }
-        public int CourseId { get; set; }
 
         [Column(TypeName = "varchar(20)")]
         public string TagName { get; set; }

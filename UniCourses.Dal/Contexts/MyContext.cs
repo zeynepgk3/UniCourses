@@ -44,14 +44,6 @@ namespace UniCourses.Dal.Contexts
             modelBuilder.Entity<CourseMember>()
         .HasKey(cc => new { cc.CourseId, cc.MemberId });
 
-            //  Category - Tag ( N:N )
-            modelBuilder.Entity<CategoryTag>()
-            .HasKey(ct => new { ct.CategoryId, ct.TagId });
-
-            // Course - Collection ( N:N )
-            modelBuilder.Entity<CourseCollection>()
-            .HasKey(cc => new { cc.CourseId, cc.CollectionId });
-
             ////  Category - Category ( 1:N )
             modelBuilder.Entity<Category>()
             .HasOne(one => one.ParentCategory)
@@ -94,13 +86,10 @@ namespace UniCourses.Dal.Contexts
         public DbSet<Cart> Cart { get; set; }
         // public DbSet<CartMember> CartMember { get; set; }
         public DbSet<Category> Category { get; set; }
-        public DbSet<CategoryTag> CategoryTag { get; set; }
-        public DbSet<Collection> Collection { get; set; }
         public DbSet<Comment> Comment { get; set; }
         public DbSet<Course> Course { get; set; }
         public DbSet<CourseCategory> CourseCategory { get; set; }
         public DbSet<CourseMember> CourseMember { get; set; }
-        public DbSet<CourseCollection> CourseCollection { get; set; }
         public DbSet<CourseWishList> CourseWishList { get; set; }
         public DbSet<Exam> Exam { get; set; }
         public DbSet<Lesson> Lesson { get; set; }

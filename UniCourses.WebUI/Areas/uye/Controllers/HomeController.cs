@@ -59,9 +59,12 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         {
             string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
             IEnumerable<CourseMember> courseMembers = rCourseMember.GetAllLazy(x => x.MemberId == Convert.ToInt32(uyeid), includeProperties: "Course");
-
-
-            return View(courseMembers);
+            CourseCategoryVM courseCategoryVM = new CourseCategoryVM
+            {
+                courseMember= courseMembers,
+                Courses = rCourse.GetAll().OrderByDescending(s => s.Score).ToList()
+            };
+            return View(courseCategoryVM);
         }
         public async Task<IActionResult> Cikis()
         {
@@ -140,9 +143,14 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
         [HttpPost]
         public IActionResult Profil(Member member)
         {
-            Member guncelmember = rMember.Bul(member.ID);
+
+            string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
+            Educator changededucator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
+            changededucator.NameSurname = member.NameSurName;
+            Member guncelmember = rMember.Bul(Convert.ToInt32(uyeid));
             guncelmember.NameSurName = member.NameSurName;
             rMember.Update(guncelmember);
+            rEducator.Update(changededucator);
             return RedirectToAction("Profil", new { member.ID });
         }
         public IActionResult UploadPicture()
@@ -161,6 +169,9 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
                 img.ImageData = yeniresimad;
             }
             member.PictureURL= img.ImageData;
+            Educator ed = rEducator.GetBy(x => x.MemberID == member.ID);
+            ed.PictureURL = rMember.GetBy(x => x.ID == member.ID).PictureURL;
+            rEducator.Update(ed);
             rPicture.Update(img);
             rMember.Update(member);
             return RedirectToAction("Profil", new { member.ID });
@@ -174,7 +185,7 @@ namespace UniCourses.WebUI.Areas.uye.Controllers
                 x => x.MemberId == uyeid
                 && x.CourseId == id);
             Course courses = rCourse.GetBy(x => x.Id == id);
-            int educatid = courses.EducatorID;
+            int? educatid = courses.EducatorID;
             Educator educators = rEducator.GetBy(x => x.ID == educatid);
             List<Lesson> lesson = rLesson.GetAll(x => x.CourseID == id).ToList();
             LessonCoursesVM lessonCourses = new LessonCoursesVM { Lessons = lesson, Courses = courses, Educator = educators, Cart = cart };

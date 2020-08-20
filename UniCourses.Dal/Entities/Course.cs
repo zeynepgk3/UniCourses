@@ -11,11 +11,13 @@ namespace UniCourses.Dal.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int CategoryID { get; set; }
-        public int EducatorID { get; set; }
+        public int? CategoryID { get; set; }
+        public int? EducatorID { get; set; }
 
         [StringLength(30), Column(TypeName = "Varchar(30)"), Display(Name = "İsim")]
         public string Name { get; set; }
+        [Column(TypeName = "datetime"), Display(Name = "Kayıt Tarihi")]
+        public DateTime CourseDate { get; set; }
         [StringLength(40), Column(TypeName = "Varchar(40)"), Display(Name = "Başlık")]
         public string Title { get; set; }
         [StringLength(200), Column(TypeName = "Varchar(200)"), Display(Name = "Açıklama")]
@@ -40,7 +42,7 @@ namespace UniCourses.Dal.Entities
         //  ( 1: N ) --> İlişkisi
         public Category Category { get; set; }
         public Educator Educator { get; set; }
-        public int ImageID { get; set; }
+        public int? ImageID { get; set; }
         public string ImageURL { get; set; }
         public Image Image { get; set; }
         public ICollection<Comment> Comments { get; set; }

@@ -50,6 +50,7 @@ namespace UniCourses.Dal.Entities
         [StringLength(40), Column(TypeName = "Varchar(40)"), Display(Name = "Ünvan")]
         public string Job { get; set; }
         public ERole Role { get; set; }
+        public string PictureURL { get; set; }
         public int MemberID { get; set; }
         public Member Member { get; set; }
        

@@ -23,7 +23,6 @@ namespace UniCourses.Dal.Entities
         public string LessonDescription { get; set; }
 
         //...
-
         public int Duration { get; set; }
 
         [DataType("bit")]

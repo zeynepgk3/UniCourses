@@ -1,8 +1,6 @@
-﻿@model IEnumerable<Category>
+﻿@model UniCourses.WebUI.ViewModels.CourseCategoryVM
 
-@{
-    ViewData["Title"] = "HomePage";
-}
+@{ ViewData["Title"] = "HomePage"; }
 
 <section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(/images/big_image_4.jpg);">
     <div class="container">
@@ -11,19 +9,19 @@
 
                 <div class="mb-5 element-animate">
                     <div class="block-17">
-                        <h2 class="heading text-center mb-4">Sınıf arkadaşından kaçırdığın dersin tekrarını al</h2>
+                        <h2 class="heading text-center mb-4">Sıra arkadaşından kaçırdığın dersin tekrarını al</h2>
                         <form action="" method="post" class="d-block d-lg-flex mb-4">
                             <div class="fields d-block d-lg-flex">
-                                <div class="textfield-search one-third"><input type="text" class="form-control" placeholder="Kurs ara"></div>
+                                <div class="textfield-search one-third"><input name="search" type="text" class="form-control" placeholder="Kurs ara"></div>
                                 <!--kullanıcının yazacağı kelimeler etiketler arasında arama yapacak, etiketleri kursveren kursu yayınlamadan önce belirleyebilecek-->
                                 <div class="select-wrap one-third">
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                     <select name="" id="" class="form-control">
                                         <option value="">Kurs Kategorisi</option>
-                                        @foreach (var v in Model)
+                                        @foreach (var v in Model.Categories)
                                         {
-                                            <option value="/Home/Courses/@v.ParentID">@v.CategoryName</option>
-                                        }
+                            <option value="/Home/Courses/@v.ParentID">@v.CategoryName</option>
+}
                                         @*<option value="">PHP</option>
                                             <option value="">JavaScript</option>
                                             <option value="">Python</option>*@
@@ -112,145 +110,31 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid block-11 element-animate">
         <div class="nonloop-block-11 owl-carousel">
+            @foreach (var item in Model.Courses)
+            {
+<div class="item">
+    <div class="block-19">
 
-            <div class="item">
-                <div class="block-19">
-                    <figure>
-                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                    </figure>
-                    <div class="text">
+        <div class="text">
 
-                        <h2 class="heading">@Html.ActionLink("Advanced JavaScript Learning", "CourseSinglePage")</h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="rating"><i class="fa fa-star" aria-hidden="true"></i> 4.5</div>
-                            <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-                        </div>
-                    </div>
-                </div>
+            @*<h2 class="heading">@Html.ActionLink("Advanced JavaScript Learning", "CourseSinglePage")</h2>*@
+
+            <a asp-controller="Home" asp-route-catname="Kategori" asp-route-courname="@UniCourses.WebUI.Common.MyTool.urlConvert(item.Name)" asp-action="CourseSinglePage" asp-route-id="@item.Id"><img src="~/img/@item.ImageURL" alt="Image" class="img-fluid"> </a>
+
+            <p class="mb-4">@item.Description</p>
+            <div class="meta d-flex align-items-center">
+                <div class="rating"><i class="fa fa-star" aria-hidden="true"></i> @item.Score</div>
+                <div class="price text-right">@item.Price ₺</div>
             </div>
+        </div>
+    </div>
+</div>}
 
-            <div class="item">
-                <div class="block-19">
-                    <figure>
-                        <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading">@Html.ActionLink("Advanced JavaScript Learning", "CourseSinglePage")</h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="rating"><i class="fa fa-star" aria-hidden="true"></i> 4.5</div>
-                            <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="item">
-                <div class="block-19">
-                    <figure>
-                        <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="course-single.html">Introduction to CSS</a></h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="rating"><i class="fa fa-star" aria-hidden="true"></i> 4.5</div>
-                            <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="item">
-                <div class="block-19">
-                    <figure>
-                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="course-single.html">Design &amp; Develop</a></h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="rating"><i class="fa fa-star" aria-hidden="true"></i> 4.5</div>
-                            <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="block-19">
-                    <figure>
-                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="course-single.html">Advanced JavaScript Learning</a></h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="number">
-                                <span>2,219/6,000</span>
-                            </div>
-                            <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="block-19">
-                    <figure>
-                        <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="course-single.html">Advanced JavaScript Learning</a></h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="number">
-                                <span>2,219/6,000</span>
-                            </div>
-                            <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="block-19">
-                    <figure>
-                        <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="course-single.html">Introduction to CSS</a></h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="number">
-                                <span>1,903/3,000</span>
-                            </div>
-                            <div class="price text-right"><span>$10.99</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="block-19">
-                    <figure>
-                        <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                    </figure>
-                    <div class="text">
-                        <h2 class="heading"><a href="course-single.html">Design &amp; Develop</a></h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit qui neque sint eveniet tempore sapiente.</p>
-                        <div class="meta d-flex align-items-center">
-                            <div class="number">
-                                <span>23/100</span>
-                            </div>
-                            <div class="price text-right"><del class="mr-3">$23</del><span>Free</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </div>
 
@@ -270,27 +154,19 @@
                     <span class="flaticon-student"></span>
                 </div>
                 <div class="text">
-                    <strong class="number" data-number="12921">0</strong>
+                    <strong class="number" data-number="@Model.Members.Count()">0</strong>
                     <span>Öğrenci</span>
                 </div>
             </div>
 
-            <div class="col-md-3 block-18 d-flex align-items-center" style="padding:1px;">
-                <div class="icon mr-4">
-                    <span class="flaticon-university"></span>
-                </div>
-                <div class="text">
-                    <strong class="number" data-number="51">0</strong>
-                    <span>Okul</span>
-                </div>
-            </div>
+
 
             <div class="col-md-3 block-18 d-flex align-items-center" style="padding:1px;">
                 <div class="icon mr-4">
                     <span class="flaticon-books"></span>
                 </div>
                 <div class="text">
-                    <strong class="number" data-number="3902">0</strong>
+                    <strong class="number" data-number="@Model.Courses.Count()">0</strong>
                     <span>Kurs</span>
                 </div>
             </div>
@@ -300,7 +176,7 @@
                     <span class="flaticon-mortarboard"></span>
                 </div>
                 <div class="text">
-                    <strong class="number" data-number="1921">0</strong>
+                    <strong class="number" data-number="@Model.Educators.Count()">0</strong>
                     <span>Eğitmen</span>
                 </div>
             </div>

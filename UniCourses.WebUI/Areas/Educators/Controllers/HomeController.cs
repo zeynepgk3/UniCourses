@@ -117,12 +117,9 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         public IActionResult Profile(Educator educator)
         {
             string uyeid = User.Claims.FirstOrDefault(f => f.Type == ClaimTypes.Sid).Value;
-<<<<<<< HEAD
             Educator changededucator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
-=======
-            Educator changededucator = rEducator.GetBy(x=>x.MemberID == Convert.ToInt32(uyeid));
->>>>>>> b6f54df2b80f49414116453fab98e9e8370a84c5
-
+            Member member = rMember.Bul(Convert.ToInt32(uyeid));
+            member.NameSurName = educator.NameSurname;
             changededucator.NameSurname = educator.NameSurname;
             changededucator.Job = educator.Job;
             changededucator.University = educator.University;
@@ -197,6 +194,7 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
             Educator educator = rEducator.GetBy(x => x.MemberID == Convert.ToInt32(uyeid));
             course.EducatorID = educator.ID;
             course.ImageURL = img.ImageData;
+            course.CourseDate = DateTime.Now;
             rCourse.Add(course);
             rCategory.GetBy(x => x.Id == course.CategoryID).Count++;
             rCategory.Save();
@@ -343,6 +341,9 @@ namespace UniCourses.WebUI.Areas.Educators.Controllers
         [HttpPost]
         public IActionResult RegisterEducator(Educator ed)
         {
+            int uyeid = Convert.ToInt32(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Sid).Value);
+            ed.PictureURL= rMember.GetBy(x=>x.ID == uyeid).PictureURL;
+
             rEducator.Add(ed);
             return RedirectToAction("Index");
         }
