@@ -1166,8 +1166,6 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcore
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\UniCourses.WebUI.pdb
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\UniCourses.WebUI.Views.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\UniCourses.WebUI.Views.pdb
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\EntityFramework.SqlServer.dll
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\EntityFramework.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -1209,7 +1207,6 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcore
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.CodeDom.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
@@ -1217,7 +1214,6 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcore
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
@@ -1278,8 +1274,6 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcore
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
@@ -1538,8 +1532,6 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcore
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\CourseList.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\Statisctic.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\bin\Debug\netcoreapp3.1\X.PagedList.dll
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\UniCourses.WebUI.csproj.CoreCompileInputs.cache
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\UniCourses.WebUI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\SearchPage.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\Course.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Views\Home\EditCourse.cshtml.g.cs
@@ -1559,3 +1551,5 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcore
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\panel\Views\Comment\CommentList.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Views\Home\UyeGoruntule.cshtml.g.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\Razor\Areas\Educators\Controllers\EditLesson.cshtml.g.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\UniCourses.WebUI.csproj.CoreCompileInputs.cache
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.WebUI\obj\Debug\netcoreapp3.1\UniCourses.WebUI.MvcApplicationPartsAssemblyInfo.cache

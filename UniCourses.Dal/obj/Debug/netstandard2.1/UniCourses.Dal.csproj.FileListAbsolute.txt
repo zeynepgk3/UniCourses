@@ -50,7 +50,6 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Debug\netstanda
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.AssemblyInfo.cs
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.pdb
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.csproj.CoreCompileInputs.cache
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Dal\bin\Debug\netstandard2.1\UniCourses.Dal.deps.json
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Dal\bin\Debug\netstandard2.1\UniCourses.Dal.dll
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Dal\bin\Debug\netstandard2.1\UniCourses.Dal.pdb
@@ -60,4 +59,5 @@ C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.csproj.CoreCompileInputs.cache
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.dll
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.pdb
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.csproj.CoreCompileInputs.cache
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Debug\netstandard2.1\UniCourses.Dal.csprojAssemblyReference.cache

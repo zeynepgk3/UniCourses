@@ -1,0 +1,9 @@
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\bin\Release\netstandard2.1\UniCourses.Dal.deps.json
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\bin\Release\netstandard2.1\UniCourses.Dal.dll
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\bin\Release\netstandard2.1\UniCourses.Dal.pdb
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Release\netstandard2.1\UniCourses.Dal.csprojAssemblyReference.cache
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Release\netstandard2.1\UniCourses.Dal.AssemblyInfoInputs.cache
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Release\netstandard2.1\UniCourses.Dal.AssemblyInfo.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Release\netstandard2.1\UniCourses.Dal.csproj.CoreCompileInputs.cache
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Release\netstandard2.1\UniCourses.Dal.dll
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Dal\obj\Release\netstandard2.1\UniCourses.Dal.pdb
