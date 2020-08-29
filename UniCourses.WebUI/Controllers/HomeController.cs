@@ -71,9 +71,12 @@ namespace UniCourses.WebUI.Controllers
             {
                 Courses = rCourse.GetAll().OrderByDescending(s => s.Score).ToList(),
                 Categories = rCategory.GetAll().ToList(),
-                Educators = rEducator.GetAll().ToList(),
-                Members = rMember.GetAll().ToList()
+                //Educators = rEducator.GetAll().ToList(),
+                //Members = rMember.GetAll().ToList(),
+                 
             };
+            ViewBag.Toplamuye = myContext.Member.Count();
+            ViewBag.Toplamegitmen = myContext.Educator.Count();
             return View(courseCategoryVM);
         }
         public IActionResult SearchPage(string search, int? page)

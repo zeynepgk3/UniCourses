@@ -20,8 +20,8 @@
                                         <option value="">Kurs Kategorisi</option>
                                         @foreach (var v in Model.Categories)
                                         {
-                            <option value="/Home/Courses/@v.ParentID">@v.CategoryName</option>
-}
+                                            <option value="/Home/Courses/@v.ParentID">@v.CategoryName</option>
+                                        }
                                         @*<option value="">PHP</option>
                                             <option value="">JavaScript</option>
                                             <option value="">Python</option>*@
@@ -154,7 +154,7 @@
                     <span class="flaticon-student"></span>
                 </div>
                 <div class="text">
-                    <strong class="number" data-number="@Model.Members.Count()">0</strong>
+                    <strong class="number" data-number="@ViewBag.Toplamuye">0</strong>
                     <span>Öğrenci</span>
                 </div>
             </div>
@@ -176,7 +176,7 @@
                     <span class="flaticon-mortarboard"></span>
                 </div>
                 <div class="text">
-                    <strong class="number" data-number="@Model.Educators.Count()">0</strong>
+                    <strong class="number" data-number="@ViewBag.Toplamegitmen">0</strong>
                     <span>Eğitmen</span>
                 </div>
             </div>
