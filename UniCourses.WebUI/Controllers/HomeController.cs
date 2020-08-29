@@ -165,7 +165,12 @@ namespace UniCourses.WebUI.Controllers
             //if (!string.IsNullOrEmpty(ReturnUrl) && ReturnUrl.Contains("uye"))
 
             Member uye = rMember.GetBy(f => f.Mail == member.Mail && f.Password == member.Password) ?? null;
-            if (uye != null)
+            if (member.Mail ==null || member.Password == null)
+            {
+                ViewBag.Hata = "Kullanıcı Adı veya Şifre Boş Geçilemez";
+                return View();
+            }
+            else if (uye != null)
             {
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity("UniCourses");
                 claimsIdentity.AddClaim(new Claim(ClaimTypes.Sid, uye.ID.ToString()));
