@@ -1,0 +1,12 @@
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\bin\Release\netstandard2.1\UniCourses.Bl.deps.json
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\bin\Release\netstandard2.1\UniCourses.Bl.dll
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\bin\Release\netstandard2.1\UniCourses.Bl.pdb
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\bin\Release\netstandard2.1\UniCourses.Dal.dll
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\bin\Release\netstandard2.1\UniCourses.Dal.pdb
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Release\netstandard2.1\UniCourses.Bl.csprojAssemblyReference.cache
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Release\netstandard2.1\UniCourses.Bl.AssemblyInfoInputs.cache
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Release\netstandard2.1\UniCourses.Bl.AssemblyInfo.cs
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Release\netstandard2.1\UniCourses.Bl.csproj.CoreCompileInputs.cache
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Release\netstandard2.1\UniCourses.Bl.csproj.CopyComplete
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Release\netstandard2.1\UniCourses.Bl.dll
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Release\netstandard2.1\UniCourses.Bl.pdb

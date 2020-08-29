@@ -66,7 +66,6 @@ C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\bin\Debug\netstandar
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.csprojAssemblyReference.cache
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.AssemblyInfoInputs.cache
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.AssemblyInfo.cs
-C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.csproj.CoreCompileInputs.cache
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.csproj.CopyComplete
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.dll
 C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.pdb
@@ -82,3 +81,4 @@ C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.csproj.CopyComplete
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.dll
 C:\Users\omerf\Downloads\UniCourses.com-master\UniCourses.com-master\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.pdb
+C:\Users\omerf\source\repos\KayaTS\UniCourses\UniCourses.Bl\obj\Debug\netstandard2.1\UniCourses.Bl.csproj.CoreCompileInputs.cache

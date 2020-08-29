@@ -1,0 +1,35 @@
+[
+  {
+    "outputFileName": "wwwroot/js/unicourse.js",
+    "inputFiles": [
+      "wwwroot/js/jquery-3.2.1.min.js",
+      "wwwroot/js/jquery-migrate-3.0.0.js",
+      "wwwroot/js/popper.min.js",
+      "wwwroot/js/bootstrap.min.js",
+      "wwwroot/js/owl.carousel.min.js",
+      "wwwroot/js/jquery.waypoints.min.js",
+      "wwwroot/js/jquery.stellar.min.js",
+      "wwwroot/js/jquery.animateNumber.min.js",
+      "wwwroot/js/jquery.magnific-popup.min.js",
+      "wwwroot/js/main.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/unicourse.css",
+    "inputFiles": [
+      "wwwroot/css/bootstrap.css",
+      "wwwroot/css/animate.css",
+      "wwwroot/css/owl.carousel.min.css",
+      "wwwroot/css/magnific-popup.css",
+      "wwwroot/css/style.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/fonts/unicourse.css",
+    "inputFiles": [
+      "wwwroot/fonts/ionicons/css/ionicons.min.css",
+      "wwwroot/fonts/fontawesome/css/font-awesome.min.css",
+      "wwwroot/fonts/flaticon/font/flaticon.css"
+    ]
+  }
+]

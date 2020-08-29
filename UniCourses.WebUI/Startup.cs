@@ -29,7 +29,7 @@ namespace UniCourses.WebUI
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MyContext>();
+            //services.AddDbContext<MyContext>();
             services.AddScoped(typeof(Repository<>));
             services.AddControllersWithViews();
           //  services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<MyContext>();

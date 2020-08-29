@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using UniCourses.WebUI.ViewModels;
 using UniCourses.Dal.Contexts;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace UniCourses.WebUI.ViewComponents
 {
